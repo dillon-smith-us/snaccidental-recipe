@@ -1,20 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link to css-->
     <title>Snaccidental Recipe</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="displayTitle">Snaccidental Recipe</h1>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <h1>Search a Recipe by Category</h1>
+        <section id="checkbox" class="checkbox">
+            <form id="meat" class="meat"><label for="meat"> Meat</label>
+                <br>
+                <input type="checkbox" id="beef" class="meat" value="beef">
+                <label for="beef"> Beef</label>
+                <br>
+                <input type="checkbox" id="chicken" class="meat" value="chicken">
+                <label for="chicken"> Chicken</label>
+                <br>
+                <input type="checkbox" id="lamb" class="meat" value="lamb">
+                <label for="lamb"> Lamb</label>
+                <br>
+                <input type="checkbox" id="turkey" class="meat" value="turkey">
+                <label for="turkey"> Turkey</label>
+                <br>
+                <input type="checkbox" id="pork" class="meat" value="pork">
+                <label for="pork"> Pork</label>
+                <br>
+                <input type="checkbox" id="bacon" class="meat" value="bacon">
+                <label for="bacon"> Bacon</label>
+                <br>
+            </form>
+            <br>
+            <form id="seafood" class="seafood"><label for="seafood">
+                    Seafood</label>
+                <br>
+                <input type="checkbox" id="cod" class="seafood" value="cod">
+                <label for="cod"> Cod</label>
+                <br>
+                <input type="checkbox" id="shrimp" class="seafood" value="shrimp">
+                <label for="shrimp"> Shrimp</label>
+                <br>
+                <input type="checkbox" id="salmon" class="seafood" value="salmon">
+                <label for="salmon"> Salmon</label>
+                <br>
+                <input type="checkbox" id="tilapia" class="seafood" value="tilapia">
+                <label for="tilapia"> Tilapia</label>
+                <br>
+                <input type="checkbox" id="lobster" class="seafood" value="lobster">
+                <label for="lobster"> Lobster</label>
+            </form>
+            <br>
+            <form id="meatSubstitute" class="meatSubstitute"><label for="meatSubstitute">
+                    Meat Substitute</label>
+                <br>
+                <input type="checkbox" id="tofu" class="meatSubstitute" value="tofu">
+                <label for="tofu"> Tofu</label>
+                <br>
+                <input type="checkbox" id="tempeh" class="meatSubstitute" value="tempeh">
+                <label for="tempeh"> Tempeh</label>
+                <br>
+                <input type="checkbox" id="mockDuck" class="meatSubstitute" value="mockDuck">
+                <label for="mockDuck"> Mock Duck</label>
+                <br>
+                <input type="checkbox" id="mockBeef" class="meatSubstitute" value="mockBeef">
+                <label for="mockBeef"> Mock Beef</label>
+                <br>
+                <input type="checkbox" id="beans" class="meatSubstitute" value="beans">
+                <label for="beans"> Beans</label>
+            </form>
+            <form id="vegetables" class="vegetables"><label for="vegetables">
+                    Vegetables</label>
+                    <br>
+                <input type="checkbox" id="artichoke" class="vegetables" value="artichoke">
+                <label for="artichoke"> Artichoke</label>
+                <br>
+                <input type="checkbox" id="asparagus" class="vegetables" value="asparagus">
+                <label for="asparagus"> Asparagus</label>
+                <br>
+                <input type="checkbox" id="avocado" class="vegetables" value="avocado">
+                <label for="avacado"> Avacado</label>
+                <br>
+                <input type="checkbox" id="bellPepper" class="vegetables" value="bellPepper">
+                <label for="bellPepper"> Bell Pepper</label>
 
 
 
-    
+
+
+
+
+
+                <br>
+                <input type="submit" value="Let me Snacc!">
+            </form>
+
+        </section>
+
+        <h2>Search by User Input</h2>
+        <section id="searchBar" class="searchBar">
+            <label for="searchBar">Please enter a finished dish or ingredient</label>
+            <input id="searchBar__text" type="text" role="searchbox">
+            <button id="searchBar__button">Let me Snacc!</button>
+
+        </section>
+
+
+
+
+    </main>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css"></script>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
