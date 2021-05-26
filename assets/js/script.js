@@ -41,7 +41,103 @@ runAPI();
 
 // Section 1
 // Event listeners for the sections to determine if they are being included or not & then event listeners on the section div to listen for the individual items and then add them to our search array. 
+let selections = [];
+
+let meatArray = [];
+let seafoodArray = [];
+let meatSubArray = [];
+let vegArray = [];
+let grainsArray = [];
+let fruitsArray = [];
+let dairiesArray = [];
+let spicesArray = [];
+let oilsArray = [];
+let nutsArray = [];
+let dessertsArray = [];
+let saucesArray = [];
+let cuisineArray = [];
+let dietArray = [];
+let allergensArray = [];
+
+
+//
+
+
+//function menu()
+
+
+
+$("#diet").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#diet").val())
+});
+
+$("#cuisine").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#cuisine").val())
+});
+
+$("#meat").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#meat").val())
+});
+
+$("#meatSubstitute").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#meatSubstitute").val())
+});
+
+$("#seafood").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#seafood").val())
+});
+
+$("#vegetables").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#vegetables").val())
+});
+
+$("#grains").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#grains").val())
+});
+
+$("#fruits").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#fruits").val())
+});
+
+$("#dairies").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#dairies").val())
+});
+
+$("#spices").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#spices").val())
+});
+
+$("#oils").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#oils").val())
+});
+
+$("#nuts").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#nuts").val())
+});
+
+$("#desserts").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#desserts").val())
+});
+
+$("#sauces").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#sauces").val())
+});
 // event listener for the search button.
+
 
 // Section 2
 // Function that takes the input and both adds the item to the search array and lists the item out in the visible page of what is being included in the search. 
