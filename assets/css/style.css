@@ -19,6 +19,16 @@
     transition: 0.4s;
   }
 
+  .field.has-addons .control:last-child .button, .field.has-addons .control:last-child .input, .field.has-addons .control:last-child .select select {
+    border-radius: 290486px;
+    position: relative;
+    right: -6px;
+  }
+
+  .field.has-addons .control:first-child .button, .field.has-addons .control:first-child .input, .field.has-addons .control:first-child .select select {
+    border-radius: 290486px;
+  }
+
   .accordion:after {
     content: '\02795'; /* Unicode character for "plus" sign (+) */
     font-size: 13px;
