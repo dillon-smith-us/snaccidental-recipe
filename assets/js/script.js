@@ -152,30 +152,30 @@ $("#sauces").on("click", function (event) {
 
 
 // Errors to keep an eye out for "fixing"
-// If search results pull up no recipes
-// Try again
-// Use less ingredients
-// Use different ingredients
-// Check your ingredients are actual ingredients
-// Require a minimum of three ingredients
 
-let acc = document.getElementsByClassName("accordion");
-let i;
+    // If search results pull up no recipes
+        // Try again
+        // Use less ingredients
+        // Use different ingredients
+        // Check your ingredients are actual ingredients
+    // Require a minimum of three ingredients
 
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
         /* Toggle between adding and removing the "active" class,
         to highlight the button that controls the panel */
         this.classList.toggle("active");
-
+    
         /* Toggle between hiding and showing the active panel */
-        let panel = this.nextElementSibling;
+        var panel = this.nextElementSibling;
         if (panel.style.display === "block") {
-            panel.style.display = "none";
+          panel.style.display = "none";
         } else {
-            panel.style.display = "block";
+          panel.style.display = "block";
         }
-    });
-}
+      });
+    }
 
-    // var accordions = bulmaAccordion.attach(); // accordions now contains an array of all Accordion instances
