@@ -37,79 +37,79 @@ let allergensArray = [];
 //
 
 
-function menu()
+//function menu()
 
 
 
-$("#diet").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#diet").val());
-}
+$("#diet").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#diet").val())
+});
 
-$("#cuisine").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#cuisine").val());
-}
+$("#cuisine").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#cuisine").val())
+});
 
-$("#meat").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#meat").val());
-}
+$("#meat").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#meat").val())
+});
 
-$("#meatSubstitute").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#meatSubstitute").val());
-}
+$("#meatSubstitute").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#meatSubstitute").val())
+});
 
-$("#seafood").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#seafood").val());
-}
+$("#seafood").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#seafood").val())
+});
 
-$("#vegitables").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#vegitables").val());
-}
+$("#vegetables").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#vegetables").val())
+});
 
-$("#grains").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#grains").val());
-}
+$("#grains").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#grains").val())
+});
 
-$("#fruits").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#fruits").val());
-}
+$("#fruits").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#fruits").val())
+});
 
-$("#dairies").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#dairies").val());
-}
+$("#dairies").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#dairies").val())
+});
 
-$("#spices").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#spices").val());
-}
+$("#spices").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#spices").val())
+});
 
-$("#oils").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#oils").val());
-}
+$("#oils").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#oils").val())
+});
 
-$("#nuts").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#nuts").val());
-}
+$("#nuts").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#nuts").val())
+});
 
-$("#desserts").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#desserts").val());
-}
+$("#desserts").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#desserts").val())
+});
 
-$("#sauces").on("click", menu()) {
-    let selections = new Array();
-    selections.push($("#sauces").val());
-}
+$("#sauces").on("click", function(event) {
+    event.preventDefault;
+    selections.push($("#sauces").val())
+});
 // event listener for the search button.
 
 
