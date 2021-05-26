@@ -12,6 +12,32 @@
 // Function that fetches the API and uses our object that has the "include array" and "restrict array". 
     // That will be adding to the parameters of the fetch. 
     // Will then start the function that generated the search results.
+function runAPI() {
+  let apiOdy = "872fa65d52a2467f9914c55d89dbf2ba";
+  // query = The (natural language) recipe search query
+  // let query = query
+  // cuisine = The The cuisine(s) of the recipes. One or more, comma separated (will be interpreted as 'OR').
+  // excludeCuisine = The cuisine(s) the recipes must not match. One or more, comma separated (will be interpreted as 'AND').
+  // diet = 	The diet for which the recipes must be suitable.
+  // intolerances = A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered.
+  // includeIngredients = A comma-separated list of ingredients that should/must be used in the recipes.
+  // excludeIngredients = A comma-separated list of ingredients or ingredient types that the recipes must not contain. (boolean)
+  // sort = The strategy to sort recipes by.
+  // sortDirection = The direction in which to sort. Must be either 'asc' (ascending) or 'desc' (descending).
+  // number = The number of expected results (between 1 and 100)
+  requestURL = "https://api.spoonacular.com/recipes/complexSearch?includeIngredients=chicken,broccoli&number=10&apiKey=" + apiOdy;
+
+  fetch (requestURL)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log("Complex search data.")
+      console.log(data)
+    })
+  }
+
+runAPI();
 
 // Section 1
 // Event listeners for the sections to determine if they are being included or not & then event listeners on the section div to listen for the individual items and then add them to our search array. 
@@ -134,21 +160,23 @@ $("#sauces").on("click", function(event) {
         // Check your ingredients are actual ingredients
     // Require a minimum of three ingredients
 
-    var acc = document.getElementsByClassName("accordion");
-    var i;
+    // var acc = document.getElementsByClassName("accordion");
+    // var i;
     
-    for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        /* Toggle between adding and removing the "active" class,
-        to highlight the button that controls the panel */
-        this.classList.toggle("active");
+    // for (i = 0; i < acc.length; i++) {
+    //   acc[i].addEventListener("click", function() {
+    //     /* Toggle between adding and removing the "active" class,
+    //     to highlight the button that controls the panel */
+    //     this.classList.toggle("active");
     
-        /* Toggle between hiding and showing the active panel */
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-          panel.style.display = "none";
-        } else {
-          panel.style.display = "block";
-        }
-      });
-    }
+    //     /* Toggle between hiding and showing the active panel */
+    //     var panel = this.nextElementSibling;
+    //     if (panel.style.display === "block") {
+    //       panel.style.display = "none";
+    //     } else {
+    //       panel.style.display = "block";
+    //     }
+    //   });
+    // }
+
+    // var accordions = bulmaAccordion.attach(); // accordions now contains an array of all Accordion instances
