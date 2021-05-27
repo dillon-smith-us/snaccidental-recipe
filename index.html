@@ -15,9 +15,10 @@
 <body>
 
     <section class="container">
-        <div class="hero is-primary">
+        <div class="hero is-danger">
             <div class="hero-body">
-                <h1 class=title>Snaccidental Recipe</h1>
+                <h1 class=title>Snaccidental Recipe</h1><i class="fas fa-bars fa-3x" id="burgerIcon"></i>
+
             </div>
         </div>
     </section>
@@ -27,26 +28,28 @@
             <div class="columns">
                 <div class="column is-one-third">
                     <h1 class="title is-3">Your Ingredients</h1>
-
-                    <section class="section">
-                        <div class="inputText"> user checkboxes and inputs populate here</div>
+                    <section class="areaone">
+                        <div class="inputText"></div>
                         <div>
                             <p id="returnCall"></p>
                         </div>
                     </section>
-
+                    <br>
+                    <br>
                     <div class="field has-addons w-100">
                         <div class="control has-icons-left">
-                            <input class="input" type="text" placeholder="ingredient, cuisine, dish">
+                            <input class="input" type="text" placeholder="Ingredient, Cuisine, Dish">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-search"></i>
                         </div>
                         <div class="control">
-                            
-                            <a class="button is-primary" id="searchOneBtn">
+                            <a class="button is-danger" id="addBtn">
+                                Add
+                            </a>
+                            <a class="button is-danger" id="searchOneBtn">
                                 Search
                             </a>
-                            <a class="button is-primary">
+                            <a class="button is-danger" id="clearBtn">
                                 Clear
                             </a>
                         </div>
@@ -88,7 +91,7 @@
                                 <input type="checkbox" id="sulfite" class="allergens" value="Sulfite">
                                 <label for="sulfite"> Sulfite</label>
                                 <br>
-                                <input type="checkbox" id="treeNuts" class="allergens" value="greek">
+                                <input type="checkbox" id="treeNuts" class="allergens" value="Tree Nuts">
                                 <label for="treeNuts"> Tree Nuts</label>
                                 <br>
                                 <input type="checkbox" id="wheat" class="allergens" value="Wheat">
@@ -224,6 +227,9 @@
                                 <br>
                                 <input type="checkbox" id="chicken" class="meat" value="Chicken">
                                 <label for="chicken"> Chicken</label>
+                                <br>
+                                <input type="checkbox" id="egg" class="meat" value="Egg">
+                                <label for="egg"> Egg</label>
                                 <br>
                                 <input type="checkbox" id="lamb" class="meat" value="Lamb">
                                 <label for="lamb"> Lamb</label>
