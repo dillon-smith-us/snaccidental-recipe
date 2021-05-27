@@ -2,12 +2,8 @@
     background-color: aqua;
 }
 
-#burgerIcon{
+#menu{
   float: right;
-}
-
-.is-one-third {
-    display: block;
 }
 
 /* Style the buttons that are used to open and close the accordion panel */
