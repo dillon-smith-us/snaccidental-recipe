@@ -1,57 +1,60 @@
-// Is content for each category, going to be dynamically displayed or will it be a display on or off type of thing. 
 // Ask about the 30 results per page or 30 total in class 
-// Run a basic API fetch to see what data we get.
 
-let selections = [];
-// These are our section array, where checked items will be added to them.
-/*
-let meatArray = [];
-let seafoodArray = [];
-let meatSubArray = [];
-let vegArray = [];
-let grainsArray = [];
-let fruitsArray = [];
-let dairiesArray = [];
-let spicesArray = [];
-let oilsArray = [];
-let nutsArray = [];
-*/
+// These are our section arrays, where checked items will be added to them.
+let allergensArray = [];
+let dietArray = [];
+let cuisineArray = [];
 let ingredientsArray = [];
 let recipeArray = [];
-
-//let dessertsArray = [];
-//let saucesArray = [];
-
-let cuisineArray = [];
-let dietArray = [];
-let allergensArray = [];
 let ingredientsList1 = $("#returnCall");
 let checkedBoxItem;
-
-// Split into two teams of getting more of the HTML Fleshed out and umm getting a test API call to see what info we are receiving. 
-
 
 // Function for generating search results. 
 // Includes image, and includes Title of Recipe and both are a link to the recipe page. 
 // At the bottom there should a a previous button and a next button
 
-// Function that fetches the API and uses our object that has the "include array" and "restrict array". 
 // That will be adding to the parameters of the fetch. 
 // Will then start the function that generated the search results.
-function searchOneInitial() {
+
+// This function will take the checked items and search for recipes in relation to them.
+function searchOneInitialize() {
     let apiOdy = "872fa65d52a2467f9914c55d89dbf2ba";
-    // query = The (natural language) recipe search query
-    // let query = "&query="
-    // cuisine = The The cuisine(s) of the recipes. One or more, comma separated (will be interpreted as 'OR').
-    // excludeCuisine = The cuisine(s) the recipes must not match. One or more, comma separated (will be interpreted as 'AND').
-    // diet = 	The diet for which the recipes must be suitable.
-    // intolerances = A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered.
-    // includeIngredients = A comma-separated list of ingredients that should/must be used in the recipes.
-    // excludeIngredients = A comma-separated list of ingredients or ingredient types that the recipes must not contain. (boolean)
-    // sort = The strategy to sort recipes by.
-    // sortDirection = The direction in which to sort. Must be either 'asc' (ascending) or 'desc' (descending).
-    // number = The number of expected results (between 1 and 100)
-    requestURL = "https://api.spoonacular.com/recipes/complexSearch?includeIngredients=chicken,broccoli&number=10&apiKey=" + apiOdy;
+    /* Parameter explanations:
+        number | number | The number of expected results (between 1 and 100).
+        instructionsRequired | boolean | Whether the recipes must have instructions.
+        addRecipeInformation | boolean | If set to true, you get more information about the recipes returned.
+        *sort | string | The strategy to sort recipes by.
+        *sortDirection | string | 	The direction in which to sort. Must be either 'asc' (ascending) or 'desc' (descending).
+        intolerances | string | A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered.
+        diet | string | The diet for which the recipes must be suitable.
+        cuisine | string | The The cuisine(s) of the recipes. One or more, comma separated (will be interpreted as 'OR').
+        includeIngredients | string | A comma-separated list of ingredients that should/must be used in the recipes.
+        titleMatch | string | Enter text that must be found in the title of the recipes. */ 
+    // Variables that pull the joined strings from their respective arrays.
+    let allergens = "&intolerances=" + allergensArray.join();
+    let diet = "&diet=" + dietArray.join();
+    let cuisine = "&cuisine=" + cuisineArray.join();
+    let ingredients = "&includeIngredients=" + ingredientsArray.join();
+    let recipe = "&titleMatch=" + recipeArray.join();
+    // This will add all the arrays being used to one master array that can then be input into the API call.
+    let masterArray = [];
+    if (allergensArray.length !== 0) {
+        masterArray.push(dietArray.join())
+    }
+    if (dietArray.length !== 0) {
+        masterArray.push(dietArray.join())
+    }
+    if (cuisineArray.length !== 0) {
+        masterArray.push(cuisineArray.join());
+    }
+    if (ingredientsArray.length !== 0) {
+        masterArray.push(ingredientsArray.join());
+    }
+    if (recipeArray.length !== 0) {
+        masterArray.push(recipeArray.join());
+    }
+    // requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + masterArray.join() + "&apiKey=" + apiOdy;
+    requestURL = "https://api.spoonacular.com/recipes/complexSearch?&cuisine=&includeIngredients=strawberry&number=10&addRecipeInformation=true&apiKey=" + apiOdy;
 
     fetch(requestURL)
         .then(function (response) {
@@ -64,14 +67,13 @@ function searchOneInitial() {
         })
 }
 
-//searchOneInitial();
+searchOneInitialize();
 
 // This function will run the api that grabs the recipe URL and then will display the image and title on the page.
 function displayRecipes(data) {
 
 }
 
-// Section 1
 // Event listeners to add checked items to the search array, and display them on the screen in the added ingredients section. 
 //need to add css text transform for capitalization
 
@@ -219,30 +221,32 @@ $("#sauces").on("click", ".sauces", function (event) {
 
 
 // Errors to keep an eye out for "fixing"
+// If search results pull up no recipes
+// Try again
+// Use less ingredients
+// Use different ingredients
+// Check your ingredients are actual ingredients
+// Require a minimum of three ingredients
 
-    // If search results pull up no recipes
-        // Try again
-        // Use less ingredients
-        // Use different ingredients
-        // Check your ingredients are actual ingredients
-    // Require a minimum of three ingredients
+// This makes the accodion work.
+// Needs to be converted to jQuery.
+var acc = document.getElementsByClassName("accordion");
+var i;
 
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-    
-    for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
         /* Toggle between adding and removing the "active" class,
         to highlight the button that controls the panel */
         this.classList.toggle("active");
-    
+
         /* Toggle between hiding and showing the active panel */
         var panel = this.nextElementSibling;
         if (panel.style.display === "block") {
-          panel.style.display = "none";
+            panel.style.display = "none";
         } else {
-          panel.style.display = "block";
+            panel.style.display = "block";
         }
-      });
-    }
+    });
+}
 
+// I think we could use the offset property to skip to the next 10 results.
