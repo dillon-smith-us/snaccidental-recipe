@@ -1,11 +1,13 @@
 // Ask about the 30 results per page or 30 total in class 
 
-// These are our section array, where checked items will be added to them.
+// These are our section arrays, where checked items will be added to them.
 let allergensArray = [];
 let dietArray = [];
 let cuisineArray = [];
 let ingredientsArray = [];
 let recipeArray = [];
+let ingredientsList1 = $("#returnCall");
+let checkedBoxItem;
 
 // Function for generating search results. 
 // Includes image, and includes Title of Recipe and both are a link to the recipe page. 
@@ -73,75 +75,135 @@ function displayRecipes(data) {
 }
 
 // Event listeners to add checked items to the search array, and display them on the screen in the added ingredients section. 
-$("#diet").on("click", function (event) {
+//need to add css text transform for capitalization
+
+$("#diet").on("click", ".diet", function (event) {
     event.preventDefault;
-    selections.push($("#diet").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    dietArray.push(checkedBoxItem);
+    
 });
 
-$("#cuisine").on("click", function (event) {
+$("#allergens").on("click", ".allergens", function (event) {
     event.preventDefault;
-    selections.push($("#cuisine").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    allergensArray.push(checkedBoxItem);
+    
+})
+
+$("#cuisine").on("click", ".cuisine", function (event) {
+    event.preventDefault;
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    cuisineArray.push(checkedBoxItem);
+    
+    
 });
 
-$("#meat").on("click", function (event) {
+$("#meat").on("click", ".meat", function (event) {
     event.preventDefault;
-    selections.push($("#meat").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    ingredientsArray.push(checkedBoxItem);
+    
+   
+    
 });
 
-$("#meatSubstitute").on("click", function (event) {
+$("#meatSubstitute").on("click", ".meatSubstitute", function (event) {
     event.preventDefault;
-    selections.push($("#meatSubstitute").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    ingredientsArray.push(checkedBoxItem);
+    
 });
 
-$("#seafood").on("click", function (event) {
+$("#seafood").on("click", ".seafood", function (event) {
     event.preventDefault;
-    selections.push($("#seafood").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    ingredientsArray.push(checkedBoxItem);
+    
+
+    
 });
 
-$("#vegetables").on("click", function (event) {
+$("#vegetables").on("click", ".vegetables", function (event) {
     event.preventDefault;
-    selections.push($("#vegetables").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    ingredientsArray.push(checkedBoxItem);
+    
+    
 });
 
-$("#grains").on("click", function (event) {
+$("#grains").on("click", ".grains", function (event) {
     event.preventDefault;
-    selections.push($("#grains").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    ingredientsArray.push(checkedBoxItem);
+    
 });
 
-$("#fruits").on("click", function (event) {
+$("#fruits").on("click", ".fruits", function (event) {
     event.preventDefault;
-    selections.push($("#fruits").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    ingredientsArray.push(checkedBoxItem);
+    
 });
 
-$("#dairies").on("click", function (event) {
+$("#dairies").on("click", ".dairies", function (event) {
     event.preventDefault;
-    selections.push($("#dairies").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    ingredientsArray.push(checkedBoxItem);
 });
 
-$("#spices").on("click", function (event) {
+$("#spices").on("click", ".spices", function (event) {
     event.preventDefault;
-    selections.push($("#spices").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    ingredientsArray.push(checkedBoxItem);
+    
 });
 
-$("#oils").on("click", function (event) {
+$("#oils").on("click", ".oils", function (event) {
     event.preventDefault;
-    selections.push($("#oils").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    ingredientsArray.push(checkedBoxItem);
+    
 });
 
-$("#nuts").on("click", function (event) {
+$("#nuts").on("click", ".nuts", function (event) {
     event.preventDefault;
-    selections.push($("#nuts").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    ingredientsArray.push(checkedBoxItem);
+    
 });
 
-$("#desserts").on("click", function (event) {
+$("#desserts").on("click", ".desserts", function (event) {
     event.preventDefault;
-    selections.push($("#desserts").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    recipeArray.push(checkedBoxItem);
+    
 });
 
-$("#sauces").on("click", function (event) {
+$("#sauces").on("click", ".sauces", function (event) {
     event.preventDefault;
-    selections.push($("#sauces").val())
+    checkedBoxItem = $(this).val();
+    ingredientsList1.append(checkedBoxItem + ", ");
+    recipeArray.push(checkedBoxItem);
+    
+    
 });
+
+
 // event listener for the search button.
 
 
