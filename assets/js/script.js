@@ -119,102 +119,310 @@ $("#diet").on("click", ".diet", function (event) {
 
 $("#allergens").on("click", ".allergens", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    allergensArray.push(checkedBoxItem);
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        allergensArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        allergensArray.splice($.inArray(value, allergensArray), 1);
+    }
 })
 
 $("#cuisine").on("click", ".cuisine", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    cuisineArray.push(checkedBoxItem);
-});
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        cuisineArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        cuisineArray.splice($.inArray(value, cuisineArray), 1);
+    }
+})
 
 $("#meat").on("click", ".meat", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    ingredientsArray.push(checkedBoxItem);
-    console.log(ingredientsArray);
-});
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        ingredientsArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
+    }
+})
 
 $("#meatSubstitute").on("click", ".meatSubstitute", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    ingredientsArray.push(checkedBoxItem);
-});
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        ingredientsArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
+    }
+})
 
 $("#seafood").on("click", ".seafood", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    ingredientsArray.push(checkedBoxItem);
-});
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        ingredientsArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
+    }
+})
 
 $("#vegetables").on("click", ".vegetables", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    ingredientsArray.push(checkedBoxItem);
-});
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        ingredientsArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
+    }
+})
 
 $("#grains").on("click", ".grains", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    ingredientsArray.push(checkedBoxItem);
-});
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        ingredientsArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
+    }
+})
 
 $("#fruits").on("click", ".fruits", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    ingredientsArray.push(checkedBoxItem);
-});
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        ingredientsArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
+    }
+})
 
 $("#dairies").on("click", ".dairies", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    ingredientsArray.push(checkedBoxItem);
-});
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        ingredientsArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
+    }
+})
 
 $("#spices").on("click", ".spices", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    ingredientsArray.push(checkedBoxItem);
-});
-
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        ingredientsArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
+    }
+})
 $("#oils").on("click", ".oils", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    ingredientsArray.push(checkedBoxItem);
-});
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        ingredientsArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
+    }
+})
 
 $("#nuts").on("click", ".nuts", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    ingredientsArray.push(checkedBoxItem);
-});
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        ingredientsArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
+    }
+})
 
 $("#desserts").on("click", ".desserts", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    recipeArray.push(checkedBoxItem);
-});
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        recipeArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        recipeArray.splice($.inArray(value, recipeArray), 1);
+    }
+})
 
 $("#sauces").on("click", ".sauces", function (event) {
     event.preventDefault;
-    checkedBoxItem = $(this).val();
-    ingredientsList1.append(checkedBoxItem + ", ");
-    recipeArray.push(checkedBoxItem);
-});
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        recipeArray.push(value);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        recipeArray.splice($.inArray(value, recipeArray), 1);
+    }
+})
 
 /* Section 2
     Function that takes the input and both adds the item to the search array and lists the item out in the visible page of what is being included in the search. 
