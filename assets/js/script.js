@@ -37,7 +37,7 @@ function searchOneInitialize() {
     console.log(recipe);
     // This will add all the arrays being used to one master array.
     let masterArray = [];
-    if (allergensArray.length !== 0) { 
+    if (allergensArray.length !== 0) {
         masterArray.push(diet)
     }
     if (dietArray.length !== 0) {
@@ -98,7 +98,7 @@ function displayRecipes(data) {
 $("#diet").on("click", ".diet", function (event) {
     event.preventDefault;
     if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='"+$(this).attr("id")+"']").text();
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
         let liEl = $("<li>");
         let iconEl = $("<i>")
         iconEl.attr("class", "fas fa-trash");
@@ -108,16 +108,12 @@ $("#diet").on("click", ".diet", function (event) {
         ingredientsList1.append(liEl);
         value = $(this).val();
         dietArray.push(value);
-        console.log("add");
-        console.log(dietArray);
     } else {
-        checkedBoxItem = $("label[for='"+$(this).attr("id")+"']").text();
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
         value = $(this).val();
-        let removalEl = $("li[value='"+$(this).attr("value")+"']");
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
         removalEl.remove();
         dietArray.splice($.inArray(value, dietArray), 1);
-        console.log("remove");
-        console.log(dietArray);
     }
 })
 

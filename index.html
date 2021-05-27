@@ -15,9 +15,10 @@
 <body>
 
     <section class="container">
-        <div class="hero is-primary">
+        <div class="hero is-danger">
             <div class="hero-body">
-                <h1 class=title>Snaccidental Recipe</h1>
+                <h1 class=title>Snaccidental Recipe</h1><i class="fas fa-bars fa-3x" id="burgerIcon"></i>
+
             </div>
         </div>
     </section>
@@ -32,19 +33,22 @@
                         <div class="inputText"></div>
                         <div id="returnCall"></div>
                     </section>
-
+                    <br>
+                    <br>
                     <div class="field has-addons w-100">
                         <div class="control has-icons-left">
-                            <input class="input" type="text" placeholder="ingredient, cuisine, dish">
+                            <input class="input" type="text" placeholder="Ingredient, Cuisine, Dish">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-search"></i>
                         </div>
                         <div class="control">
-                            
-                            <a class="button is-primary" id="searchOneBtn">
+                            <a class="button is-danger" id="addBtn">
+                                Add
+                            </a>
+                            <a class="button is-danger" id="searchOneBtn">
                                 Search
                             </a>
-                            <a class="button is-primary">
+                            <a class="button is-danger" id="clearBtn">
                                 Clear
                             </a>
                         </div>
@@ -56,41 +60,41 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="allergens" class="allergens"><label for="allergens"> ALLERGENS</label>
                                 <br>
-                                <input type="checkbox" id="african" class="cuisine" value="african">
-                                <label for="african"> Dairy</label>
+                                <input type="checkbox" id="dairy" class="allergens" value="Dairy">
+                                <label for="dairy"> Dairy</label>
                                 <br>
-                                <input type="checkbox" id="american" class="cuisine" value="american">
-                                <label for="american"> Egg</label>
+                                <input type="checkbox" id="egg" class="allergens" value="Egg">
+                                <label for="egg"> Egg</label>
                                 <br>
-                                <input type="checkbox" id="british" class="cuisine" value="british">
-                                <label for="british"> Gluten</label>
+                                <input type="checkbox" id="gluten" class="allergens" value="Gluten">
+                                <label for="gluten"> Gluten</label>
                                 <br>
-                                <input type="checkbox" id="cajun" class="cuisine" value="cajun">
-                                <label for="cajun"> Grain</label>
+                                <input type="checkbox" id="grain" class="allergens" value="Grain">
+                                <label for="grain"> Grain</label>
                                 <br>
-                                <input type="checkbox" id="carribbean" class="cuisine" value="carribbean">
-                                <label for="carribbean"> Peanuts</label>
+                                <input type="checkbox" id="peanuts" class="allergens" value="Peanuts">
+                                <label for="peanuts"> Peanuts</label>
                                 <br>
-                                <input type="checkbox" id="chinese" class="cuisine" value="chinese">
-                                <label for="chinese"> Seafood</label>
+                                <input type="checkbox" id="seafood" class="allergens" value="Seafood">
+                                <label for="seafood"> Seafood</label>
                                 <br>
-                                <input type="checkbox" id="easternEuropean" class="cuisine" value="easternEuropean">
-                                <label for="easternEuropean"> Sesame</label>
+                                <input type="checkbox" id="sesame" class="allergens" value="Sesame">
+                                <label for="sesame"> Sesame</label>
                                 <br>
-                                <input type="checkbox" id="european" class="cuisine" value="european">
-                                <label for="european"> Shellfish</label>
+                                <input type="checkbox" id="shellfish" class="allergens" value="Shellfish">
+                                <label for="shellfish"> Shellfish</label>
                                 <br>
-                                <input type="checkbox" id="french" class="cuisine" value="french">
-                                <label for="french"> Soy</label>
+                                <input type="checkbox" id="soy" class="allergens" value="Soy">
+                                <label for="soy"> Soy</label>
                                 <br>
-                                <input type="checkbox" id="german" class="cuisine" value="german">
-                                <label for="german"> Sulfite</label>
+                                <input type="checkbox" id="sulfite" class="allergens" value="Sulfite">
+                                <label for="sulfite"> Sulfite</label>
                                 <br>
-                                <input type="checkbox" id="greek" class="cuisine" value="greek">
-                                <label for="greek"> Tree Nuts</label>
+                                <input type="checkbox" id="treeNuts" class="allergens" value="Tree Nuts">
+                                <label for="treeNuts"> Tree Nuts</label>
                                 <br>
-                                <input type="checkbox" id="indian" class="cuisine" value="indian">
-                                <label for="indian"> Wheat</label>
+                                <input type="checkbox" id="wheat" class="allergens" value="Wheat">
+                                <label for="wheat"> Wheat</label>
                                 <br>
                             </form>
                         </section>
@@ -100,22 +104,22 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="diet" class="diet"><label for="diet"> DIET</label>
                                 <br>
-                                <input type="checkbox" id="glutenFree" class="diet" value="glutenFree">
+                                <input type="checkbox" id="glutenFree" class="diet" value="Gluten Free">
                                 <label for="glutenFree"> Gluten Free</label>
                                 <br>
-                                <input type="checkbox" id="ketogenic" class="diet" value="ketogenic">
+                                <input type="checkbox" id="ketogenic" class="diet" value="Ketogenic">
                                 <label for="ketogenic"> Ketogenic</label>
                                 <br>
-                                <input type="checkbox" id="vegetarian" class="diet" value="vegetarian">
+                                <input type="checkbox" id="vegetarian" class="diet" value="Vegetarian">
                                 <label for="vegetarian"> Vegetarian</label>
                                 <br>
-                                <input type="checkbox" id="lactoVegetarian" class="diet" value="lactoVegetarian">
+                                <input type="checkbox" id="lactoVegetarian" class="diet" value="Lacto-Vegetarian">
                                 <label for="lactoVegetarian"> Lacto-Vegetarian</label>
                                 <br>
-                                <input type="checkbox" id="ovoVegetarian" class="diet" value="ovoVegetarian">
+                                <input type="checkbox" id="ovoVegetarian" class="diet" value="Ovo-Vegetarian">
                                 <label for="ovoVegetarian"> Ovo-Vegetarian</label>
                                 <br>
-                                <input type="checkbox" id="vegan" class="diet" value="vegan">
+                                <input type="checkbox" id="vegan" class="diet" value="Vegan">
                                 <label for="vegan"> Vegan</label>
                                 <br>
 
@@ -128,82 +132,82 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="cuisine" class="cuisine"><label for="cuisine"> CUISINE</label>
                                 <br>
-                                <input type="checkbox" id="african" class="cuisine" value="african">
+                                <input type="checkbox" id="african" class="cuisine" value="African">
                                 <label for="african"> African</label>
                                 <br>
-                                <input type="checkbox" id="american" class="cuisine" value="american">
+                                <input type="checkbox" id="american" class="cuisine" value="American">
                                 <label for="american"> American</label>
                                 <br>
-                                <input type="checkbox" id="british" class="cuisine" value="british">
+                                <input type="checkbox" id="british" class="cuisine" value="British">
                                 <label for="british"> British</label>
                                 <br>
-                                <input type="checkbox" id="cajun" class="cuisine" value="cajun">
+                                <input type="checkbox" id="cajun" class="cuisine" value="Cajun">
                                 <label for="cajun"> Cajun</label>
                                 <br>
-                                <input type="checkbox" id="carribbean" class="cuisine" value="carribbean">
+                                <input type="checkbox" id="carribbean" class="cuisine" value="Carribbean">
                                 <label for="carribbean"> Carribbean</label>
                                 <br>
-                                <input type="checkbox" id="chinese" class="cuisine" value="chinese">
+                                <input type="checkbox" id="chinese" class="cuisine" value="Chinese">
                                 <label for="chinese"> Chinese</label>
                                 <br>
-                                <input type="checkbox" id="easternEuropean" class="cuisine" value="easternEuropean">
+                                <input type="checkbox" id="easternEuropean" class="cuisine" value="Eastern European">
                                 <label for="easternEuropean"> Eastern European</label>
                                 <br>
-                                <input type="checkbox" id="european" class="cuisine" value="european">
+                                <input type="checkbox" id="european" class="cuisine" value="European">
                                 <label for="european"> European</label>
                                 <br>
-                                <input type="checkbox" id="french" class="cuisine" value="french">
+                                <input type="checkbox" id="french" class="cuisine" value="French">
                                 <label for="french"> French</label>
                                 <br>
-                                <input type="checkbox" id="german" class="cuisine" value="german">
+                                <input type="checkbox" id="german" class="cuisine" value="German">
                                 <label for="german"> German</label>
                                 <br>
-                                <input type="checkbox" id="greek" class="cuisine" value="greek">
+                                <input type="checkbox" id="greek" class="cuisine" value="Greek">
                                 <label for="greek"> Greek</label>
                                 <br>
-                                <input type="checkbox" id="indian" class="cuisine" value="indian">
+                                <input type="checkbox" id="indian" class="cuisine" value="Indian">
                                 <label for="indian"> Indian</label>
                                 <br>
-                                <input type="checkbox" id="irish" class="cuisine" value="irish">
+                                <input type="checkbox" id="irish" class="cuisine" value="Irish">
                                 <label for="irish"> Irish</label>
                                 <br>
-                                <input type="checkbox" id="italian" class="cuisine" value="italian">
+                                <input type="checkbox" id="italian" class="cuisine" value="Italian">
                                 <label for="italian"> Italian</label>
                                 <br>
-                                <input type="checkbox" id="japanese" class="cuisine" value="japanese">
+                                <input type="checkbox" id="japanese" class="cuisine" value="Japanese">
                                 <label for="japanese"> Japanese</label>
                                 <br>
-                                <input type="checkbox" id="jewish" class="cuisine" value="jewish">
+                                <input type="checkbox" id="jewish" class="cuisine" value="Jewish">
                                 <label for="jewish"> Jewish</label>
                                 <br>
-                                <input type="checkbox" id="korean" class="cuisine" value="korean">
+                                <input type="checkbox" id="korean" class="cuisine" value="Korean">
                                 <label for="korean"> Korean</label>
                                 <br>
-                                <input type="checkbox" id="latinAmerican" class="cuisine" value="latinAmerican">
+                                <input type="checkbox" id="latinAmerican" class="cuisine" value="Latin American">
                                 <label for="latinAmerican"> Latin American</label>
                                 <br>
-                                <input type="checkbox" id="mediterranean" class="cuisine" value="mediterranean">
+                                <input type="checkbox" id="mediterranean" class="cuisine" value="Mediterranean">
                                 <label for="mediterranean"> Mediterranean</label>
                                 <br>
-                                <input type="checkbox" id="mexican" class="cuisine" value="mexican">
+                                <input type="checkbox" id="mexican" class="cuisine" value="Mexican">
                                 <label for="mexican"> Mexican</label>
                                 <br>
-                                <input type="checkbox" id="middleEastern" class="cuisine" value="middleEastern">
+                                <input type="checkbox" id="middleEastern" class="cuisine" value="Middle Eastern">
                                 <label for="middleEastern"> Middle Eastern</label>
                                 <br>
-                                <input type="checkbox" id="nordic" class="cuisine" value="nordic">
+                                <input type="checkbox" id="nordic" class="cuisine" value="Nordic">
                                 <label for="nordic"> Nordic</label>
                                 <br>
-                                <input type="checkbox" id="southern" class="cuisine" value="southern">
+                                <input type="checkbox" id="southern" class="cuisine" value="Southern">
                                 <label for="southern"> Southern</label>
                                 <br>
-                                <input type="checkbox" id="spanish" class="cuisine" value="spanish">
+                                <input type="checkbox" id="spanish" class="cuisine" value="Spanish">
                                 <label for="spanish"> Spanish</label>
                                 <br>
-                                <input type="checkbox" id="thai" class="cuisine" value="thai">
+                                <input type="checkbox" id="thai" class="cuisine" value="Thai">
                                 <label for="thai"> Thai</label>
                                 <br>
-                                <input type="checkbox" id="vietnamese" class="cuisine" value="vietnamese">
+                                <input type="checkbox" id="vietnamese" class="cuisine" value="Tietnamese">
                                 <label for="vietnamese"> Vietnamese</label>
                                 <br>
 
@@ -217,22 +221,25 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="meat" class="meat"><label for="meat"> MEAT</label>
                                 <br>
-                                <input type="checkbox" id="beef" class="meat" value="beef">
+                                <input type="checkbox" id="beef" class="meat" value="Beef">
                                 <label for="beef"> Beef</label>
                                 <br>
-                                <input type="checkbox" id="chicken" class="meat" value="chicken">
+                                <input type="checkbox" id="chicken" class="meat" value="Chicken">
                                 <label for="chicken"> Chicken</label>
                                 <br>
-                                <input type="checkbox" id="lamb" class="meat" value="lamb">
+                                <input type="checkbox" id="egg" class="meat" value="Egg">
+                                <label for="egg"> Egg</label>
+                                <br>
+                                <input type="checkbox" id="lamb" class="meat" value="Lamb">
                                 <label for="lamb"> Lamb</label>
                                 <br>
-                                <input type="checkbox" id="turkey" class="meat" value="turkey">
+                                <input type="checkbox" id="turkey" class="meat" value="Turkey">
                                 <label for="turkey"> Turkey</label>
                                 <br>
-                                <input type="checkbox" id="pork" class="meat" value="pork">
+                                <input type="checkbox" id="pork" class="meat" value="Pork">
                                 <label for="pork"> Pork</label>
                                 <br>
-                                <input type="checkbox" id="bacon" class="meat" value="bacon">
+                                <input type="checkbox" id="bacon" class="meat" value="Bacon">
                                 <label for="bacon"> Bacon</label>
                                 <br>
 
@@ -246,19 +253,19 @@
                             <form id="meatSubstitute" class="meatSubstitute"><label for="meatSubstitute"> MEAT
                                     SUBSTITUTE</label>
                                 <br>
-                                <input type="checkbox" id="tofu" class="meatSubstitute" value="tofu">
+                                <input type="checkbox" id="tofu" class="meatSubstitute" value="Tofu">
                                 <label for="tofu"> Tofu</label>
                                 <br>
-                                <input type="checkbox" id="tempeh" class="meatSubstitute" value="tempeh">
+                                <input type="checkbox" id="tempeh" class="meatSubstitute" value="Tempeh">
                                 <label for="tempeh"> Tempeh</label>
                                 <br>
-                                <input type="checkbox" id="mockDuck" class="meatSubstitute" value="mockDuck">
+                                <input type="checkbox" id="mockDuck" class="meatSubstitute" value="Mock Duck">
                                 <label for="mockDuck"> Mock Duck</label>
                                 <br>
-                                <input type="checkbox" id="mockBeef" class="meatSubstitute" value="mockBeef">
+                                <input type="checkbox" id="mockBeef" class="meatSubstitute" value="Mock Beef">
                                 <label for="mockBeef"> Mock Beef</label>
                                 <br>
-                                <input type="checkbox" id="beans" class="meatSubstitute" value="beans">
+                                <input type="checkbox" id="beans" class="meatSubstitute" value="Beans">
                                 <label for="beans"> Beans</label>
                                 <br>
 
@@ -271,22 +278,22 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="seafood" class="seafood"><label for="seafood"> SEAFOOD</label>
                                 <br>
-                                <input type="checkbox" id="cod" class="seafood" value="cod">
+                                <input type="checkbox" id="cod" class="seafood" value="Cod">
                                 <label for="cod"> Cod</label>
                                 <br>
-                                <input type="checkbox" id="crab" class="seafood" value="crab">
+                                <input type="checkbox" id="crab" class="seafood" value="Crab">
                                 <label for="crab"> Crab</label>
                                 <br>
-                                <input type="checkbox" id="lobster" class="seafood" value="lobster">
+                                <input type="checkbox" id="lobster" class="seafood" value="Lobster">
                                 <label for="lobster"> Lobster</label>
                                 <br>
-                                <input type="checkbox" id="salmon" class="seafood" value="salmon">
+                                <input type="checkbox" id="salmon" class="seafood" value="Salmon">
                                 <label for="salmon"> Salmon</label>
                                 <br>
-                                <input type="checkbox" id="shrimp" class="seafood" value="shrimp">
+                                <input type="checkbox" id="shrimp" class="seafood" value="Shrimp">
                                 <label for="shrimp"> Shrimp</label>
                                 <br>
-                                <input type="checkbox" id="tilapia" class="seafood" value="tilapia">
+                                <input type="checkbox" id="tilapia" class="seafood" value="Tilapia">
                                 <label for="tilapia"> Tilapia</label>
                                 <br>
                             </form>
@@ -298,97 +305,97 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="vegetables" class="vegetables"><label for="vegetables"> VEGGIES</label>
                                 <br>
-                                <input type="checkbox" id="artichoke" class="vegetables" value="artichoke">
+                                <input type="checkbox" id="artichoke" class="vegetables" value="Artichoke">
                                 <label for="artichoke"> Artichoke</label>
                                 <br>
-                                <input type="checkbox" id="asparagus" class="vegetables" value="asparagus">
+                                <input type="checkbox" id="asparagus" class="vegetables" value="Asparagus">
                                 <label for="asparagus"> Asparagus</label>
                                 <br>
-                                <input type="checkbox" id="avocado" class="vegetables" value="avocado">
+                                <input type="checkbox" id="avocado" class="vegetables" value="Avocado">
                                 <label for="avocado"> Avocado</label>
                                 <br>
-                                <input type="checkbox" id="bellPeppers" class="vegetables" value="bellPeppers">
+                                <input type="checkbox" id="bellPeppers" class="vegetables" value="Bell Peppers">
                                 <label for="bellPeppers"> Bell Peppers</label>
                                 <br>
-                                <input type="checkbox" id="broccoli" class="vegetables" value="broccoli">
+                                <input type="checkbox" id="broccoli" class="vegetables" value="Broccoli">
                                 <label for="broccoli"> Broccoli</label>
                                 <br>
-                                <input type="checkbox" id="brusselSprouts" class="vegetables" value="brusselSprouts">
+                                <input type="checkbox" id="brusselSprouts" class="vegetables" value="Brussel Sprouts">
                                 <label for="brusselSprouts"> Brussel Sprouts</label>
                                 <br>
-                                <input type="checkbox" id="butternutSquash" class="vegetables" value="butternutSquash">
+                                <input type="checkbox" id="butternutSquash" class="vegetables" value="Butternut Squash">
                                 <label for="butternutSquash"> Butternut Squash</label>
                                 <br>
-                                <input type="checkbox" id="cabbage" class="vegetables" value="cabbage">
+                                <input type="checkbox" id="cabbage" class="vegetables" value="Cabbage">
                                 <label for="cabbage"> Cabbage</label>
                                 <br>
-                                <input type="checkbox" id="carrots" class="vegetables" value="carrots">
+                                <input type="checkbox" id="carrots" class="vegetables" value="Carrots">
                                 <label for="carrots"> Carrots</label>
                                 <br>
-                                <input type="checkbox" id="cauliflower" class="vegetables" value="cauliflower">
+                                <input type="checkbox" id="cauliflower" class="vegetables" value="Cauliflower">
                                 <label for="cauliflower"> Cauliflower</label>
                                 <br>
-                                <input type="checkbox" id="celery" class="vegetables" value="celery">
+                                <input type="checkbox" id="celery" class="vegetables" value="Celery">
                                 <label for="celery"> Celery</label>
                                 <br>
-                                <input type="checkbox" id="corn" class="vegetables" value="corn">
+                                <input type="checkbox" id="corn" class="vegetables" value="Corn">
                                 <label for="corn"> Corn</label>
                                 <br>
-                                <input type="checkbox" id="cucumbers" class="vegetables" value="cucumbers">
+                                <input type="checkbox" id="cucumbers" class="vegetables" value="Cucumbers">
                                 <label for="cucumbers"> Cucumbers</label>
                                 <br>
-                                <input type="checkbox" id="eggplant" class="vegetables" value="eggplant">
+                                <input type="checkbox" id="eggplant" class="vegetables" value="Eggplant">
                                 <label for="eggplant"> Egg Plant</label>
                                 <br>
-                                <input type="checkbox" id="greenBeans" class="vegetables" value="greenBeans">
+                                <input type="checkbox" id="greenBeans" class="vegetables" value="Green Beans">
                                 <label for="greenBeans"> Green Beans</label>
                                 <br>
-                                <input type="checkbox" id="greenOnions" class="vegetables" value="greenOnions">
+                                <input type="checkbox" id="greenOnions" class="vegetables" value="Green Onions">
                                 <label for="greenOnions"> Green Onions</label>
                                 <br>
-                                <input type="checkbox" id="jalapeno" class="vegetables" value="jalapeno">
+                                <input type="checkbox" id="jalapeno" class="vegetables" value="Jalapeno">
                                 <label for="jalapeno"> Jalapeno</label>
                                 <br>
-                                <input type="checkbox" id="kale" class="vegetables" value="kale">
+                                <input type="checkbox" id="kale" class="vegetables" value="Kale">
                                 <label for="kale"> Kale</label>
                                 <br>
-                                <input type="checkbox" id="lettuce" class="vegetables" value="lettuce">
+                                <input type="checkbox" id="lettuce" class="vegetables" value="Lettuce">
                                 <label for="lettuce"> Lettuce</label>
                                 <br>
-                                <input type="checkbox" id="mushrooms" class="vegetables" value="mushrooms">
+                                <input type="checkbox" id="mushrooms" class="vegetables" value="Mushrooms">
                                 <label for="mushrooms"> Mushrooms</label>
                                 <br>
-                                <input type="checkbox" id="okra" class="vegetables" value="okra">
+                                <input type="checkbox" id="okra" class="vegetables" value="Okra">
                                 <label for="okra"> Okra</label>
                                 <br>
-                                <input type="checkbox" id="olives" class="vegetables" value="olives">
+                                <input type="checkbox" id="olives" class="vegetables" value="Olives">
                                 <label for="olives"> Olives</label>
                                 <br>
-                                <input type="checkbox" id="onion" class="vegetables" value="onion">
+                                <input type="checkbox" id="onion" class="vegetables" value="Onion">
                                 <label for="onion"> Onion</label>
                                 <br>
-                                <input type="checkbox" id="peas" class="vegetables" value="peas">
+                                <input type="checkbox" id="peas" class="vegetables" value="Peas">
                                 <label for="peas"> Peas</label>
                                 <br>
-                                <input type="checkbox" id="pumpkin" class="vegetables" value="pumpkin">
+                                <input type="checkbox" id="pumpkin" class="vegetables" value="Pumpkin">
                                 <label for="pumpkin"> Pumpkin</label>
                                 <br>
-                                <input type="checkbox" id="radishes" class="vegetables" value="radishes">
+                                <input type="checkbox" id="radishes" class="vegetables" value="Radishes">
                                 <label for="radishes"> Radishes</label>
                                 <br>
-                                <input type="checkbox" id="spaghettiSquash" class="vegetables" value="spaghettiSquash">
+                                <input type="checkbox" id="spaghettiSquash" class="vegetables" value="Spaghetti Squash">
                                 <label for="spaghettiSquash"> Spaghetti Squash</label>
                                 <br>
-                                <input type="checkbox" id="spinach" class="vegetables" value="spinach">
+                                <input type="checkbox" id="spinach" class="vegetables" value="Spinach">
                                 <label for="spinach"> Spinach</label>
                                 <br>
-                                <input type="checkbox" id="tomato" class="vegetables" value="tomato">
+                                <input type="checkbox" id="tomato" class="vegetables" value="Tomato">
                                 <label for="tomato"> Tomato</label>
                                 <br>
-                                <input type="checkbox" id="turnip" class="vegetables" value="turnip">
+                                <input type="checkbox" id="turnip" class="vegetables" value="Turnip">
                                 <label for="turnip"> Turnip</label>
                                 <br>
-                                <input type="checkbox" id="zucchini" class="vegetables" value="zucchini">
+                                <input type="checkbox" id="zucchini" class="vegetables" value="Zucchini">
                                 <label for="zucchini"> Zucchini</label>
                                 <br>
 
@@ -401,73 +408,73 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="grains" class="grains"><label for="grains"> GRAINS</label>
                                 <br>
-                                <input type="checkbox" id="bagels" class="grains" value="bagels">
+                                <input type="checkbox" id="bagels" class="grains" value="Bagels">
                                 <label for="bagels"> Bagels</label>
                                 <br>
-                                <input type="checkbox" id="barley" class="grains" value="barley">
+                                <input type="checkbox" id="barley" class="grains" value="Barley">
                                 <label for="barley"> Barley</label>
                                 <br>
-                                <input type="checkbox" id="biscuits" class="grains" value="biscuits">
+                                <input type="checkbox" id="biscuits" class="grains" value="Biscuits">
                                 <label for="biscuits"> Biscuits</label>
                                 <br>
-                                <input type="checkbox" id="bread" class="grains" value="bread">
+                                <input type="checkbox" id="bread" class="grains" value="Bread">
                                 <label for="bread"> Bread</label>
                                 <br>
-                                <input type="checkbox" id="breadFlour" class="grains" value="breadFlour">
+                                <input type="checkbox" id="breadFlour" class="grains" value="Bread Flour">
                                 <label for="breadFlour"> Bread Flour</label>
                                 <br>
-                                <input type="checkbox" id="brownRice" class="grains" value="brownRice">
+                                <input type="checkbox" id="brownRice" class="grains" value="Brown Rice">
                                 <label for="brownRice"> Brown Rice</label>
                                 <br>
-                                <input type="checkbox" id="buckwheat" class="grains" value="buckwheat">
+                                <input type="checkbox" id="buckwheat" class="grains" value="Buckwheat">
                                 <label for="buckwheat"> Buck Wheat</label>
                                 <br>
-                                <input type="checkbox" id="cornBread" class="grains" value="cornBread">
+                                <input type="checkbox" id="cornBread" class="grains" value="Corn Bread">
                                 <label for="cornBread"> Corn Bread</label>
                                 <br>
-                                <input type="checkbox" id="noodles" class="grains" value="noodles">
+                                <input type="checkbox" id="noodles" class="grains" value="Noodles">
                                 <label for="noodles"> Noodles</label>
                                 <br>
-                                <input type="checkbox" id="oats" class="grains" value="oats">
+                                <input type="checkbox" id="oats" class="grains" value="Oats">
                                 <label for="oats"> Oats</label>
                                 <br>
-                                <input type="checkbox" id="pastas" class="grains" value="pastas">
+                                <input type="checkbox" id="pastas" class="grains" value="Pastas">
                                 <label for="pastas"> Pastas</label>
                                 <br>
-                                <input type="checkbox" id="pieCrusts" class="grains" value="pieCrusts">
+                                <input type="checkbox" id="pieCrusts" class="grains" value="Pie Crusts">
                                 <label for="pieCrusts"> Pie Crusts</label>
                                 <br>
-                                <input type="checkbox" id="pizzaCrusts" class="grains" value="pizzaCrusts">
+                                <input type="checkbox" id="pizzaCrusts" class="grains" value="Pizza Crusts">
                                 <label for="pizzaCrusts"> Pizza Crusts</label>
                                 <br>
-                                <input type="checkbox" id="potatoes" class="grains" value="potatoes">
+                                <input type="checkbox" id="potatoes" class="grains" value="Potatoes">
                                 <label for="potatoes"> Potatoes</label>
                                 <br>
-                                <input type="checkbox" id="pretzels" class="grains" value="pretzels">
+                                <input type="checkbox" id="pretzels" class="grains" value="Pretzels">
                                 <label for="pretzels"> Pretzels</label>
                                 <br>
-                                <input type="checkbox" id="quinoa" class="grains" value="quinoa">
+                                <input type="checkbox" id="quinoa" class="grains" value="Quinoa">
                                 <label for="quinoa"> Quinoa</label>
                                 <br>
-                                <input type="checkbox" id="ramen" class="grains" value="ramen">
+                                <input type="checkbox" id="ramen" class="grains" value="Ramen">
                                 <label for="ramen"> Ramen</label>
                                 <br>
-                                <input type="checkbox" id="rice" class="grains" value="rice">
+                                <input type="checkbox" id="rice" class="grains" value="Rice">
                                 <label for="rice"> Rice</label>
                                 <br>
-                                <input type="checkbox" id="rye" class="grains" value="rye">
+                                <input type="checkbox" id="rye" class="grains" value="Rye">
                                 <label for="rye"> Rye</label>
                                 <br>
-                                <input type="checkbox" id="sweetPotatoes" class="grains" value="sweetPotatoes">
+                                <input type="checkbox" id="sweetPotatoes" class="grains" value="Sweet Potatoes">
                                 <label for="sweetPotatoes"> Sweet Potatoes</label>
                                 <br>
-                                <input type="checkbox" id="teff" class="grains" value="teff">
+                                <input type="checkbox" id="teff" class="grains" value="Teff">
                                 <label for="teff"> Teff</label>
                                 <br>
-                                <input type="checkbox" id="wheat" class="grains" value="wheat">
+                                <input type="checkbox" id="wheat" class="grains" value="Wheat">
                                 <label for="wheat"> Wheat</label>
                                 <br>
-                                <input type="checkbox" id="whiteRice" class="grains" value="whiteRice">
+                                <input type="checkbox" id="whiteRice" class="grains" value="White Rice">
                                 <label for="whiteRice"> White Rice</label>
                                 <br>
 
@@ -480,82 +487,82 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="fruits" class="fruits"><label for="fruits"> FRUITS</label>
                                 <br>
-                                <input type="checkbox" id="apples" class="fruits" value="apples">
+                                <input type="checkbox" id="apples" class="fruits" value="Apples">
                                 <label for="apples"> Apples</label>
                                 <br>
-                                <input type="checkbox" id="bananas" class="fruits" value="bananas">
+                                <input type="checkbox" id="bananas" class="fruits" value="Bananas">
                                 <label for="bananas"> Bananas</label>
                                 <br>
-                                <input type="checkbox" id="blackberry" class="fruits" value="blackberry">
+                                <input type="checkbox" id="blackberry" class="fruits" value="Blackberry">
                                 <label for="blackberry"> Blackberry</label>
                                 <br>
-                                <input type="checkbox" id="blueberry" class="fruits" value="blueberry">
+                                <input type="checkbox" id="blueberry" class="fruits" value="Blueberry">
                                 <label for="blueberry"> Blueberry</label>
                                 <br>
-                                <input type="checkbox" id="cantaloupe" class="fruits" value="cantaloupe">
+                                <input type="checkbox" id="cantaloupe" class="fruits" value="Cantaloupe">
                                 <label for="cantaloupe"> Cantaloupe</label>
                                 <br>
-                                <input type="checkbox" id="cherries" class="fruits" value="cherries">
+                                <input type="checkbox" id="cherries" class="fruits" value="Cherries">
                                 <label for="cherries"> Cherries</label>
                                 <br>
-                                <input type="checkbox" id="date" class="fruits" value="date">
+                                <input type="checkbox" id="date" class="fruits" value="Date">
                                 <label for="date"> Date</label>
                                 <br>
-                                <input type="checkbox" id="grapefruit" class="fruits" value="grapefruit">
+                                <input type="checkbox" id="grapefruit" class="fruits" value="Grapefruit">
                                 <label for="grapefruit"> Grapefruit</label>
                                 <br>
-                                <input type="checkbox" id="grapes" class="fruits" value="grapes">
+                                <input type="checkbox" id="grapes" class="fruits" value="Grapes">
                                 <label for="grapes"> Grapes</label>
                                 <br>
-                                <input type="checkbox" id="honeydew" class="fruits" value="honeydew">
+                                <input type="checkbox" id="honeydew" class="fruits" value="Honeydew">
                                 <label for="honeydew"> Honeydew</label>
                                 <br>
-                                <input type="checkbox" id="kiwi" class="fruits" value="kiwi">
+                                <input type="checkbox" id="kiwi" class="fruits" value="Kiwi">
                                 <label for="kiwi"> Kiwi</label>
                                 <br>
-                                <input type="checkbox" id="lemon" class="fruits" value="lemon">
+                                <input type="checkbox" id="lemon" class="fruits" value="Lemon">
                                 <label for="lemon"> Lemon</label>
                                 <br>
-                                <input type="checkbox" id="lime" class="fruits" value="lime">
+                                <input type="checkbox" id="lime" class="fruits" value="Lime">
                                 <label for="lime"> Lime</label>
                                 <br>
-                                <input type="checkbox" id="mango" class="fruits" value="mango">
+                                <input type="checkbox" id="mango" class="fruits" value="Mango">
                                 <label for="mango"> Mango</label>
                                 <br>
-                                <input type="checkbox" id="muskmelon" class="fruits" value="muskmelon">
+                                <input type="checkbox" id="muskmelon" class="fruits" value="Muskmelon">
                                 <label for="muskmelon"> Muskmelon</label>
                                 <br>
-                                <input type="checkbox" id="oranges" class="fruits" value="oranges">
+                                <input type="checkbox" id="oranges" class="fruits" value="Oranges">
                                 <label for="oranges"> Oranges</label>
                                 <br>
-                                <input type="checkbox" id="papaya" class="fruits" value="papaya">
+                                <input type="checkbox" id="papaya" class="fruits" value="Papaya">
                                 <label for="papaya"> Papaya</label>
                                 <br>
-                                <input type="checkbox" id="peaches" class="fruits" value="peaches">
+                                <input type="checkbox" id="peaches" class="fruits" value="Peaches">
                                 <label for="peaches"> Peaches</label>
                                 <br>
-                                <input type="checkbox" id="pears" class="fruits" value="pears">
+                                <input type="checkbox" id="pears" class="fruits" value="Pears">
                                 <label for="pears"> Pears</label>
                                 <br>
-                                <input type="checkbox" id="pineapple" class="fruits" value="pineapple">
+                                <input type="checkbox" id="pineapple" class="fruits" value="Pineapple">
                                 <label for="pineapple"> Pineapple</label>
                                 <br>
-                                <input type="checkbox" id="pomegranate" class="fruits" value="pomegranate">
+                                <input type="checkbox" id="pomegranate" class="fruits" value="Pomegranate">
                                 <label for="pomegranate"> Pomegranate</label>
                                 <br>
-                                <input type="checkbox" id="pumpkin" class="fruits" value="pumpkin">
+                                <input type="checkbox" id="pumpkin" class="fruits" value="Pumpkin">
                                 <label for="pumpkin"> Pumpkin</label>
                                 <br>
-                                <input type="checkbox" id="raspberry" class="fruits" value="raspberry">
+                                <input type="checkbox" id="raspberry" class="fruits" value="Raspberry">
                                 <label for="raspberry"> Raspberry</label>
                                 <br>
-                                <input type="checkbox" id="strawberry" class="fruits" value="strawberry">
+                                <input type="checkbox" id="strawberry" class="fruits" value="Strawberry">
                                 <label for="strawberry"> Strawberry</label>
                                 <br>
-                                <input type="checkbox" id="tamarind" class="fruits" value="tamarind">
+                                <input type="checkbox" id="tamarind" class="fruits" value="Tamarind">
                                 <label for="tamarind"> Tamarind</label>
                                 <br>
-                                <input type="checkbox" id="watermelon" class="fruits" value="watermelon">
+                                <input type="checkbox" id="watermelon" class="fruits" value="Watermelon">
                                 <label for="watermelon"> Watermelon</label>
                                 <br>
 
@@ -568,52 +575,52 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="dairies" class="dairies"><label for="dairies"> DAIRY</label>
                                 <br>
-                                <input type="checkbox" id="blueCheese" class="dairies" value="blueCheese">
+                                <input type="checkbox" id="blueCheese" class="dairies" value="Blue Cheese">
                                 <label for="blueCheese"> Blue Cheese</label>
                                 <br>
-                                <input type="checkbox" id="butter" class="dairies" value="butter">
+                                <input type="checkbox" id="butter" class="dairies" value="Butter">
                                 <label for="butter"> Butter</label>
                                 <br>
-                                <input type="checkbox" id="buttermilk" class="dairies" value="buttermilk">
+                                <input type="checkbox" id="buttermilk" class="dairies" value="Buttermilk">
                                 <label for="buttermilk"> Buttermilk</label>
                                 <br>
-                                <input type="checkbox" id="cheddarCheese" class="dairies" value="cheddarCheese">
+                                <input type="checkbox" id="cheddarCheese" class="dairies" value="Cheddar Cheese">
                                 <label for="cheddarCheese"> Cheddar Cheese</label>
                                 <br>
-                                <input type="checkbox" id="cojitaCheese" class="dairies" value="cojitaCheese">
+                                <input type="checkbox" id="cojitaCheese" class="dairies" value="Cojita Cheese">
                                 <label for="cojitaCheese"> Cojita Cheese</label>
                                 <br>
-                                <input type="checkbox" id="cottageCheese" class="dairies" value="cottageCheese">
+                                <input type="checkbox" id="cottageCheese" class="dairies" value="Cottage Cheese">
                                 <label for="cottageCheese"> Cottage Cheese</label>
                                 <br>
-                                <input type="checkbox" id="creamCheese" class="dairies" value="creamCheese">
+                                <input type="checkbox" id="creamCheese" class="dairies" value="Cream Cheese">
                                 <label for="creamCheese"> Cream Cheese</label>
                                 <br>
-                                <input type="checkbox" id="fetaCheese" class="dairies" value="fetaCheese">
+                                <input type="checkbox" id="fetaCheese" class="dairies" value="Feta Cheese">
                                 <label for="fetaCheese"> Feta Cheese</label>
                                 <br>
-                                <input type="checkbox" id="ghee" class="dairies" value="ghee">
+                                <input type="checkbox" id="ghee" class="dairies" value="Ghee">
                                 <label for="ghee"> Ghee</label>
                                 <br>
-                                <input type="checkbox" id="goudaCheese" class="dairies" value="goudaCheese">
+                                <input type="checkbox" id="goudaCheese" class="dairies" value="Gouda Cheese">
                                 <label for="goudaCheese"> Gouda Cheese</label>
                                 <br>
-                                <input type="checkbox" id="heavyCream" class="dairies" value="heavyCream">
+                                <input type="checkbox" id="heavyCream" class="dairies" value="Heavy Cream">
                                 <label for="heavyCream"> Heavy Cream</label>
                                 <br>
-                                <input type="checkbox" id="milk" class="dairies" value="milk">
+                                <input type="checkbox" id="milk" class="dairies" value="Milk">
                                 <label for="milk"> Milk</label>
                                 <br>
-                                <input type="checkbox" id="mozzarellaCheese" class="dairies" value="mozzarellaCheese">
+                                <input type="checkbox" id="mozzarellaCheese" class="dairies" value="Mozzarella Cheese">
                                 <label for="mozzarellaCheese"> Mozzarella Cheese</label>
                                 <br>
-                                <input type="checkbox" id="muensterCheese" class="dairies" value="muensterCheese">
+                                <input type="checkbox" id="muensterCheese" class="dairies" value="Muenster Cheese">
                                 <label for="muensterCheese"> Muenster Cheese</label>
                                 <br>
-                                <input type="checkbox" id="parmesanCheese" class="dairies" value="parmesanCheese">
+                                <input type="checkbox" id="parmesanCheese" class="dairies" value="Parmesan Cheese">
                                 <label for="parmesanCheese"> Parmesan Cheese</label>
                                 <br>
-                                <input type="checkbox" id="swissCheese" class="dairies" value="swissCheese">
+                                <input type="checkbox" id="swissCheese" class="dairies" value="Swiss Cheese">
                                 <label for="swissCheese"> Swiss Cheese</label>
                                 <br>
 
@@ -626,109 +633,109 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="spices" class="spices"><label for="spices"> SPICES</label>
                                 <br>
-                                <input type="checkbox" id="basil" class="spices" value="basil">
+                                <input type="checkbox" id="basil" class="spices" value="Basil">
                                 <label for="basil"> Basil</label>
                                 <br>
-                                <input type="checkbox" id="bbqRub" class="spices" value="bbqRub">
+                                <input type="checkbox" id="bbqRub" class="spices" value="BBQ Rub">
                                 <label for="bbqRub"> BBQ Rub</label>
                                 <br>
-                                <input type="checkbox" id="berbere" class="spices" value="berbere">
+                                <input type="checkbox" id="berbere" class="spices" value="Berbere">
                                 <label for="berbere"> Berbere</label>
                                 <br>
-                                <input type="checkbox" id="cajunSeasoning" class="spices" value="cajunSeasoning">
+                                <input type="checkbox" id="cajunSeasoning" class="spices" value="Cajun Seasoning">
                                 <label for="cajunSeasoning"> Cajun Seasoning</label>
                                 <br>
-                                <input type="checkbox" id="cardamom" class="spices" value="cardamom">
+                                <input type="checkbox" id="cardamom" class="spices" value="Cardamom">
                                 <label for="cardamom"> Cardamom</label>
                                 <br>
-                                <input type="checkbox" id="cayenne" class="spices" value="cayenne">
+                                <input type="checkbox" id="cayenne" class="spices" value="Cayenne">
                                 <label for="cayenne"> Cayenne</label>
                                 <br>
-                                <input type="checkbox" id="chiliPowder" class="spices" value="chiliPowder">
+                                <input type="checkbox" id="chiliPowder" class="spices" value="Chili Powder">
                                 <label for="chiliPowder"> Chili Powder</label>
                                 <br>
-                                <input type="checkbox" id="chocolate" class="spices" value="chocolate">
+                                <input type="checkbox" id="chocolate" class="spices" value="Chocolate">
                                 <label for="chocolate"> Chocolate</label>
                                 <br>
-                                <input type="checkbox" id="cilantro" class="spices" value="cilantro">
+                                <input type="checkbox" id="cilantro" class="spices" value="Cilantro">
                                 <label for="cilantro"> Cilantro</label>
                                 <br>
-                                <input type="checkbox" id="cinnamon" class="spices" value="cinnamon">
+                                <input type="checkbox" id="cinnamon" class="spices" value="Cinnamon">
                                 <label for="cinnamon"> Cinnamon</label>
                                 <br>
-                                <input type="checkbox" id="cloves" class="spices" value="cloves">
+                                <input type="checkbox" id="cloves" class="spices" value="Cloves">
                                 <label for="cloves"> Cloves</label>
                                 <br>
-                                <input type="checkbox" id="coffee" class="spices" value="coffee">
+                                <input type="checkbox" id="coffee" class="spices" value="Coffee">
                                 <label for="coffee"> Coffee</label>
                                 <br>
-                                <input type="checkbox" id="cumin" class="spices" value="cumin">
+                                <input type="checkbox" id="cumin" class="spices" value="Cumin">
                                 <label for="cumin"> Cumin</label>
                                 <br>
-                                <input type="checkbox" id="curryPowder" class="spices" value="curryPowder">
+                                <input type="checkbox" id="curryPowder" class="spices" value="Curry Powder">
                                 <label for="curryPowder"> Curry Powder</label>
                                 <br>
-                                <input type="checkbox" id="dillWeed" class="spices" value="dillWeed">
+                                <input type="checkbox" id="dillWeed" class="spices" value="Dill Weed">
                                 <label for="dillWeed"> Dill Weed</label>
                                 <br>
-                                <input type="checkbox" id="garamMasala" class="spices" value="garamMasala">
+                                <input type="checkbox" id="garamMasala" class="spices" value="Garam Masala">
                                 <label for="garamMasala"> Garam Masala</label>
                                 <br>
-                                <input type="checkbox" id="garlic" class="spices" value="garlic">
+                                <input type="checkbox" id="garlic" class="spices" value="Garlic">
                                 <label for="garlic"> Garlic</label>
                                 <br>
-                                <input type="checkbox" id="ginger" class="spices" value="ginger">
+                                <input type="checkbox" id="ginger" class="spices" value="Ginger">
                                 <label for="ginger"> Ginger</label>
                                 <br>
-                                <input type="checkbox" id="herbs" class="spices" value="herbs">
+                                <input type="checkbox" id="herbs" class="spices" value="Herbs">
                                 <label for="herbs"> Herbs</label>
                                 <br>
-                                <input type="checkbox" id="italianSeasoning" class="spices" value="italianSeasoning">
+                                <input type="checkbox" id="italianSeasoning" class="spices" value="Italian Seasoning">
                                 <label for="italianSeasoning"> Italian Seasoning</label>
                                 <br>
-                                <input type="checkbox" id="marjoram" class="spices" value="marjoram">
+                                <input type="checkbox" id="marjoram" class="spices" value="Marjoram">
                                 <label for="marjoram"> Marjoram</label>
                                 <br>
-                                <input type="checkbox" id="nutmeg" class="spices" value="nutmeg">
+                                <input type="checkbox" id="nutmeg" class="spices" value="Nutmeg">
                                 <label for="nutmeg"> Nutmeg</label>
                                 <br>
-                                <input type="checkbox" id="onionPowder" class="spices" value="onionPowder">
+                                <input type="checkbox" id="onionPowder" class="spices" value="Onion Powder">
                                 <label for="onionPowder"> Onion Powder</label>
                                 <br>
-                                <input type="checkbox" id="oregano" class="spices" value="oregano">
+                                <input type="checkbox" id="oregano" class="spices" value="Oregano">
                                 <label for="oregano"> Oregano</label>
                                 <br>
-                                <input type="checkbox" id="paprika" class="spices" value="paprika">
+                                <input type="checkbox" id="paprika" class="spices" value="Paprika">
                                 <label for="paprika"> Paprika</label>
                                 <br>
-                                <input type="checkbox" id="parsley" class="spices" value="parsley">
+                                <input type="checkbox" id="parsley" class="spices" value="Parsley">
                                 <label for="parsley"> Parsley</label>
                                 <br>
-                                <input type="checkbox" id="redPepperFlakes" class="spices" value="redPepperFlakes">
+                                <input type="checkbox" id="redPepperFlakes" class="spices" value="Red Pepper Flakes">
                                 <label for="redPepperFlakes"> Red Pepper Flakes</label>
                                 <br>
-                                <input type="checkbox" id="rosemary" class="spices" value="rosemary">
+                                <input type="checkbox" id="rosemary" class="spices" value="Rosemary">
                                 <label for="rosemary"> Rosemary</label>
                                 <br>
-                                <input type="checkbox" id="sage" class="spices" value="sage">
+                                <input type="checkbox" id="sage" class="spices" value="Sage">
                                 <label for="sage"> Sage</label>
                                 <br>
-                                <input type="checkbox" id="starAnise" class="spices" value="starAnise">
+                                <input type="checkbox" id="starAnise" class="spices" value="Star Anise">
                                 <label for="starAnise"> Star Anise</label>
                                 <br>
-                                <input type="checkbox" id="tacoSeasoning" class="spices" value="tacoSeasoning">
+                                <input type="checkbox" id="tacoSeasoning" class="spices" value="Taco Seasoning">
                                 <label for="tacoSeasoning"> Taco Seasoning</label>
                                 <br>
-                                <input type="checkbox" id="tajin" class="spices" value="tajin">
+                                <input type="checkbox" id="tajin" class="spices" value="Tajin">
                                 <label for="tajin"> Tajin</label>
                                 <br>
-                                <input type="checkbox" id="thyme" class="spices" value="thyme">
+                                <input type="checkbox" id="thyme" class="spices" value="Thyme">
                                 <label for="thyme"> Thyme</label>
                                 <br>
-                                <input type="checkbox" id="turmeric" class="spices" value="turmeric">
+                                <input type="checkbox" id="turmeric" class="spices" value="Turmeric">
                                 <label for="turmeric"> Turmeric</label>
                                 <br>
-                                <input type="checkbox" id="vanilla" class="spices" value="vanilla">
+                                <input type="checkbox" id="vanilla" class="spices" value="Vanilla">
                                 <label for="vanilla"> Vanilla</label>
                                 <br>
 
@@ -741,31 +748,31 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="oils" class="oils"><label for="oils"> OILS</label>
                                 <br>
-                                <input type="checkbox" id="avocadoOil" class="oils" value="avocadoOil">
+                                <input type="checkbox" id="avocadoOil" class="oils" value="Avocado Oil">
                                 <label for="avocadoOil"> Avocado Oil</label>
                                 <br>
-                                <input type="checkbox" id="butter" class="oils" value="butter">
+                                <input type="checkbox" id="butter" class="oils" value="Butter">
                                 <label for="butter"> Butter</label>
                                 <br>
-                                <input type="checkbox" id="canolaOil" class="oils" value="canolaOil">
+                                <input type="checkbox" id="canolaOil" class="oils" value="Canola Oil">
                                 <label for="canolaOil"> Canola Oil</label>
                                 <br>
-                                <input type="checkbox" id="coconutOil" class="oils" value="coconutOil">
+                                <input type="checkbox" id="coconutOil" class="oils" value="Coconut Oil">
                                 <label for="coconutOil"> Coconut Oil</label>
                                 <br>
-                                <input type="checkbox" id="ghee" class="oils" value="ghee">
+                                <input type="checkbox" id="ghee" class="oils" value="Ghee">
                                 <label for="ghee"> Ghee</label>
                                 <br>
-                                <input type="checkbox" id="grapeseedOil" class="oils" value="grapeseedOil">
+                                <input type="checkbox" id="grapeseedOil" class="oils" value="Grapeseed Oil">
                                 <label for="grapeseedOil"> Grapeseed Oil</label>
                                 <br>
-                                <input type="checkbox" id="lard" class="oils" value="lard">
+                                <input type="checkbox" id="lard" class="oils" value="Lard">
                                 <label for="lard"> Lard</label>
                                 <br>
-                                <input type="checkbox" id="oliveOil" class="oils" value="oliveOil">
+                                <input type="checkbox" id="oliveOil" class="oils" value="Olive Oil">
                                 <label for="oliveOil"> Olive Oil</label>
                                 <br>
-                                <input type="checkbox" id="peanutOil" class="oils" value="peanutOil">
+                                <input type="checkbox" id="peanutOil" class="oils" value="Peanut Oil">
                                 <label for="peanutOil"> Peanut Oil</label>
                                 <br>
 
@@ -778,46 +785,46 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="nuts" class="nuts"><label for="nuts"> NUTS/SEEDS</label>
                                 <br>
-                                <input type="checkbox" id="almonds" class="nuts" value="almonds">
+                                <input type="checkbox" id="almonds" class="nuts" value="Almonds">
                                 <label for="almonds"> Almonds</label>
                                 <br>
-                                <input type="checkbox" id="cashews" class="nuts" value="cashews">
+                                <input type="checkbox" id="cashews" class="nuts" value="Cashews">
                                 <label for="cashews"> Cashews</label>
                                 <br>
-                                <input type="checkbox" id="chestnuts" class="nuts" value="chestnuts">
+                                <input type="checkbox" id="chestnuts" class="nuts" value="Chestnuts">
                                 <label for="chestnuts"> Chestnuts</label>
                                 <br>
-                                <input type="checkbox" id="chiaSeeds" class="nuts" value="chiaSeeds">
+                                <input type="checkbox" id="chiaSeeds" class="nuts" value="Chia Seeds">
                                 <label for="chiaSeeds"> Chia Seeds</label>
                                 <br>
-                                <input type="checkbox" id="hazelnuts" class="nuts" value="hazelnuts">
+                                <input type="checkbox" id="hazelnuts" class="nuts" value="Hazelnuts">
                                 <label for="hazelnuts"> Hazelnuts</label>
                                 <br>
-                                <input type="checkbox" id="macadamia" class="nuts" value="macadamia">
+                                <input type="checkbox" id="macadamia" class="nuts" value="Macadamia">
                                 <label for="macadamia"> Macadamia</label>
                                 <br>
-                                <input type="checkbox" id="peanuts" class="nuts" value="peanuts">
+                                <input type="checkbox" id="peanuts" class="nuts" value="Peanuts">
                                 <label for="peanuts"> Peanuts</label>
                                 <br>
-                                <input type="checkbox" id="pecans" class="nuts" value="pecans">
+                                <input type="checkbox" id="pecans" class="nuts" value="Pecans">
                                 <label for="pecans"> Pecans</label>
                                 <br>
-                                <input type="checkbox" id="pineNuts" class="nuts" value="pineNuts">
+                                <input type="checkbox" id="pineNuts" class="nuts" value="Pine Nuts">
                                 <label for="pineNuts"> Pine Nuts</label>
                                 <br>
-                                <input type="checkbox" id="pistachios" class="nuts" value="pistachios">
+                                <input type="checkbox" id="pistachios" class="nuts" value="Pistachios">
                                 <label for="pistachios"> Pistachios</label>
                                 <br>
-                                <input type="checkbox" id="poppySeeds" class="nuts" value="poppySeeds">
+                                <input type="checkbox" id="poppySeeds" class="nuts" value="Poppy Seeds">
                                 <label for="poppySeeds"> Poppy Seeds</label>
                                 <br>
-                                <input type="checkbox" id="sesameSeeds" class="nuts" value="sesameSeeds">
+                                <input type="checkbox" id="sesameSeeds" class="nuts" value="Sesame Seeds">
                                 <label for="sesameSeeds"> Sesame Seeds</label>
                                 <br>
-                                <input type="checkbox" id="sunflowerSeeds" class="nuts" value="sunflowerSeeds">
+                                <input type="checkbox" id="sunflowerSeeds" class="nuts" value="Sunflower Seeds">
                                 <label for="sunflowerSeeds"> Sunflower Seeds</label>
                                 <br>
-                                <input type="checkbox" id="walnuts" class="nuts" value="walnuts">
+                                <input type="checkbox" id="walnuts" class="nuts" value="Walnuts">
                                 <label for="walnuts"> Walnuts</label>
                                 <br>
 
@@ -830,61 +837,61 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="desserts" class="desserts"><label for="desserts"> DESSERTS</label>
                                 <br>
-                                <input type="checkbox" id="brownies" class="desserts" value="brownies">
+                                <input type="checkbox" id="brownies" class="desserts" value="Brownies">
                                 <label for="brownies"> Brownies</label>
                                 <br>
-                                <input type="checkbox" id="cake" class="desserts" value="cake">
+                                <input type="checkbox" id="cake" class="desserts" value="Cake">
                                 <label for="cake"> Cake</label>
                                 <br>
-                                <input type="checkbox" id="cheesecake" class="desserts" value="cheesecake">
+                                <input type="checkbox" id="cheesecake" class="desserts" value="Cheesecake">
                                 <label for="cheesecake"> Cheesecake</label>
                                 <br>
-                                <input type="checkbox" id="chocolate" class="desserts" value="chocolate">
+                                <input type="checkbox" id="chocolate" class="desserts" value="Chocolate">
                                 <label for="chocolate"> Chocolate</label>
                                 <br>
-                                <input type="checkbox" id="cookieDough" class="desserts" value="cookieDough">
+                                <input type="checkbox" id="cookieDough" class="desserts" value="Cookie Dough">
                                 <label for="cookieDough"> Cookie Dough</label>
                                 <br>
-                                <input type="checkbox" id="cookies" class="desserts" value="cookies">
+                                <input type="checkbox" id="cookies" class="desserts" value="Cookies">
                                 <label for="cookies"> Cookies</label>
                                 <br>
-                                <input type="checkbox" id="crisps" class="desserts" value="crisps">
+                                <input type="checkbox" id="crisps" class="desserts" value="Crisps">
                                 <label for="crisps"> Crisps</label>
                                 <br>
-                                <input type="checkbox" id="cupcakes" class="desserts" value="cupcakes">
+                                <input type="checkbox" id="cupcakes" class="desserts" value="Cupcakes">
                                 <label for="cupcakes"> Cupcakes</label>
                                 <br>
-                                <input type="checkbox" id="darkChocolate" class="desserts" value="darkChocolate">
+                                <input type="checkbox" id="darkChocolate" class="desserts" value="Dark Chocolate">
                                 <label for="darkChocolate"> Dark Chocolate</label>
                                 <br>
-                                <input type="checkbox" id="donuts" class="desserts" value="donuts">
+                                <input type="checkbox" id="donuts" class="desserts" value="Donuts">
                                 <label for="donuts"> Donuts</label>
                                 <br>
-                                <input type="checkbox" id="fudge" class="desserts" value="fudge">
+                                <input type="checkbox" id="fudge" class="desserts" value="Fudge">
                                 <label for="fudge"> Fudge</label>
                                 <br>
-                                <input type="checkbox" id="iceCream" class="desserts" value="ice-cream">
+                                <input type="checkbox" id="iceCream" class="desserts" value="Ice-Cream">
                                 <label for="iceCream"> Ice Cream</label>
                                 <br>
-                                <input type="checkbox" id="muffins" class="desserts" value="muffins">
+                                <input type="checkbox" id="muffins" class="desserts" value="Muffins">
                                 <label for="muffins"> Muffins</label>
                                 <br>
-                                <input type="checkbox" id="pastries" class="desserts" value="pastries">
+                                <input type="checkbox" id="pastries" class="desserts" value="Pastries">
                                 <label for="pastries"> Pastries</label>
                                 <br>
-                                <input type="checkbox" id="pies" class="desserts" value="pies">
+                                <input type="checkbox" id="pies" class="desserts" value="Pies">
                                 <label for="pies"> Pies</label>
                                 <br>
-                                <input type="checkbox" id="pudding" class="desserts" value="pudding">
+                                <input type="checkbox" id="pudding" class="desserts" value="Pudding">
                                 <label for="pudding"> Pudding</label>
                                 <br>
-                                <input type="checkbox" id="rolls" class="desserts" value="rolls">
+                                <input type="checkbox" id="rolls" class="desserts" value="Rolls">
                                 <label for="rolls"> Rolls</label>
                                 <br>
-                                <input type="checkbox" id="scones" class="desserts" value="scones">
+                                <input type="checkbox" id="scones" class="desserts" value="Scones">
                                 <label for="scones"> Scones</label>
                                 <br>
-                                <input type="checkbox" id="turnovers" class="desserts" value="turnover">
+                                <input type="checkbox" id="turnovers" class="desserts" value="Turnover">
                                 <label for="turnovers"> Turnovers</label>
                                 <br>
 
@@ -897,70 +904,70 @@
                         <section id="checkbox" class="checkbox section">
                             <form id="sauces" class="sauces"><label for="sauces"> SAUCES</label>
                                 <br>
-                                <input type="checkbox" id="alfredoSauce" class="sauces" value="alfredoSauce">
+                                <input type="checkbox" id="alfredoSauce" class="sauces" value="Alfredo Sauce">
                                 <label for="alfredoSauce"> Alfredo Sauce</label>
                                 <br>
-                                <input type="checkbox" id="barbecueSauce" class="sauces" value="barbecueSauce">
+                                <input type="checkbox" id="barbecueSauce" class="sauces" value="Barbecue Sauce">
                                 <label for="barbecueSauce"> Barbecue Sauce</label>
                                 <br>
-                                <input type="checkbox" id="chimichurri" class="sauces" value="chimichurri">
+                                <input type="checkbox" id="chimichurri" class="sauces" value="Chimichurri">
                                 <label for="chimichurri"> Chimichurri</label>
                                 <br>
-                                <input type="checkbox" id="georgiaMustard" class="sauces" value="georgiaMustard">
+                                <input type="checkbox" id="georgiaMustard" class="sauces" value="Georgia Mustard">
                                 <label for="georgiaMustard"> Georgia Mustard</label>
                                 <br>
-                                <input type="checkbox" id="gravy" class="sauces" value="gravy">
+                                <input type="checkbox" id="gravy" class="sauces" value="Gravy">
                                 <label for="gravy"> Gravy</label>
                                 <br>
-                                <input type="checkbox" id="hollandaise" class="sauces" value="hollandaise">
+                                <input type="checkbox" id="hollandaise" class="sauces" value="Hollandaise">
                                 <label for="hollandaise"> Hollandaise</label>
                                 <br>
-                                <input type="checkbox" id="hotSauce" class="sauces" value="hotSauce">
+                                <input type="checkbox" id="hotSauce" class="sauces" value="Hot Sauce">
                                 <label for="hotSauce"> Hot Sauce</label>
                                 <br>
-                                <input type="checkbox" id="jam" class="sauces" value="jam">
+                                <input type="checkbox" id="jam" class="sauces" value="Jam">
                                 <label for="jam"> Jam</label>
                                 <br>
-                                <input type="checkbox" id="ketchup" class="sauces" value="ketchup">
+                                <input type="checkbox" id="ketchup" class="sauces" value="Ketchup">
                                 <label for="ketchup"> Ketchup</label>
                                 <br>
-                                <input type="checkbox" id="marinara" class="sauces" value="marinara">
+                                <input type="checkbox" id="marinara" class="sauces" value="Marinara">
                                 <label for="marinara"> Marinara</label>
                                 <br>
-                                <input type="checkbox" id="mayonnaise" class="sauces" value="mayonnaise">
+                                <input type="checkbox" id="mayonnaise" class="sauces" value="Mayonnaise">
                                 <label for="mayonnaise"> Mayonnaise</label>
                                 <br>
-                                <input type="checkbox" id="mustard" class="sauces" value="mustard">
+                                <input type="checkbox" id="mustard" class="sauces" value="Mustard">
                                 <label for="mustard"> Mustard</label>
                                 <br>
-                                <input type="checkbox" id="peanutButter" class="sauces" value="peanutButter">
+                                <input type="checkbox" id="peanutButter" class="sauces" value="Peanut Butter">
                                 <label for="peanutButter"> Peanut Butter</label>
                                 <br>
-                                <input type="checkbox" id="peanutSauce" class="sauces" value="peanutSauce">
+                                <input type="checkbox" id="peanutSauce" class="sauces" value="Peanut Sauce">
                                 <label for="peanutSauce"> Peanut Sauce</label>
                                 <br>
-                                <input type="checkbox" id="pesto" class="sauces" value="pesto">
+                                <input type="checkbox" id="pesto" class="sauces" value="Pesto">
                                 <label for="pesto"> Pesto</label>
                                 <br>
-                                <input type="checkbox" id="queso" class="sauces" value="queso">
+                                <input type="checkbox" id="queso" class="sauces" value="Queso">
                                 <label for="queso"> Queso</label>
                                 <br>
-                                <input type="checkbox" id="ranch" class="sauces" value="ranch">
+                                <input type="checkbox" id="ranch" class="sauces" value="Ranch">
                                 <label for="ranch"> Ranch</label>
                                 <br>
-                                <input type="checkbox" id="redCurry" class="sauces" value="redCurry">
+                                <input type="checkbox" id="redCurry" class="sauces" value="Red Curry">
                                 <label for="redCurry"> Red Curry</label>
                                 <br>
-                                <input type="checkbox" id="salsa" class="sauces" value="salsa">
+                                <input type="checkbox" id="salsa" class="sauces" value="Salsa">
                                 <label for="salsa"> Salsa</label>
                                 <br>
-                                <input type="checkbox" id="soySauce" class="sauces" value="soySauce">
+                                <input type="checkbox" id="soySauce" class="sauces" value="Soy Sauce">
                                 <label for="soySauce"> Soy Sauce</label>
                                 <br>
-                                <input type="checkbox" id="sriracha" class="sauces" value="sriracha">
+                                <input type="checkbox" id="sriracha" class="sauces" value="Sriracha">
                                 <label for="sriracha"> Sriracha</label>
                                 <br>
-                                <input type="checkbox" id="tomatoSauce" class="sauces" value="tomatoSauce">
+                                <input type="checkbox" id="tomatoSauce" class="sauces" value="Tomato Sauce">
                                 <label for="tomatoSauce"> Tomato Sauce</label>
                                 <br>
                             </form>
