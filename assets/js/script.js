@@ -8,6 +8,7 @@ let ingredientsArray = [];
 let recipeArray = [];
 let ingredientsList1 = $("#returnCall");
 let checkedBoxItem;
+let value;
 
 // That will be adding to the parameters of the fetch. 
 // Will then start the function that generated the search results.
@@ -97,14 +98,26 @@ function displayRecipes(data) {
 $("#diet").on("click", ".diet", function (event) {
     event.preventDefault;
     if ($(this).is(":checked")) {
-        checkedBoxItem = $(this).val();
-        ingredientsList1.append(checkedBoxItem + ", ");
-        dietArray.push(checkedBoxItem);
+        checkedBoxItem = $("label[for='"+$(this).attr("id")+"']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        dietArray.push(value);
+        console.log("add");
+        console.log(dietArray);
     } else {
-        checkedBoxItem = $(this).val();
-        removal = ingredientsList1.text().replace(checkedBoxItem + ", ", "");
-        ingredientsList1.text(removal);
-        dietArray.splice($.inArray(checkedBoxItem, dietArray), 1);
+        checkedBoxItem = $("label[for='"+$(this).attr("id")+"']").text();
+        value = $(this).val();
+        let removalEl = $("li[value='"+$(this).attr("value")+"']");
+        removalEl.remove();
+        dietArray.splice($.inArray(value, dietArray), 1);
+        console.log("remove");
+        console.log(dietArray);
     }
 })
 
