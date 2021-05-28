@@ -436,23 +436,21 @@ $("#sauces").on("click", ".sauces", function (event) {
 
 // This makes the accordion work.
 // Needs to be converted to jQuery.
-let acc = document.getElementsByClassName("accordion");
-let i;
+let accordions = document.getElementsByClassName("accordion");
 
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-        /* Toggle between adding and removing the "active" class,
-        to highlight the button that controls the panel */
-        this.classList.toggle("active");
+for (var i = 0; i < accordions.length; i++) {
+  accordions[i].onclick = function() {
+    this.classList.toggle('active');
 
-        /* Toggle between hiding and showing the active panel */
-        let panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    });
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      // accordion is currently open, so close it
+      panel.style.maxHeight = null;
+    } else {
+      // accordion is currently closed, so open it
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  }
 }
 
 // This runs the first API with the selected parameters.
