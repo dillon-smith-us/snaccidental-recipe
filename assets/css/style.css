@@ -3,34 +3,11 @@
 }
 
 #menu{
-  float: right;
+    float: right;
 }
 
 /* Style the buttons that are used to open and close the accordion panel */
 button.accordion {
-<<<<<<< HEAD
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: background-color 0.4s linear;
-}
-
-.accordion:after {
-  content: '\02795'; /* Unicode character for "plus" sign (+) */
-  font-size: 13px;
-  color: solid #777;
-  float: right;
-  margin-left: 5px;
-}
-
-.active:after {
-  content: "\02796"; /* Unicode character for "minus" sign (-) */
-=======
     background-color: #eee;
     color: #444;
     cursor: pointer;
@@ -47,55 +24,43 @@ button.accordion {
     font-size: 13px;
     color: solid #777;
     float: right;
-    margin-left: 5px;
+   margin-left: 5px;
 }
 
 .active:after {
-  content: "\2796"; /* Unicode character for "minus" sign (-) */
->>>>>>> 9288616ce2eea01c89e5f7a9764eaa068ce77082
+  content: "\02796"; /* Unicode character for "minus" sign (-) */
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
-<<<<<<< HEAD
-   background-color: #ccc;
-=======
     background-color: #ccc;
->>>>>>> 9288616ce2eea01c89e5f7a9764eaa068ce77082
+    background-color: #ccc;
 }
 
 /* Style the accordion panel. Note: hidden by default */
 .panel {
-  margin-top: -23px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out;
+    margin-top: -23px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
 }
 
-<<<<<<< HEAD
   .userinputs {
       background-color: aquamarine;
   }
 
   .field.has-addons .control:last-child .button, .field.has-addons .control:last-child .input, .field.has-addons .control:last-child .select select {
-=======
-.userinputs {
-      background-color: aquamarine;
-  }  
-  
-.field.has-addons .control:last-child .button, .field.has-addons .control:last-child .input, .field.has-addons .control:last-child .select select {
->>>>>>> 9288616ce2eea01c89e5f7a9764eaa068ce77082
-    border-radius: 290486px;
-    position: relative;
-    right: -6px;
+      border-radius: 290486px;
+      position: relative;
+      right: -6px;
   }
 
-<<<<<<< HEAD
   .field.has-addons .control:first-child .button, .field.has-addons .control:first-child .input, .field.has-addons .control:first-child .select select {
-=======
-.field.has-addons .control:first-child .button, .field.has-addons .control:first-child .input, .field.has-addons .control:first-child .select select {
->>>>>>> 9288616ce2eea01c89e5f7a9764eaa068ce77082
-    border-radius: 290486px;
-    
+      border-radius: 290486px;
+      top : -6px;
+  }
+
+  .userinputs {
+      background-color: aquamarine;
   }
