@@ -58,7 +58,6 @@ button.accordion {
 
   .field.has-addons .control:first-child .button, .field.has-addons .control:first-child .input, .field.has-addons .control:first-child .select select {
       border-radius: 290486px;
-      top : -6px;
   }
 
   .userinputs {
