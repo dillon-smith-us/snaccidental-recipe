@@ -415,19 +415,15 @@ $("#sauces").on("click", ".sauces", function (event) {
         let liEl = $("<li>");
         let iconEl = $("<i>")
         iconEl.attr("class", "fas fa-trash");
-        iconEl.attr("data-inputID", $(this).attr("id"));
-        liEl.attr("value", $(this).val());
         liEl.attr("data-inputID", $(this).attr("id"));
-        liEl.append(checkedBoxItem);
+        liEl.append(checkedBoxItem + " ");
         liEl.append(iconEl);
         ingredientsList.append(liEl);
         value = $(this).val();
-        console.log("Sauce value " + value)
         recipeArray.push(value);
         console.log(recipeArray);
     } else {
         value = $(this).val();
-        console.log("value2 " + value);
         let removalEl = $("li[value='" + $(this).attr("value") + "']");
         removalEl.remove();
         recipeArray.splice($.inArray(value, recipeArray), 1);
@@ -435,40 +431,58 @@ $("#sauces").on("click", ".sauces", function (event) {
     }
 })
 
-$("#returnCall").on("click", "path", function (event) {
+$("#returnCall").on("click", "li", function (event) {
     event.preventDefault;
     // This will uncheck the box in the appropriate accordion.
     let removeCheckboxItem = $("input[id='" + $(this).attr("data-inputID") + "']");
     removeCheckboxItem.prop("checked", false);
-    let liRemoval = $(this).closest("li");
-    console.log(liRemoval);
-    let liValue = liRemoval.val();
-    console.log(liValue);
-    console.log("liValue " + liValue);
     // These statements determine which array to remove from.
+    let liValue = removeCheckboxItem.val();
     if (removeCheckboxItem.is(".allergens")) {
         allergensArray.splice($.inArray(liValue, allergensArray), 1);
     } else if (removeCheckboxItem.is(".diet")) {
         dietArray.splice($.inArray(liValue, dietArray), 1);
     } else if (removeCheckboxItem.is(".cuisine")) {
         cuisineArray.splice($.inArray(liValue, cuisineArray), 1);
-    } else if (removeCheckboxItem.is(".desserts") || removeCheckboxItem.is(".sauces")) {
+    } else if (removeCheckboxItem.is(".desserts")) {
+        recipeArray.splice($.inArray(liValue, recipeArray), 1);
+    } else if (removeCheckboxItem.is(".sauces")) {
         recipeArray.splice($.inArray(liValue, recipeArray), 1);
     } else {
         ingredientsArray.splice($.inArray(liValue, ingredientsArray), 1);
     };
+    console.log(allergensArray);
+    console.log(dietArray);
+    console.log(cuisineArray);
     console.log(recipeArray);
+    console.log(ingredientsArray);
+    let liRemoval = $(this);
     liRemoval.remove();
 })
 
-/* Section 2
-    Function that takes the input and both adds the item to the search array and lists the item out in the visible page of what is being included in the search. 
-    The items will need to be able to be closed/removed from the list. 
+/* Search Input
+    We need a slider to determine if ingredients or dish is being entered.
+    Slider event listener will change the data-type attribute on the input to {ingredient} or {dish}.
+    The add button listener will first spell check what was input to make sure nothing is spelled wrong.
+    It will Capitalize the input.
+    It will then append it to the ingredients list with the below items
+
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("data-inputID", $(this).attr("id"));
+        liEl.append(checkedBoxItem + " ");
+        liEl.append(iconEl);
+        ingredientsList.append(liEl);
+        value = $(this).val();
+        ingredientsArray.push(value);
+
     Look up jQuery spell checker in include some stop for if they enter items wrong. 
     <script src="js/jquery.spellchecker.min.js"></script>
     <link href="css/jquery.spellchecker.css" rel="stylesheet" /> 
     https://github.com/badsyntax/jquery-spellchecker/wiki/Documentation
-    Some sort of stop if they try to search with having no items */
+    */
 
 // This makes the accordion work.
 // Needs to be converted to jQuery.
@@ -492,6 +506,7 @@ for (var i = 0; i < accordions.length; i++) {
 // This runs the first API with the selected parameters.
 $("#searchOneBtn").on("click", searchOneInitialize);
 
+// This will both empty the ingredients list and uncheck all check boxes.
 $("#clearBtn").on("click", function() {
     ingredientsList.empty();
     $(":checkbox").attr("checked", false);
@@ -505,6 +520,7 @@ $("#clearBtn").on("click", function() {
     Check your ingredients are actual ingredients
     Require a minimum of three ingredients */
 
+// Some sort of stop if they try to search with having no items.
 // At the bottom there should a a previous button and a next button
 // I think we could use the offset property to skip to the next 10 results.
 // Event listener for the two buttons that determine seach one or search two.
