@@ -548,14 +548,30 @@ $("#addBtn").click(function () {
     liEl.attr("class", $(this).attr("id"));
     liEl.append(iconEl);
 
+    //liEl.append(input);
+    ingredientsList.append(liEl);
+    
+    if($("#togBtn").is(":checked")) {
+        recipeArray.push(input);
+     } else {
+        ingredientsArray.push(input);
+    };
+
 
     //input.val(input.val() + "");
-    ingredientsArray.push(input);
-    ingredientsList.append(liEl);
-    console.log(ingredientsArray);
+    //ingredientsArray.push(input);
+    console.log("ingredients " + ingredientsArray);
+    console.log("recipes " + recipeArray);
+    
     $("#searchInput").val("")
 
 })
+
+
+//$("#togBtn").on("click", function(event) {
+
+////}
+//)
 
 
 // This makes the accordion work.
