@@ -15,6 +15,72 @@
 #menu{
     float: right;
 }
+/*removes bullet points from appended ingredient list*/
+li {
+    list-style-type: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.allergens{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.diet{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cuisine{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.meat{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.meatSubstitute{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.vegetables{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.seafood{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.grains{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.fruits{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dairies{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.spices{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.oils{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nuts{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.desserts{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sauces{
+    font-family: 'Montserrat', sans-serif;
+}
+
 /*Styles the about us page elements*/
 #aboutUs{
     text-align: center;
@@ -25,6 +91,10 @@
 #contact{
     text-align: center;
     font-size: 25px;
+    font-family: 'Nunito', sans-serif;
+}
+
+button.accordian.active{
     font-family: 'Nunito', sans-serif;
 }
 /* Style the buttons that are used to open and close the accordion panel */
@@ -38,6 +108,7 @@ button.accordion {
     border: none;
     outline: none;
     transition: background-color 0.4s linear;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .accordion:after {
@@ -45,11 +116,11 @@ button.accordion {
     font-size: 13px;
     color: solid #777;
     float: right;
-   margin-left: 5px;
+    margin-left: 5px;
 }
 
 .active:after {
-  content: "\02796"; /* Unicode character for "minus" sign (-) */
+    content: "\02796"; /* Unicode character for "minus" sign (-) */
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -66,21 +137,66 @@ button.accordion {
     overflow: hidden;
     transition: max-height 0.4s ease-in-out;
 }
+/*images columns*/
+#resultsOne.column-is-two-thirds.is-primary{
+    display:flex;
+    justify-content:space-evenly;
+    flex-direction:row;
+    flex-wrap: wrap;
+}
+/*images pulled from the recipe search*/
+img.resultsImg{
+    border-radius: 20px;
+    width: 110%;
+    height: auto;
+}
 
-  .userinputs {
+h1 span{
+    display:block;
+}
+.userinputs {
       background-color: aquamarine;
-  }
+}
 
-  .field.has-addons .control:last-child .button, .field.has-addons .control:last-child .input, .field.has-addons .control:last-child .select select {
+.field.has-addons .control:last-child .button, .field.has-addons .control:last-child .input, .field.has-addons .control:last-child .select select {
       border-radius: 290486px;
       position: relative;
       right: -6px;
-  }
+}
 
-  .field.has-addons .control:first-child .button, .field.has-addons .control:first-child .input, .field.has-addons .control:first-child .select select {
+.field.has-addons .control:first-child .button, .field.has-addons .control:first-child .input, .field.has-addons .control:first-child .select select {
       border-radius: 290486px;
-  }
+}
 
-  .userinputs {
+.userinputs {
       background-color: aquamarine;
-  }
+}
+
+/*
+@media only screen and (max-width: 1480px) and (min-width: 940px){
+    #clearBtn{
+      margin-top: 6px;
+    }
+}
+
+@media only screen and (max-width: 940px){
+    #searchOneBtn{
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+}
+
+@media only screen and (max-width: 769px){
+    #searchOneBtn{
+    
+    margin-bottom: 6px;
+    } 
+}
+
+@media only screen and (max-width: 770px) and (min-width: 329px){
+    #searchOneBtn{
+    margin-top: -6px;
+    margin-bottom: 6px;
+    } 
+}*/
+
