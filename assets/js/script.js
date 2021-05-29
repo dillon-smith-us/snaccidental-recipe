@@ -479,21 +479,89 @@ $("#returnCall").on("click", "li", function (event) {
         value = $(this).val();
         ingredientsArray.push(value);
 
-    Look up jQuery spell checker in include some stop for if they enter items wrong. 
-    <script src="js/jquery.spellchecker.min.js"></script>
-    <link href="css/jquery.spellchecker.css" rel="stylesheet" /> 
-    https://github.com/badsyntax/jquery-spellchecker/wiki/Documentation
-    */
+        // var Typo = require("typo-js");
+    //var dictionary = new Typo(lang_code);
+    //var is_spelled_correctly = dictionary.check("mispelled");
+    /*
+    let liEl = $("<li>")
+    
+    $("#searchOneBtn").click(function() {
+        liEl.text("#input");
+        ingredientsArray.push(liEl);
+        
+     
+
+        var input = $( "#input" );
+        input.val(input.val() + "");
+
+        ingredientsList.append(liEl);
+    })
+
+*/
+ /*  
+document.getElementById("searchOneBtn").onclick = function() {
+    
+    var text = document.getElementsByClassName("input").value; 
+
+    
+    var li = "<li>" + text + "</li>";
+
+    
+    ingredientsArray.append(li);
+}
+*/
+
+    //Look up jQuery spell checker in include some stop for if they enter items wrong. 
+    //<script src="js/jquery.spellchecker.min.js"></script>
+   // <link href="css/jquery.spellchecker.css" rel="stylesheet" /> 
+   // https://github.com/badsyntax/jquery-spellchecker/wiki/Documentation
+   // */
+
+   /*checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+   let liEl = $("<li>");
+   let iconEl = $("<i>")
+   iconEl.attr("class", "fas fa-trash");
+   liEl.attr("data-inputID", $(this).attr("id"));
+   liEl.append(checkedBoxItem + " ");
+   liEl.append(iconEl);
+   ingredientsList.append(liEl);
+   value = $(this).val();
+   ingredientsArray.push(value);
+
+   */
+ // let liEl = $("<li>");
+  //let iconEl = $("<i>")
+    
+    $("#addBtn").click(function() {
+        let input = $("#searchInput").val();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        liEl.append(input + " ");
+    
+        //ingredientsArray.push(liEl);
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("class", $(this).attr("id"));
+        liEl.append(iconEl);
+        
+       
+        //input.val(input.val() + "");
+        ingredientsArray.push(input);
+        ingredientsList.append(liEl);
+        console.log(ingredientsArray);
+        $("#searchInput").val("")
+
+    })
+
 
 // This makes the accordion work.
 // Needs to be converted to jQuery.
 let accordions = document.getElementsByClassName("accordion");
 
-for (var i = 0; i < accordions.length; i++) {
+for (let i = 0; i < accordions.length; i++) {
     accordions[i].onclick = function () {
         this.classList.toggle('active');
 
-        var panel = this.nextElementSibling;
+        let panel = this.nextElementSibling;
         if (panel.style.maxHeight) {
             // accordion is currently open, so close it
             panel.style.maxHeight = null;
@@ -505,7 +573,7 @@ for (var i = 0; i < accordions.length; i++) {
 }
 
 // This runs the first API with the selected parameters.
-$("#searchOneBtn").on("click", searchOneInitialize);
+$("#searchBtn").on("click", searchOneInitialize);
 
 // This will both empty the ingredients list and uncheck all check boxes.
 $("#clearBtn").on("click", function () {
