@@ -26,11 +26,8 @@
     <section class="container">
         <div class="hero is-danger">
             <div class="hero-body">
-                <div class="container has-text-centered"><img
-                    src="./assets/images/logo.svg"
-                    alt="snaccidentalrecipe"
-                    height="100"
-                    width="200" /></div>
+                <div class="container has-text-centered"><img src="./assets/images/logo.svg" alt="snaccidentalrecipe"
+                        height="100" width="200" /></div>
                 <div class="dropdown is-hoverable" id="menu">
                     <div class="dropdown-trigger">
                         <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
@@ -42,7 +39,7 @@
                     <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                         <div class="dropdown-content">
                             <div class="dropdown-item">
-                                <a href="aboutUs.html">About Me</a>
+                                <a href="aboutUs.html">About Us</a>
                                 <br>
                                 <br>
                                 <a href="contactUs.html">Contact Us</a>
@@ -58,17 +55,23 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-one-third">
-                    <h1 class="title is-3">Your Ingredients</h1>
+                    <h1 class="title is-3">YOUR INGREDIENTS</h1>
 
                     <section class="section">
                         <div class="inputText"></div>
                         <div id="returnCall"></div>
                     </section>
+                    <label class="switch">
+                        <label class="switch">
+                            <input type="checkbox" id="togBtn">
+                            <div class="slider round"></div>
+                        </label>
+                    </label>
                     <br>
                     <br>
                     <div class="field has-addons w-100">
                         <div class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Ingredient, Cuisine, Dish">
+                            <input class="input" type="text" placeholder="Ingredient or Dish">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-search"></i>
                         </div>
@@ -76,7 +79,7 @@
                             <a class="button is-danger" id="addBtn">
                                 Add
                             </a>
-                            <a class="button is-danger" id="searchOneBtn">
+                            <a class="button is-danger" id="searchBtn">
                                 Search
                             </a>
                             <a class="button is-danger" id="clearBtn">
@@ -709,7 +712,7 @@
                             </form>
                         </section>
                     </div>
-                    
+
                     <button class="accordion">SPICES</button>
                     <div class="panel">
                         <section id="checkbox" class="checkbox section">
@@ -1004,12 +1007,14 @@
                         </section>
                     </div>
 
-                    
+
                 </div>
 
                 <div class="column-is-two-thirds is-primary">
-                    <h1 class="title is-3">SEARCH RESULTS</h1>
-                    <div id="searchResults"></div>
+                    <h1 class="title is-3" id="searchTitle">SEARCH RESULTS</h1>
+                    <div id="searchContainer">
+                        <div id="searchResults"></div>
+                    </div>
                 </div>
             </div>
     </section>
