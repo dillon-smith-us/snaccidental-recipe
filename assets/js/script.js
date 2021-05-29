@@ -4,13 +4,15 @@ let dietArray = [];
 let cuisineArray = [];
 let ingredientsArray = [];
 let recipeArray = [];
-let ingredientsList1 = $("#returnCall");
+let ingredientsList = $("#returnCall");
 let checkedBoxItem;
 let value;
+let imageDiv = $("#searchResults")
 
 // This function will take the checked items and search for recipes in relation to them.
 function searchOneInitialize() {
     // Empty results div on search run.
+    imageDiv.empty();
     let apiOdy = "872fa65d52a2467f9914c55d89dbf2ba";
     /* Parameter explanations:
         number | number | The number of expected results (between 1 and 100).
@@ -68,7 +70,6 @@ function searchOneInitialize() {
 
 // This function will run the api that grabs the recipe URL and then will display the image and title on the page.
 function displayRecipes(data) {
-    let imageDiv = $("#resultsOne")
     for (let i = 0; i < data.results.length; i++) {
         let image = data.results[i].image;
         let title = data.results[i].title;
@@ -106,7 +107,7 @@ $("#allergens").on("click", ".allergens", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         console.log("value " + value);
         allergensArray.push(value);
@@ -132,7 +133,7 @@ $("#diet").on("click", ".diet", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         dietArray.push(value);
     } else {
@@ -154,7 +155,7 @@ $("#cuisine").on("click", ".cuisine", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         cuisineArray.push(value);
     } else {
@@ -176,7 +177,7 @@ $("#meat").on("click", ".meat", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         ingredientsArray.push(value);
     } else {
@@ -198,7 +199,7 @@ $("#meatSubstitute").on("click", ".meatSubstitute", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         ingredientsArray.push(value);
     } else {
@@ -220,7 +221,7 @@ $("#seafood").on("click", ".seafood", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         ingredientsArray.push(value);
     } else {
@@ -242,7 +243,7 @@ $("#vegetables").on("click", ".vegetables", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         ingredientsArray.push(value);
     } else {
@@ -264,7 +265,7 @@ $("#grains").on("click", ".grains", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         ingredientsArray.push(value);
     } else {
@@ -286,7 +287,7 @@ $("#fruits").on("click", ".fruits", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         ingredientsArray.push(value);
     } else {
@@ -308,7 +309,7 @@ $("#dairies").on("click", ".dairies", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         ingredientsArray.push(value);
     } else {
@@ -330,7 +331,7 @@ $("#spices").on("click", ".spices", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         ingredientsArray.push(value);
     } else {
@@ -351,7 +352,7 @@ $("#oils").on("click", ".oils", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         ingredientsArray.push(value);
     } else {
@@ -373,7 +374,7 @@ $("#nuts").on("click", ".nuts", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         ingredientsArray.push(value);
     } else {
@@ -395,7 +396,7 @@ $("#desserts").on("click", ".desserts", function (event) {
         liEl.attr("value", $(this).val());
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         recipeArray.push(value);
     } else {
@@ -419,7 +420,7 @@ $("#sauces").on("click", ".sauces", function (event) {
         liEl.attr("data-inputID", $(this).attr("id"));
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
-        ingredientsList1.append(liEl);
+        ingredientsList.append(liEl);
         value = $(this).val();
         console.log("Sauce value " + value)
         recipeArray.push(value);
@@ -490,6 +491,11 @@ for (var i = 0; i < accordions.length; i++) {
 
 // This runs the first API with the selected parameters.
 $("#searchOneBtn").on("click", searchOneInitialize);
+
+$("#clearBtn").on("click", function() {
+    ingredientsList.empty();
+    $(":checkbox").attr("checked", false);
+})
 
 /* Errors to keep an eye out for "fixing"
     If search results pull up no recipes
