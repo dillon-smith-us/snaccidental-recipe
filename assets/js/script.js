@@ -79,14 +79,15 @@ function displayRecipes(data) {
         let linkDiv = $("<a>");
         linkDiv.attr("href", link);
         linkDiv.attr("target", "_blank");
+        linkDiv.attr("class", "resultsDiv")
         let div = $("<div>");
         linkDiv.append(div);
         let img = $("<img>");
         img.attr("src", image);
-        // img.attr("class", "enter class name");
+        img.attr("class", "resultsImg");
         div.append(img);
         let para = $("<p>");
-        // para.attr("class", "enter class name");
+        para.attr("class", "resultsText");
         para.text(title);
         div.append(para);
         imageDiv.append(linkDiv);
