@@ -417,6 +417,7 @@ $("#sauces").on("click", ".sauces", function (event) {
         let iconEl = $("<i>")
         iconEl.attr("class", "fas fa-trash");
         liEl.attr("data-inputID", $(this).attr("id"));
+        liEl.attr("data-search", "checkbox");
         liEl.append(checkedBoxItem + " ");
         liEl.append(iconEl);
         ingredientsList.append(liEl);
@@ -435,8 +436,11 @@ $("#sauces").on("click", ".sauces", function (event) {
 $("#returnCall").on("click", "li", function (event) {
     event.preventDefault;
     // This will uncheck the box in the appropriate accordion.
+    // if ($(this).attr)
+    console.log($("li").data('data-search'));
     let removeCheckboxItem = $("input[id='" + $(this).attr("data-inputID") + "']");
     removeCheckboxItem.prop("checked", false);
+    console.log($(this));
     // These statements determine which array to remove from.
     let liValue = removeCheckboxItem.val();
     if (removeCheckboxItem.is(".allergens")) {
@@ -465,19 +469,20 @@ $("#returnCall").on("click", "li", function (event) {
     We need a slider to determine if ingredients or dish is being entered.
     Slider event listener will change the data-type attribute on the input to {ingredient} or {dish}.
     The add button listener will first spell check what was input to make sure nothing is spelled wrong.
-    It will Capitalize the input.
+    let input = whatever is in the input
+    Capitalize the input.
+    probably have to have a new variable that is the capitalized input
     It will then append it to the ingredients list with the below items
-
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("data-inputID", $(this).attr("id"));
-        liEl.append(checkedBoxItem + " ");
+        - let liEl = $("<li>");
+        - let iconEl = $("<i>")
+        - iconEl.attr("class", "fas fa-trash");
+        - array variable *need to make a variable from the input text where the spaces are removed, if there are any, you will also need to make sure any spaces at the beginning or end are removed.
+        liEl.attr("value", "above variable");
+        liEl.append(capitalized input + " ");
         liEl.append(iconEl);
         ingredientsList.append(liEl);
-        value = $(this).val();
-        ingredientsArray.push(value);
+        
+        ingredientsArray.push(the variable that starts with *);
 
     Look up jQuery spell checker in include some stop for if they enter items wrong. 
     <script src="js/jquery.spellchecker.min.js"></script>
@@ -489,11 +494,11 @@ $("#returnCall").on("click", "li", function (event) {
 // Needs to be converted to jQuery.
 let accordions = document.getElementsByClassName("accordion");
 
-for (var i = 0; i < accordions.length; i++) {
+for (let i = 0; i < accordions.length; i++) {
     accordions[i].onclick = function () {
         this.classList.toggle('active');
 
-        var panel = this.nextElementSibling;
+        let panel = this.nextElementSibling;
         if (panel.style.maxHeight) {
             // accordion is currently open, so close it
             panel.style.maxHeight = null;
@@ -505,7 +510,7 @@ for (var i = 0; i < accordions.length; i++) {
 }
 
 // This runs the first API with the selected parameters.
-$("#searchOneBtn").on("click", searchOneInitialize);
+$("#searchBtn").on("click", searchOneInitialize);
 
 // This will both empty the ingredients list and uncheck all check boxes.
 $("#clearBtn").on("click", function () {
