@@ -1,5 +1,3 @@
-// Ask about the 30 results per page or 30 total in class 
-
 // These are our section arrays, where checked items will be added to them.
 let allergensArray = [];
 let dietArray = [];
@@ -9,9 +7,6 @@ let recipeArray = [];
 let ingredientsList1 = $("#returnCall");
 let checkedBoxItem;
 let value;
-
-// That will be adding to the parameters of the fetch. 
-// Will then start the function that generated the search results.
 
 // This function will take the checked items and search for recipes in relation to them.
 function searchOneInitialize() {
@@ -38,7 +33,7 @@ function searchOneInitialize() {
     // This will add all the arrays being used to one master array.
     let masterArray = [];
     if (allergensArray.length !== 0) {
-        masterArray.push(diet)
+        masterArray.push(allergens)
     }
     if (dietArray.length !== 0) {
         masterArray.push(diet)
@@ -55,6 +50,8 @@ function searchOneInitialize() {
     // The arrays are joined into one string.
     master = masterArray.join();
     requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + master + "&apiKey=" + apiOdy;
+    // Below is the test API that is static; comment out the above API and use the one below; also on line 67 uncomment out the call for this function otherwise it won't run on page refresh.
+    // requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true&includeIngredients=chicken&apiKey=" + apiOdy;
 
     fetch(requestURL)
         .then(function (response) {
@@ -66,6 +63,8 @@ function searchOneInitialize() {
             displayRecipes(data);
         })
 }
+
+// searchOneInitialize();
 
 // This function will run the api that grabs the recipe URL and then will display the image and title on the page.
 function displayRecipes(data) {
@@ -79,23 +78,50 @@ function displayRecipes(data) {
         let linkDiv = $("<a>");
         linkDiv.attr("href", link);
         linkDiv.attr("target", "_blank");
-        linkDiv.attr("class", "resultsDiv")
+        linkDiv.attr("class", "resultsDiv")
         let div = $("<div>");
         linkDiv.append(div);
         let img = $("<img>");
         img.attr("src", image);
-        img.attr("class", "resultsImg");
+        img.attr("class", "resultsImg");
+        // img.attr("class", "enter class name");
         div.append(img);
         let para = $("<p>");
-        para.attr("class", "resultsText");
+        para.attr("class", "resultsText");
+        // para.attr("class", "enter class name");
         para.text(title);
         div.append(para);
         imageDiv.append(linkDiv);
     }
 }
 
-// Event listeners to add checked items to the search array, and display them on the screen in the added ingredients section. 
-//need to add css text transform for capitalization of what goes into the ingredient list.
+// These are event listeners that add checked items to the search array, and display them on the screen in the added ingredients section. 
+$("#allergens").on("click", ".allergens", function (event) {
+    event.preventDefault;
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("value", $(this).val());
+        liEl.append(checkedBoxItem);
+        liEl.append(iconEl);
+        ingredientsList1.append(liEl);
+        value = $(this).val();
+        console.log("value " + value);
+        allergensArray.push(value);
+        console.log(allergensArray);
+    } else {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        value = $(this).val();
+        console.log("value2 " + value);
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        allergensArray.splice($.inArray(value, allergensArray), 1);
+        console.log(allergensArray);
+    }
+})
+
 $("#diet").on("click", ".diet", function (event) {
     event.preventDefault;
     if ($(this).is(":checked")) {
@@ -115,28 +141,6 @@ $("#diet").on("click", ".diet", function (event) {
         let removalEl = $("li[value='" + $(this).attr("value") + "']");
         removalEl.remove();
         dietArray.splice($.inArray(value, dietArray), 1);
-    }
-})
-
-$("#allergens").on("click", ".allergens", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList1.append(liEl);
-        value = $(this).val();
-        allergensArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        allergensArray.splice($.inArray(value, allergensArray), 1);
     }
 })
 
@@ -410,19 +414,50 @@ $("#sauces").on("click", ".sauces", function (event) {
         let liEl = $("<li>");
         let iconEl = $("<i>")
         iconEl.attr("class", "fas fa-trash");
+        iconEl.attr("data-inputID", $(this).attr("id"));
         liEl.attr("value", $(this).val());
+        liEl.attr("data-inputID", $(this).attr("id"));
         liEl.append(checkedBoxItem);
         liEl.append(iconEl);
         ingredientsList1.append(liEl);
         value = $(this).val();
+        console.log("Sauce value " + value)
         recipeArray.push(value);
+        console.log(recipeArray);
     } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
         value = $(this).val();
+        console.log("value2 " + value);
         let removalEl = $("li[value='" + $(this).attr("value") + "']");
         removalEl.remove();
         recipeArray.splice($.inArray(value, recipeArray), 1);
+        console.log(recipeArray);
     }
+})
+
+$("#returnCall").on("click", "path", function (event) {
+    event.preventDefault;
+    // This will uncheck the box in the appropriate accordion.
+    let removeCheckboxItem = $("input[id='" + $(this).attr("data-inputID") + "']");
+    removeCheckboxItem.prop("checked", false);
+    let liRemoval = $(this).closest("li");
+    console.log(liRemoval);
+    let liValue = liRemoval.val();
+    console.log(liValue);
+    console.log("liValue " + liValue);
+    // These statements determine which array to remove from.
+    if (removeCheckboxItem.is(".allergens")) {
+        allergensArray.splice($.inArray(liValue, allergensArray), 1);
+    } else if (removeCheckboxItem.is(".diet")) {
+        dietArray.splice($.inArray(liValue, dietArray), 1);
+    } else if (removeCheckboxItem.is(".cuisine")) {
+        cuisineArray.splice($.inArray(liValue, cuisineArray), 1);
+    } else if (removeCheckboxItem.is(".desserts") || removeCheckboxItem.is(".sauces")) {
+        recipeArray.splice($.inArray(liValue, recipeArray), 1);
+    } else {
+        ingredientsArray.splice($.inArray(liValue, ingredientsArray), 1);
+    };
+    console.log(recipeArray);
+    liRemoval.remove();
 })
 
 /* Section 2
@@ -432,26 +467,25 @@ $("#sauces").on("click", ".sauces", function (event) {
     <script src="js/jquery.spellchecker.min.js"></script>
     <link href="css/jquery.spellchecker.css" rel="stylesheet" /> 
     https://github.com/badsyntax/jquery-spellchecker/wiki/Documentation
-    Some sort of stop if they try to search with having no items 
-    Discuss route for how we are going to add restrictions/ checkbox vs. search input. Should be added to separate array. */
+    Some sort of stop if they try to search with having no items */
 
 // This makes the accordion work.
 // Needs to be converted to jQuery.
 let accordions = document.getElementsByClassName("accordion");
 
 for (var i = 0; i < accordions.length; i++) {
-  accordions[i].onclick = function() {
-    this.classList.toggle('active');
+    accordions[i].onclick = function () {
+        this.classList.toggle('active');
 
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      // accordion is currently open, so close it
-      panel.style.maxHeight = null;
-    } else {
-      // accordion is currently closed, so open it
-      panel.style.maxHeight = panel.scrollHeight + "px";
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            // accordion is currently open, so close it
+            panel.style.maxHeight = null;
+        } else {
+            // accordion is currently closed, so open it
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }
     }
-  }
 }
 
 // This runs the first API with the selected parameters.
