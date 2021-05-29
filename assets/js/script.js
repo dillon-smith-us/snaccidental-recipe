@@ -417,6 +417,7 @@ $("#sauces").on("click", ".sauces", function (event) {
         let iconEl = $("<i>")
         iconEl.attr("class", "fas fa-trash");
         liEl.attr("data-inputID", $(this).attr("id"));
+        liEl.attr("class", "checklistItems");
         liEl.attr("data-search", "checkbox");
         liEl.append(checkedBoxItem + " ");
         liEl.append(iconEl);
@@ -433,14 +434,40 @@ $("#sauces").on("click", ".sauces", function (event) {
     }
 })
 
-$("#returnCall").on("click", "li", function (event) {
+$("#returnCall").on("click", ".listItems", function (event) {
     event.preventDefault;
     // This will uncheck the box in the appropriate accordion.
     // if ($(this).attr)
-    console.log($("li").data('data-search'));
+    console.log($(this).data('data-search'));
     let removeCheckboxItem = $("input[id='" + $(this).attr("data-inputID") + "']");
     removeCheckboxItem.prop("checked", false);
     console.log($(this));
+    // These statements determine which array to remove from.
+    let liValue = removeCheckboxItem.val();
+    if (removeCheckboxItem.is(".allergens")) {
+        allergensArray.splice($.inArray(liValue, allergensArray), 1);
+    } else if (removeCheckboxItem.is(".diet")) {
+        dietArray.splice($.inArray(liValue, dietArray), 1);
+    } else if (removeCheckboxItem.is(".cuisine")) {
+        cuisineArray.splice($.inArray(liValue, cuisineArray), 1);
+    } else if (removeCheckboxItem.is(".desserts")) {
+        recipeArray.splice($.inArray(liValue, recipeArray), 1);
+    } else if (removeCheckboxItem.is(".sauces")) {
+        recipeArray.splice($.inArray(liValue, recipeArray), 1);
+    } else {
+        ingredientsArray.splice($.inArray(liValue, ingredientsArray), 1);
+    };
+    console.log(allergensArray);
+    console.log(dietArray);
+    console.log(cuisineArray);
+    console.log(recipeArray);
+    console.log(ingredientsArray);
+    let liRemoval = $(this);
+    liRemoval.remove();
+})
+
+$("#returnCall").on("click", ".searchItems", function (event) {
+    event.preventDefault;
     // These statements determine which array to remove from.
     let liValue = removeCheckboxItem.val();
     if (removeCheckboxItem.is(".allergens")) {
@@ -548,14 +575,30 @@ $("#addBtn").click(function () {
     liEl.attr("class", $(this).attr("id"));
     liEl.append(iconEl);
 
+    //liEl.append(input);
+    ingredientsList.append(liEl);
+    
+    if($("#togBtn").is(":checked")) {
+        recipeArray.push(input);
+     } else {
+        ingredientsArray.push(input);
+    };
+
 
     //input.val(input.val() + "");
-    ingredientsArray.push(input);
-    ingredientsList.append(liEl);
-    console.log(ingredientsArray);
+    //ingredientsArray.push(input);
+    console.log("ingredients " + ingredientsArray);
+    console.log("recipes " + recipeArray);
+    
     $("#searchInput").val("")
 
 })
+
+
+//$("#togBtn").on("click", function(event) {
+
+////}
+//)
 
 
 // This makes the accordion work.
