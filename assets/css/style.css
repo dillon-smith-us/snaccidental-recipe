@@ -1,11 +1,32 @@
 .hero {
     background-color: aqua;
-}
 
+}
+.hero.is-danger .title{
+    display: inline-block;
+}
+/*changes the menu button on the index.html*/
+.button{
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+}
+/*moves the menu button on the index.html to the right side*/
 #menu{
     float: right;
 }
-
+/*Styles the about us page elements*/
+#aboutUs{
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Nunito', sans-serif;
+}
+/* Style the contact us page elements*/
+#contact{
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Nunito', sans-serif;
+}
 /* Style the buttons that are used to open and close the accordion panel */
 button.accordion {
     background-color: #eee;
