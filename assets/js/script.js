@@ -50,6 +50,8 @@ function searchOneInitialize() {
     // The arrays are joined into one string.
     master = masterArray.join();
     requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + master + "&apiKey=" + apiOdy;
+    // Below is the test API that is static; comment out the above API and use the one below; also on line 67 uncomment out the call for this function otherwise it won't run on page refresh.
+    // requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true&includeIngredients=chicken&apiKey=" + apiOdy;
 
     fetch(requestURL)
         .then(function (response) {
@@ -61,6 +63,8 @@ function searchOneInitialize() {
             displayRecipes(data);
         })
 }
+
+// searchOneInitialize();
 
 // This function will run the api that grabs the recipe URL and then will display the image and title on the page.
 function displayRecipes(data) {
@@ -430,7 +434,7 @@ $("#sauces").on("click", ".sauces", function (event) {
     }
 })
 
-$("#returnCall").on("click", "path", function(event) {
+$("#returnCall").on("click", "path", function (event) {
     event.preventDefault;
     // This will uncheck the box in the appropriate accordion.
     let removeCheckboxItem = $("input[id='" + $(this).attr("data-inputID") + "']");
@@ -470,18 +474,18 @@ $("#returnCall").on("click", "path", function(event) {
 let accordions = document.getElementsByClassName("accordion");
 
 for (var i = 0; i < accordions.length; i++) {
-  accordions[i].onclick = function() {
-    this.classList.toggle('active');
+    accordions[i].onclick = function () {
+        this.classList.toggle('active');
 
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      // accordion is currently open, so close it
-      panel.style.maxHeight = null;
-    } else {
-      // accordion is currently closed, so open it
-      panel.style.maxHeight = panel.scrollHeight + "px";
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            // accordion is currently open, so close it
+            panel.style.maxHeight = null;
+        } else {
+            // accordion is currently closed, so open it
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }
     }
-  }
 }
 
 // This runs the first API with the selected parameters.
