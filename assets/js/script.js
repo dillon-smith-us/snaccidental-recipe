@@ -539,14 +539,26 @@ ingredientsArray.push(value);
 
 $("#addBtn").click(function () {
     let input = $("#searchInput").val();
+    let lcInput = input.toLowerCase();
+    console.log(lcInput);
+    //let capInput = lcInput.css("text-transform", "capitalize")
+    
+    //function capitalizeFirstLetter(lcInput) {
+    //    return lcInput.charAt(0).toUpperCase() + string.slice(1);
+//}
+
+
+
     let liEl = $("<li>");
-    let iconEl = $("<i>")
-    liEl.append(input + " ");
+    let iconEl = $("<i>");
+    liEl.append(lcInput + " ");
 
     //ingredientsArray.push(liEl);
     iconEl.attr("class", "fas fa-trash");
     liEl.attr("class", $(this).attr("id"));
     liEl.append(iconEl);
+
+    
 
     //liEl.append(input);
     ingredientsList.append(liEl);
@@ -558,10 +570,12 @@ $("#addBtn").click(function () {
     };
 
 
+
     //input.val(input.val() + "");
     //ingredientsArray.push(input);
     console.log("ingredients " + ingredientsArray);
     console.log("recipes " + recipeArray);
+
     
     $("#searchInput").val("")
 
