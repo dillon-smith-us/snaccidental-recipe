@@ -116,11 +116,11 @@ button.accordion {
     font-size: 13px;
     color: solid #777;
     float: right;
-   margin-left: 5px;
+    margin-left: 5px;
 }
 
 .active:after {
-  content: "\02796"; /* Unicode character for "minus" sign (-) */
+    content: "\02796"; /* Unicode character for "minus" sign (-) */
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -139,10 +139,21 @@ button.accordion {
 }
 /*images columns*/
 #resultsOne.column-is-two-thirds.is-primary{
-    align-items: start;
-  }
+    display:flex;
+    justify-content:space-evenly;
+    flex-direction:row;
+    flex-wrap: wrap;
+}
+/*images pulled from the recipe search*/
+img.resultsImg{
+    border-radius: 20px;
+    width: 110%;
+    height: auto;
+}
 
-
+h1 span{
+    display:block;
+}
 .userinputs {
       background-color: aquamarine;
 }
@@ -161,7 +172,7 @@ button.accordion {
       background-color: aquamarine;
 }
 
-
+/*
 @media only screen and (max-width: 1480px) and (min-width: 940px){
     #clearBtn{
       margin-top: 6px;
@@ -187,5 +198,5 @@ button.accordion {
     margin-top: -6px;
     margin-bottom: 6px;
     } 
-}
+}*/
 
