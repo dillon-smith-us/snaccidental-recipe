@@ -3,11 +3,11 @@
 }
 
 #menu{
-  float: right;
+    float: right;
 }
 
 /* Style the buttons that are used to open and close the accordion panel */
-.accordion {
+button.accordion {
     background-color: #eee;
     color: #444;
     cursor: pointer;
@@ -16,44 +16,48 @@
     text-align: left;
     border: none;
     outline: none;
-    transition: 0.4s;
-  }
+    transition: background-color 0.4s linear;
+}
 
-  .field.has-addons .control:last-child .button, .field.has-addons .control:last-child .input, .field.has-addons .control:last-child .select select {
-    border-radius: 290486px;
-    position: relative;
-    right: -6px;
-  }
-
-  .field.has-addons .control:first-child .button, .field.has-addons .control:first-child .input, .field.has-addons .control:first-child .select select {
-    border-radius: 290486px;
-    top : -6px;
-    
-  }
-
-  .accordion:after {
+.accordion:after {
     content: '\02795'; /* Unicode character for "plus" sign (+) */
     font-size: 13px;
     color: solid #777;
     float: right;
-    margin-left: 5px;
-  }
-  
-  .active:after {
-    content: "\2796"; /* Unicode character for "minus" sign (-) */
-  }
-  
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .accordion:hover {
+   margin-left: 5px;
+}
+
+.active:after {
+  content: "\02796"; /* Unicode character for "minus" sign (-) */
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
     background-color: #ccc;
-  }
-  
-  /* Style the accordion panel. Note: hidden by default */
-  .panel {
-    padding: 0 18px;
+    background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    margin-top: -23px;
     background-color: white;
-    display: none;
+    max-height: 0;
     overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+  .userinputs {
+      background-color: aquamarine;
+  }
+
+  .field.has-addons .control:last-child .button, .field.has-addons .control:last-child .input, .field.has-addons .control:last-child .select select {
+      border-radius: 290486px;
+      position: relative;
+      right: -6px;
+  }
+
+  .field.has-addons .control:first-child .button, .field.has-addons .control:first-child .input, .field.has-addons .control:first-child .select select {
+      border-radius: 290486px;
   }
 
   .userinputs {
