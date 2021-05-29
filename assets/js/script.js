@@ -67,7 +67,7 @@ function searchOneInitialize() {
         })
 }
 
-searchOneInitialize();
+// searchOneInitialize();
 
 // This function will run the api that grabs the recipe URL and then will display the image and title on the page.
 function displayRecipes(data) {
@@ -503,59 +503,59 @@ $("#returnCall").on("click", "li", function (event) {
     })
 
 */
- /*  
+/*  
 document.getElementById("searchOneBtn").onclick = function() {
-    
-    var text = document.getElementsByClassName("input").value; 
+   
+   var text = document.getElementsByClassName("input").value; 
 
-    
-    var li = "<li>" + text + "</li>";
+   
+   var li = "<li>" + text + "</li>";
 
-    
-    ingredientsArray.append(li);
+   
+   ingredientsArray.append(li);
 }
 */
 
-    //Look up jQuery spell checker in include some stop for if they enter items wrong. 
-    //<script src="js/jquery.spellchecker.min.js"></script>
-   // <link href="css/jquery.spellchecker.css" rel="stylesheet" /> 
-   // https://github.com/badsyntax/jquery-spellchecker/wiki/Documentation
-   // */
+//Look up jQuery spell checker in include some stop for if they enter items wrong. 
+//<script src="js/jquery.spellchecker.min.js"></script>
+// <link href="css/jquery.spellchecker.css" rel="stylesheet" /> 
+// https://github.com/badsyntax/jquery-spellchecker/wiki/Documentation
+// */
 
-   /*checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-   let liEl = $("<li>");
-   let iconEl = $("<i>")
-   iconEl.attr("class", "fas fa-trash");
-   liEl.attr("data-inputID", $(this).attr("id"));
-   liEl.append(checkedBoxItem + " ");
-   liEl.append(iconEl);
-   ingredientsList.append(liEl);
-   value = $(this).val();
-   ingredientsArray.push(value);
+/*checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+let liEl = $("<li>");
+let iconEl = $("<i>")
+iconEl.attr("class", "fas fa-trash");
+liEl.attr("data-inputID", $(this).attr("id"));
+liEl.append(checkedBoxItem + " ");
+liEl.append(iconEl);
+ingredientsList.append(liEl);
+value = $(this).val();
+ingredientsArray.push(value);
 
-   */
- // let liEl = $("<li>");
-  //let iconEl = $("<i>")
-    
-    $("#addBtn").click(function() {
-        let input = $("#searchInput").val();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        liEl.append(input + " ");
-    
-        //ingredientsArray.push(liEl);
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("class", $(this).attr("id"));
-        liEl.append(iconEl);
-        
-       
-        //input.val(input.val() + "");
-        ingredientsArray.push(input);
-        ingredientsList.append(liEl);
-        console.log(ingredientsArray);
-        $("#searchInput").val("")
+*/
+// let liEl = $("<li>");
+//let iconEl = $("<i>")
 
-    })
+$("#addBtn").click(function () {
+    let input = $("#searchInput").val();
+    let liEl = $("<li>");
+    let iconEl = $("<i>")
+    liEl.append(input + " ");
+
+    //ingredientsArray.push(liEl);
+    iconEl.attr("class", "fas fa-trash");
+    liEl.attr("class", $(this).attr("id"));
+    liEl.append(iconEl);
+
+
+    //input.val(input.val() + "");
+    ingredientsArray.push(input);
+    ingredientsList.append(liEl);
+    console.log(ingredientsArray);
+    $("#searchInput").val("")
+
+})
 
 
 // This makes the accordion work.
