@@ -14,6 +14,7 @@ function searchOneInitialize() {
     // Empty results div on search run.
     imageDiv.empty();
     let apiOdy = "872fa65d52a2467f9914c55d89dbf2ba";
+    let apiChris = "75de8262c10e4899bf623668f3281309";
     /* Parameter explanations:
         number | number | The number of expected results (between 1 and 100).
         instructionsRequired | boolean | Whether the recipes must have instructions.
@@ -51,9 +52,9 @@ function searchOneInitialize() {
     }
     // The arrays are joined into one string.
     master = masterArray.join();
-    //requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + master + "&apiKey=" + apiOdy;
+    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + master + "&apiKey=" + apiChris;
     // Below is the test API that is static; comment out the above API and use the one below; also on line 67 uncomment out the call for this function otherwise it won't run on page refresh.
-    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true&includeIngredients=chicken&apiKey=" + apiOdy;
+    // requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true&includeIngredients=chicken&apiKey=" + apiChris;
 
     fetch(requestURL)
         .then(function (response) {
@@ -66,7 +67,7 @@ function searchOneInitialize() {
         })
 }
 
- searchOneInitialize();
+// searchOneInitialize();
 
 // This function will run the api that grabs the recipe URL and then will display the image and title on the page.
 function displayRecipes(data) {
@@ -507,7 +508,7 @@ for (var i = 0; i < accordions.length; i++) {
 $("#searchOneBtn").on("click", searchOneInitialize);
 
 // This will both empty the ingredients list and uncheck all check boxes.
-$("#clearBtn").on("click", function() {
+$("#clearBtn").on("click", function () {
     ingredientsList.empty();
     $(":checkbox").attr("checked", false);
 })
