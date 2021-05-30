@@ -1,7 +1,3 @@
-// My trashbin value issue
-// We don't have to use JSON in our storage, because we are storing a string and not an object, correct?
-// Error in console on console load (but gone when refreshed).
-
 // These are our section arrays, where checked items will be added to them.
 let allergensArray = [];
 let dietArray = [];
@@ -511,7 +507,8 @@ Look up jQuery spell checker in include some stop for if they enter items wrong.
 https://github.com/badsyntax/jquery-spellchecker/wiki/Documentation */
 
 // This function will add the typed ingredient dish to the page and to the appropriate array.
-$("#addBtn").click(function () {
+function addItems(event) {
+    event.preventDefault();
     let input = $("#searchInput").val();
     // First makes sure input text is all lower case, in case there are random capitalized letters in the middle anywhere.
     let lcInput = input.toLowerCase();
@@ -544,7 +541,11 @@ $("#addBtn").click(function () {
     // This will clear the input box after the ingredient or dish has been added.
     $("#searchInput").val("")
     return;
-})
+}
+
+$("#submit").on("submit", addItems);
+
+$("#addBtn").on("click", addItems);
 
 // This makes the accordion work.
 let accordions = document.getElementsByClassName("accordion");
@@ -588,7 +589,9 @@ $("#clearBtn").on("click", function () {
 // Add {return;} to accordion event listeners.
 // Need to make clear button clear arrays.
 // Which recipe website (recipe owner or spoonacular) do we want the user directed to when they click on a result?
+
 // Make it so when you hit enter it equals the add button.
+
 // Some sort of stop if they try to search with having no items.
 // At the bottom there should a a previous button and a next button
 // I think we could use the offset property to skip to the next 10 results.
