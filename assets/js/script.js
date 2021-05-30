@@ -1,6 +1,5 @@
-// Trim
-// Capitalize
 // My trashbin value issue
+// We don't have to use JSON in our storage, because we are storing a string and not an object, correct?
 
 // These are our section arrays, where checked items will be added to them.
 let allergensArray = [];
@@ -8,17 +7,20 @@ let dietArray = [];
 let cuisineArray = [];
 let ingredientsArray = [];
 let dishArray = [];
+// These are our API keys; multiple are needed in case we run out of available API calls in one of them.
+let apiOdy = "872fa65d52a2467f9914c55d89dbf2ba";
+let apiChris = "75de8262c10e4899bf623668f3281309";
+// The rest of our variables.
 let ingredientsList = $("#returnCall");
+let imageDiv = $("#searchResults")
 let checkedBoxItem;
 let value;
-let imageDiv = $("#searchResults")
 
-// This function will take the checked items and search for recipes in relation to them.
-function searchOneInitialize() {
+
+// This function will take the checked/added items and search for recipes with those parameters.
+function searchInitialize() {
     // Empty results div on search run.
     imageDiv.empty();
-    let apiOdy = "872fa65d52a2467f9914c55d89dbf2ba";
-    let apiChris = "75de8262c10e4899bf623668f3281309";
     /* Parameter explanations:
         number | number | The number of expected results (between 1 and 100).
         instructionsRequired | boolean | Whether the recipes must have instructions.
@@ -68,15 +70,15 @@ function searchOneInitialize() {
             console.log("Complex search data.")
             console.log(data)
             displayRecipes(data);
+            return;
         })
     localStorage.setItem("master", master);
+    return;
 }
 
+// searchInitialize();
 
-
-// searchOneInitialize();
-
-// This function will run the api that grabs the recipe URL and then will display the image and title on the page.
+// This function displays the found recipes' images and titles on the page, as well as makes them clickable links.
 function displayRecipes(data) {
     for (let i = 0; i < data.results.length; i++) {
         let image = data.results[i].image;
@@ -102,6 +104,7 @@ function displayRecipes(data) {
         div.append(para);
         imageDiv.append(linkDiv);
     }
+    return;
 }
 
 // These are event listeners that add checked items to the search array, and display them on the screen in the added ingredients section. 
@@ -444,7 +447,6 @@ $("#sauces").on("click", ".sauces", function (event) {
 $("#returnCall").on("click", ".checklistItems", function (event) {
     event.preventDefault;
     // This will uncheck the box in the appropriate accordion.
-    // if ($(this).attr)
     console.log($(this).data('data-search'));
     let removeCheckboxItem = $("input[id='" + $(this).attr("data-inputID") + "']");
     removeCheckboxItem.prop("checked", false);
@@ -471,6 +473,7 @@ $("#returnCall").on("click", ".checklistItems", function (event) {
     console.log(ingredientsArray);
     let liRemoval = $(this);
     liRemoval.remove();
+    return;
 })
 
 /* $("#addBtn").click(function () {
@@ -528,139 +531,61 @@ $("#returnCall").on("click", ".searchItems", function (event) {
     console.log("ingredientsArray " + ingredientsArray);
     let liRemoval = $(this);
     liRemoval.remove();
+    return;
 })
 
-/* Search Input
-    We need a slider to determine if ingredients or dish is being entered.
-    Slider event listener will change the data-type attribute on the input to {ingredient} or {dish}.
-    The add button listener will first spell check what was input to make sure nothing is spelled wrong.
-    let input = whatever is in the input
-    Capitalize the input.
-    probably have to have a new variable that is the capitalized input
-    It will then append it to the ingredients list with the below items
-        - let liEl = $("<li>");
-        - let iconEl = $("<i>")
-        - iconEl.attr("class", "fas fa-trash");
-        - array variable *need to make a variable from the input text where the spaces are removed, if there are any, you will also need to make sure any spaces at the beginning or end are removed.
-        liEl.attr("value", "above variable");
-        liEl.append(capitalized input + " ");
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        
-        ingredientsArray.push(the variable that starts with *);
+/* Below add button still needs some sort of spell checker.
 
-        // var Typo = require("typo-js");
-    //var dictionary = new Typo(lang_code);
-    //var is_spelled_correctly = dictionary.check("mispelled");
-    /*
-    let liEl = $("<li>")
-    
-    $("#searchOneBtn").click(function() {
-        liEl.text("#input");
-        ingredientsArray.push(liEl);
-        
-     
+let Typo = require("typo-js");
+let dictionary = new Typo(lang_code);
+let is_spelled_correctly = dictionary.check("mispelled");
+let liEl = $("<li>")
 
-        var input = $( "#input" );
-        input.val(input.val() + "");
+Look up jQuery spell checker in include some stop for if they enter items wrong. 
+<script src="js/jquery.spellchecker.min.js"></script>
+<link href="css/jquery.spellchecker.css" rel="stylesheet" /> 
+https://github.com/badsyntax/jquery-spellchecker/wiki/Documentation */
 
-        ingredientsList.append(liEl);
-    })
 
-*/
-/*  
-document.getElementById("searchOneBtn").onclick = function() {
-
-    var text = document.getElementsByClassName("input").value; 
-
-    var li = "<li>" + text + "</li>";
-
-    ingredientsArray.append(li);
-}
-*/
-
-//Look up jQuery spell checker in include some stop for if they enter items wrong. 
-//<script src="js/jquery.spellchecker.min.js"></script>
-// <link href="css/jquery.spellchecker.css" rel="stylesheet" /> 
-// https://github.com/badsyntax/jquery-spellchecker/wiki/Documentation
-// */
-
-/*checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-let liEl = $("<li>");
-let iconEl = $("<i>")
-iconEl.attr("class", "fas fa-trash");
-liEl.attr("data-inputID", $(this).attr("id"));
-liEl.append(checkedBoxItem + " ");
-liEl.append(iconEl);
-ingredientsList.append(liEl);d
-value = $(this).val();
-ingredientsArray.push(value);
-
-*/
-// let liEl = $("<li>");
-//let iconEl = $("<i>")
-
+// This function will add the typed ingredient dish to the page and to the appropriate array.
 $("#addBtn").click(function () {
     let input = $("#searchInput").val();
+    // First makes sure input text is all lower case, in case there are random capitalized letters in the middle anywhere.
     let lcInput = input.toLowerCase();
-    let trimmed = $.trim(lcInput);
-    console.log(trimmed);
-
-    console.log(lcInput.trim());
-
-    //function capitalize() {
-    // lcInput.css("text-transform", "capitalize")
-    //};
-    //function capitalizeFirstLetter(lcInput) {
-    //    return lcInput.charAt(0).toUpperCase() + string.slice(1);
-    //}
-
-
-
+    // Then makes sure the beginning and end is trimmed of any additional spaces.
+    let trimmedInput = $.trim(lcInput);
+    console.log("Trimmed Text:" + trimmedInput + ":Trimmed End");
+    // This section will append to the page, as well as capitalize what is going on display.
     let liEl = $("<li>");
     let iconEl = $("<i>");
-    liEl.append(lcInput + " ");
-
-    //ingredientsArray.push(liEl);
+    liEl.append(trimmedInput + " ");
+    liEl.css("text-transform", "capitalize");
     iconEl.attr("class", "fas fa-trash");
-    liEl.attr("class", $(this).attr("id"));
     liEl.append(iconEl);
-
-
-
-    //liEl.append(input);
-    ingredientsList.append(liEl);
-
+    // The input will not have any internal spaces removed and replaced with a dash, as that is how it will need to be for the array.
+    let arrayInput = trimmedInput.split(" ").join("-");
+    console.log(":" + arrayInput + ":");
+    // This if statement determines which classes to give the list item based on whether the toggle is on ingredients or dish and will also push to the correct array.
     if ($("#togBtn").is(":checked")) {
-        recipeArray.push(input);
+        liEl.attr("class", "searchItems dishArray");
+        dishArray.push(arrayInput);
     } else {
-        ingredientsArray.push(input);
+        liEl.attr("class", "searchItems ingredientsArray");
+        ingredientsArray.push(arrayInput);
     };
-
-
-
-    //input.val(input.val() + "");
-    //ingredientsArray.push(input);
-    console.log("ingredients " + ingredientsArray);
-    console.log("recipes " + recipeArray);
-
-
+    ingredientsList.append(liEl);
+    console.log("ingredients: " + ingredientsArray);
+    console.log("recipes: " + dishArray);
+    // This will clear the input box after the ingredient or dish has been added.
     $("#searchInput").val("")
-
+    return;
 })
-
-//local storage
-
 
 $("#lastSearch").on("click", function (event) {
     event.preventDefault;
     imageDiv.empty();
-    let apiOdy = "872fa65d52a2467f9914c55d89dbf2ba";
-    let apiChris = "75de8262c10e4899bf623668f3281309";
     let savedSearch = localStorage.getItem("master");
-    //master = masterArray.join();
     requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + savedSearch + "&apiKey=" + apiChris;
-
 
     fetch(requestURL)
         .then(function (response) {
@@ -670,17 +595,10 @@ $("#lastSearch").on("click", function (event) {
             console.log("Complex search data.")
             console.log(data)
             displayRecipes(data);
+            return;
         })
-
-
-
+    return;
 })
-
-//$("#togBtn").on("click", function(event) {
-
-////}
-//)
-
 
 // This makes the accordion work.
 let accordions = document.getElementsByClassName("accordion");
@@ -697,16 +615,18 @@ for (let i = 0; i < accordions.length; i++) {
             // accordion is currently closed, so open it
             panel.style.maxHeight = panel.scrollHeight + "px";
         }
+        return;
     }
 }
 
 // This runs the first API with the selected parameters.
-$("#searchBtn").on("click", searchOneInitialize);
+$("#searchBtn").on("click", searchInitialize);
 
 // This will both empty the ingredients list and uncheck all check boxes.
 $("#clearBtn").on("click", function () {
     ingredientsList.empty();
     $(":checkbox").attr("checked", false);
+    return;
 })
 
 /* Errors to keep an eye out for "fixing"
@@ -717,6 +637,9 @@ $("#clearBtn").on("click", function () {
     Check your ingredients are actual ingredients
     Require a minimum of three ingredients */
 
+// Add {return;} to accordion event listeners.
+// Need to make clear button clear arrays.
+// Which recipe website (recipe owner or spoonacular) do we want the user directed to when they click on a result?
 // Make it so when you hit enter it equals the add button.
 // Some sort of stop if they try to search with having no items.
 // At the bottom there should a a previous button and a next button
