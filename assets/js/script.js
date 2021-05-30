@@ -65,7 +65,10 @@ function searchOneInitialize() {
             console.log(data)
             displayRecipes(data);
         })
+        localStorage.setItem("master", master);   
 }
+
+
 
 // searchOneInitialize();
 
@@ -556,7 +559,7 @@ iconEl.attr("class", "fas fa-trash");
 liEl.attr("data-inputID", $(this).attr("id"));
 liEl.append(checkedBoxItem + " ");
 liEl.append(iconEl);
-ingredientsList.append(liEl);
+ingredientsList.append(liEl);d
 value = $(this).val();
 ingredientsArray.push(value);
 
@@ -567,9 +570,14 @@ ingredientsArray.push(value);
 $("#addBtn").click(function () {
     let input = $("#searchInput").val();
     let lcInput = input.toLowerCase();
-    console.log(lcInput);
-    //let capInput = lcInput.css("text-transform", "capitalize")
+    let trimmed = $.trim(lcInput);
+    console.log(trimmed);
+
+    console.log(lcInput.trim());
     
+  //function capitalize() {
+   // lcInput.css("text-transform", "capitalize")
+  //};
     //function capitalizeFirstLetter(lcInput) {
     //    return lcInput.charAt(0).toUpperCase() + string.slice(1);
 //}
@@ -607,6 +615,51 @@ $("#addBtn").click(function () {
     $("#searchInput").val("")
 
 })
+
+//local storage
+
+
+$("#lastSearch").on("click", function(event) {
+    event.preventDefault;
+    imageDiv.empty();
+    let apiOdy = "872fa65d52a2467f9914c55d89dbf2ba";
+    let apiChris = "75de8262c10e4899bf623668f3281309";
+let savedSearch = localStorage.getItem("master");
+    //master = masterArray.join();
+    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + savedSearch + "&apiKey=" + apiChris;
+ 
+
+    fetch(requestURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log("Complex search data.")
+            console.log(data)
+            displayRecipes(data);
+        })
+
+    
+
+})
+
+
+
+
+
+
+
+
+    
+
+
+    
+    
+
+
+
+    
+
 
 
 //$("#togBtn").on("click", function(event) {
