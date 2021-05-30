@@ -1,9 +1,13 @@
+// Trim
+// Capitalize
+// My trashbin value issue
+
 // These are our section arrays, where checked items will be added to them.
 let allergensArray = [];
 let dietArray = [];
 let cuisineArray = [];
 let ingredientsArray = [];
-let recipeArray = [];
+let dishArray = [];
 let ingredientsList = $("#returnCall");
 let checkedBoxItem;
 let value;
@@ -31,7 +35,7 @@ function searchOneInitialize() {
     let diet = "&diet=" + dietArray.join();
     let cuisine = "&cuisine=" + cuisineArray.join();
     let ingredients = "&includeIngredients=" + ingredientsArray.join();
-    let recipe = "&titleMatch=" + recipeArray.join();
+    let recipe = "&titleMatch=" + dishArray.join();
     console.log(recipe);
     // This will add all the arrays being used to one master array.
     let masterArray = [];
@@ -47,7 +51,7 @@ function searchOneInitialize() {
     if (ingredientsArray.length !== 0) {
         masterArray.push(ingredients);
     }
-    if (recipeArray.length !== 0) {
+    if (dishArray.length !== 0) {
         masterArray.push(recipe);
     }
     // The arrays are joined into one string.
@@ -399,13 +403,13 @@ $("#desserts").on("click", ".desserts", function (event) {
         liEl.append(iconEl);
         ingredientsList.append(liEl);
         value = $(this).val();
-        recipeArray.push(value);
+        dishArray.push(value);
     } else {
         checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
         value = $(this).val();
         let removalEl = $("li[value='" + $(this).attr("value") + "']");
         removalEl.remove();
-        recipeArray.splice($.inArray(value, recipeArray), 1);
+        dishArray.splice($.inArray(value, dishArray), 1);
     }
 })
 
@@ -418,23 +422,23 @@ $("#sauces").on("click", ".sauces", function (event) {
         iconEl.attr("class", "fas fa-trash");
         liEl.attr("data-inputID", $(this).attr("id"));
         liEl.attr("class", "checklistItems");
-        liEl.attr("data-search", "checkbox");
+        // liEl.attr("data-search", "checkbox");
         liEl.append(checkedBoxItem + " ");
         liEl.append(iconEl);
         ingredientsList.append(liEl);
         value = $(this).val();
-        recipeArray.push(value);
-        console.log(recipeArray);
+        dishArray.push(value);
+        console.log(dishArray);
     } else {
         value = $(this).val();
         let removalEl = $("li[value='" + $(this).attr("value") + "']");
         removalEl.remove();
-        recipeArray.splice($.inArray(value, recipeArray), 1);
-        console.log(recipeArray);
+        dishArray.splice($.inArray(value, dishArray), 1);
+        console.log(dishArray);
     }
 })
 
-$("#returnCall").on("click", ".listItems", function (event) {
+$("#returnCall").on("click", ".checklistItems", function (event) {
     event.preventDefault;
     // This will uncheck the box in the appropriate accordion.
     // if ($(this).attr)
@@ -451,43 +455,74 @@ $("#returnCall").on("click", ".listItems", function (event) {
     } else if (removeCheckboxItem.is(".cuisine")) {
         cuisineArray.splice($.inArray(liValue, cuisineArray), 1);
     } else if (removeCheckboxItem.is(".desserts")) {
-        recipeArray.splice($.inArray(liValue, recipeArray), 1);
+        dishArray.splice($.inArray(liValue, dishArray), 1);
     } else if (removeCheckboxItem.is(".sauces")) {
-        recipeArray.splice($.inArray(liValue, recipeArray), 1);
+        dishArray.splice($.inArray(liValue, dishArray), 1);
     } else {
         ingredientsArray.splice($.inArray(liValue, ingredientsArray), 1);
     };
     console.log(allergensArray);
     console.log(dietArray);
     console.log(cuisineArray);
-    console.log(recipeArray);
+    console.log(dishArray);
     console.log(ingredientsArray);
     let liRemoval = $(this);
     liRemoval.remove();
 })
 
+$("#addBtn").click(function () {
+    let input = $("#searchInput").val();
+    let liEl = $("<li>");
+    let iconEl = $("<i>")
+    liEl.append(input + " ");
+    let testTest = input;
+
+    //ingredientsArray.push(liEl);
+    iconEl.attr("class", "fas fa-trash");
+    // liEl.attr("class", "searchItems");
+    liEl.attr("data-name", input);
+    liEl.attr("value", testTest);
+    // liEl.attr("class", $(this).attr("id"));
+    liEl.append(iconEl);
+
+    //liEl.append(input);
+
+
+    if ($("#togBtn").is(":checked")) {
+        liEl.attr("class", "searchItems dishArray");
+        dishArray.push(input);
+    } else {
+        liEl.attr("class", "searchItems ingredientsArray");
+        ingredientsArray.push(input);
+    };
+
+    ingredientsList.append(liEl);
+
+    //input.val(input.val() + "");
+    //ingredientsArray.push(input);
+    console.log("ingredients " + ingredientsArray);
+    console.log("recipes " + dishArray);
+
+    $("#searchInput").val("")
+
+})
+
 $("#returnCall").on("click", ".searchItems", function (event) {
     event.preventDefault;
+    console.log("test value = " + $("#eggAllergen").val());
+    let lineItemText = $(this).text();
+    console.log("lineItemText " + lineItemText);
+    let liItemEl = $("li[data-name='" + $(this).text() + "']")
+    let liValue = liItemEl.val();
+    console.log("value is " + liValue);
     // These statements determine which array to remove from.
-    let liValue = removeCheckboxItem.val();
-    if (removeCheckboxItem.is(".allergens")) {
-        allergensArray.splice($.inArray(liValue, allergensArray), 1);
-    } else if (removeCheckboxItem.is(".diet")) {
-        dietArray.splice($.inArray(liValue, dietArray), 1);
-    } else if (removeCheckboxItem.is(".cuisine")) {
-        cuisineArray.splice($.inArray(liValue, cuisineArray), 1);
-    } else if (removeCheckboxItem.is(".desserts")) {
-        recipeArray.splice($.inArray(liValue, recipeArray), 1);
-    } else if (removeCheckboxItem.is(".sauces")) {
-        recipeArray.splice($.inArray(liValue, recipeArray), 1);
+    if (liItemEl.is(".dishArray")) {
+        dishArray.splice($.inArray(liValue, dishArray), 1);
     } else {
         ingredientsArray.splice($.inArray(liValue, ingredientsArray), 1);
     };
-    console.log(allergensArray);
-    console.log(dietArray);
-    console.log(cuisineArray);
-    console.log(recipeArray);
-    console.log(ingredientsArray);
+    console.log("dishArray " + dishArray);
+    console.log("ingredientsArray " + ingredientsArray);
     let liRemoval = $(this);
     liRemoval.remove();
 })
@@ -532,14 +567,12 @@ $("#returnCall").on("click", ".searchItems", function (event) {
 */
 /*  
 document.getElementById("searchOneBtn").onclick = function() {
-   
-   var text = document.getElementsByClassName("input").value; 
 
-   
-   var li = "<li>" + text + "</li>";
+    var text = document.getElementsByClassName("input").value; 
 
-   
-   ingredientsArray.append(li);
+    var li = "<li>" + text + "</li>";
+
+    ingredientsArray.append(li);
 }
 */
 
@@ -564,36 +597,6 @@ ingredientsArray.push(value);
 // let liEl = $("<li>");
 //let iconEl = $("<i>")
 
-$("#addBtn").click(function () {
-    let input = $("#searchInput").val();
-    let liEl = $("<li>");
-    let iconEl = $("<i>")
-    liEl.append(input + " ");
-
-    //ingredientsArray.push(liEl);
-    iconEl.attr("class", "fas fa-trash");
-    liEl.attr("class", $(this).attr("id"));
-    liEl.append(iconEl);
-
-    //liEl.append(input);
-    ingredientsList.append(liEl);
-    
-    if($("#togBtn").is(":checked")) {
-        recipeArray.push(input);
-     } else {
-        ingredientsArray.push(input);
-    };
-
-
-    //input.val(input.val() + "");
-    //ingredientsArray.push(input);
-    console.log("ingredients " + ingredientsArray);
-    console.log("recipes " + recipeArray);
-    
-    $("#searchInput").val("")
-
-})
-
 
 //$("#togBtn").on("click", function(event) {
 
@@ -602,7 +605,6 @@ $("#addBtn").click(function () {
 
 
 // This makes the accordion work.
-// Needs to be converted to jQuery.
 let accordions = document.getElementsByClassName("accordion");
 
 for (let i = 0; i < accordions.length; i++) {
@@ -637,7 +639,7 @@ $("#clearBtn").on("click", function () {
     Check your ingredients are actual ingredients
     Require a minimum of three ingredients */
 
+// Make it so when you hit enter it equals the add button.
 // Some sort of stop if they try to search with having no items.
 // At the bottom there should a a previous button and a next button
 // I think we could use the offset property to skip to the next 10 results.
-// Event listener for the two buttons that determine seach one or search two.
