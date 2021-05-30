@@ -1,5 +1,6 @@
 // My trashbin value issue
 // We don't have to use JSON in our storage, because we are storing a string and not an object, correct?
+// Error in console on console load (but gone when refreshed).
 
 // These are our section arrays, where checked items will be added to them.
 let allergensArray = [];
@@ -16,29 +17,16 @@ let imageDiv = $("#searchResults")
 let checkedBoxItem;
 let value;
 
-
 // This function will take the checked/added items and search for recipes with those parameters.
 function searchInitialize() {
     // Empty results div on search run.
     imageDiv.empty();
-    /* Parameter explanations:
-        number | number | The number of expected results (between 1 and 100).
-        instructionsRequired | boolean | Whether the recipes must have instructions.
-        addRecipeInformation | boolean | If set to true, you get more information about the recipes returned.
-        *sort | string | The strategy to sort recipes by.
-        *sortDirection | string | 	The direction in which to sort. Must be either 'asc' (ascending) or 'desc' (descending).
-        intolerances | string | A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered.
-        diet | string | The diet for which the recipes must be suitable.
-        cuisine | string | The The cuisine(s) of the recipes. One or more, comma separated (will be interpreted as 'OR').
-        includeIngredients | string | A comma-separated list of ingredients that should/must be used in the recipes.
-        titleMatch | string | Enter text that must be found in the title of the recipes. */
     // Variables that pull the joined strings from their respective arrays.
     let allergens = "&intolerances=" + allergensArray.join();
     let diet = "&diet=" + dietArray.join();
     let cuisine = "&cuisine=" + cuisineArray.join();
     let ingredients = "&includeIngredients=" + ingredientsArray.join();
     let recipe = "&titleMatch=" + dishArray.join();
-    console.log(recipe);
     // This will add all the arrays being used to one master array.
     let masterArray = [];
     if (allergensArray.length !== 0) {
@@ -78,6 +66,26 @@ function searchInitialize() {
 
 // searchInitialize();
 
+// This function will take the local storage that holds the previous search, and it runs the search with the stored API parameters.
+$("#lastSearch").on("click", function (event) {
+    event.preventDefault;
+    imageDiv.empty();
+    let savedSearch = localStorage.getItem("master");
+    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + savedSearch + "&apiKey=" + apiChris;
+
+    fetch(requestURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log("Complex search data.")
+            console.log(data)
+            displayRecipes(data);
+            return;
+        })
+    return;
+})
+
 // This function displays the found recipes' images and titles on the page, as well as makes them clickable links.
 function displayRecipes(data) {
     for (let i = 0; i < data.results.length; i++) {
@@ -95,11 +103,9 @@ function displayRecipes(data) {
         let img = $("<img>");
         img.attr("src", image);
         img.attr("class", "resultsImg");
-        // img.attr("class", "enter class name");
         div.append(img);
         let para = $("<p>");
         para.attr("class", "resultsText");
-        // para.attr("class", "enter class name");
         para.text(title);
         div.append(para);
         imageDiv.append(linkDiv);
@@ -353,6 +359,7 @@ $("#spices").on("click", ".spices", function (event) {
         ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
     }
 })
+
 $("#oils").on("click", ".oils", function (event) {
     event.preventDefault;
     if ($(this).is(":checked")) {
@@ -397,6 +404,31 @@ $("#nuts").on("click", ".nuts", function (event) {
     }
 })
 
+$("#sauces").on("click", ".sauces", function (event) {
+    event.preventDefault;
+    if ($(this).is(":checked")) {
+        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let liEl = $("<li>");
+        let iconEl = $("<i>")
+        iconEl.attr("class", "fas fa-trash");
+        liEl.attr("data-inputID", $(this).attr("id"));
+        liEl.attr("value", $(this).attr("value"));
+        liEl.attr("class", "checklistItems");
+        liEl.append(checkedBoxItem + " ");
+        liEl.append(iconEl);
+        ingredientsList.append(liEl);
+        value = $(this).val();
+        dishArray.push(value);
+        console.log("Sauce +dishArray: " + dishArray);
+    } else {
+        value = $(this).val();
+        let removalEl = $("li[value='" + $(this).attr("value") + "']");
+        removalEl.remove();
+        dishArray.splice($.inArray(value, dishArray), 1);
+        console.log("Sauce -dishArray: " + dishArray);
+    }
+})
+
 $("#desserts").on("click", ".desserts", function (event) {
     event.preventDefault;
     if ($(this).is(":checked")) {
@@ -419,39 +451,12 @@ $("#desserts").on("click", ".desserts", function (event) {
     }
 })
 
-$("#sauces").on("click", ".sauces", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("data-inputID", $(this).attr("id"));
-        liEl.attr("class", "checklistItems");
-        // liEl.attr("data-search", "checkbox");
-        liEl.append(checkedBoxItem + " ");
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        dishArray.push(value);
-        console.log(dishArray);
-    } else {
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        dishArray.splice($.inArray(value, dishArray), 1);
-        console.log(dishArray);
-    }
-})
-
 $("#returnCall").on("click", ".checklistItems", function (event) {
     event.preventDefault;
     // This will uncheck the box in the appropriate accordion.
-    console.log($(this).data('data-search'));
     let removeCheckboxItem = $("input[id='" + $(this).attr("data-inputID") + "']");
     removeCheckboxItem.prop("checked", false);
-    console.log($(this));
-    // These statements determine which array to remove from.
+    // These statements determine which array to remove from when the item is removed from #returnCall div.
     let liValue = removeCheckboxItem.val();
     if (removeCheckboxItem.is(".allergens")) {
         allergensArray.splice($.inArray(liValue, allergensArray), 1);
@@ -476,66 +481,25 @@ $("#returnCall").on("click", ".checklistItems", function (event) {
     return;
 })
 
-/* $("#addBtn").click(function () {
-    let input = $("#searchInput").val();
-    let liEl = $("<li>");
-    let iconEl = $("<i>")
-    liEl.append(input + " ");
-    let testTest = input;
 
-    //ingredientsArray.push(liEl);
-    iconEl.attr("class", "fas fa-trash");
-    // liEl.attr("class", "searchItems");
-    liEl.attr("data-name", input);
-    liEl.attr("value", testTest);
-    // liEl.attr("class", $(this).attr("id"));
-    liEl.append(iconEl);
-
-    //liEl.append(input);
-
-
-    if ($("#togBtn").is(":checked")) {
-        liEl.attr("class", "searchItems dishArray");
-        dishArray.push(input);
-    } else {
-        liEl.attr("class", "searchItems ingredientsArray");
-        ingredientsArray.push(input);
-    };
-
-    ingredientsList.append(liEl);
-
-    //input.val(input.val() + "");
-    //ingredientsArray.push(input);
-    console.log("ingredients " + ingredientsArray);
-    console.log("recipes " + dishArray);
-
-    $("#searchInput").val("")
-
-}) */
-
+// 
 $("#returnCall").on("click", ".searchItems", function (event) {
     event.preventDefault;
-    console.log("test value = " + $("#eggAllergen").val());
-    let lineItemText = $(this).text();
-    console.log("lineItemText " + lineItemText);
-    let liItemEl = $("li[data-name='" + $(this).text() + "']")
-    let liValue = liItemEl.val();
-    console.log("value is " + liValue);
+    let liValue = $(this).attr("data-value");
     // These statements determine which array to remove from.
-    if (liItemEl.is(".dishArray")) {
+    if ($(this).is(".dishArray")) {
         dishArray.splice($.inArray(liValue, dishArray), 1);
     } else {
         ingredientsArray.splice($.inArray(liValue, ingredientsArray), 1);
     };
-    console.log("dishArray " + dishArray);
-    console.log("ingredientsArray " + ingredientsArray);
+    console.log("dishArray: " + dishArray);
+    console.log("ingredientsArray: " + ingredientsArray);
     let liRemoval = $(this);
     liRemoval.remove();
     return;
 })
 
 /* Below add button still needs some sort of spell checker.
-
 let Typo = require("typo-js");
 let dictionary = new Typo(lang_code);
 let is_spelled_correctly = dictionary.check("mispelled");
@@ -546,7 +510,6 @@ Look up jQuery spell checker in include some stop for if they enter items wrong.
 <link href="css/jquery.spellchecker.css" rel="stylesheet" /> 
 https://github.com/badsyntax/jquery-spellchecker/wiki/Documentation */
 
-
 // This function will add the typed ingredient dish to the page and to the appropriate array.
 $("#addBtn").click(function () {
     let input = $("#searchInput").val();
@@ -554,17 +517,19 @@ $("#addBtn").click(function () {
     let lcInput = input.toLowerCase();
     // Then makes sure the beginning and end is trimmed of any additional spaces.
     let trimmedInput = $.trim(lcInput);
-    console.log("Trimmed Text:" + trimmedInput + ":Trimmed End");
+    // console.log("Trimmed Text:" + trimmedInput + ":Trimmed End");
+    // The input will now have any internal spaces removed and replaced with a dash, as that is how it will need to be for the array.
+    let arrayInput = trimmedInput.split(" ").join("-");
     // This section will append to the page, as well as capitalize what is going on display.
     let liEl = $("<li>");
     let iconEl = $("<i>");
     liEl.append(trimmedInput + " ");
     liEl.css("text-transform", "capitalize");
     iconEl.attr("class", "fas fa-trash");
+    liEl.attr("data-value", arrayInput);
     liEl.append(iconEl);
-    // The input will not have any internal spaces removed and replaced with a dash, as that is how it will need to be for the array.
-    let arrayInput = trimmedInput.split(" ").join("-");
-    console.log(":" + arrayInput + ":");
+
+    // console.log(":" + arrayInput + ":");
     // This if statement determines which classes to give the list item based on whether the toggle is on ingredients or dish and will also push to the correct array.
     if ($("#togBtn").is(":checked")) {
         liEl.attr("class", "searchItems dishArray");
@@ -578,25 +543,6 @@ $("#addBtn").click(function () {
     console.log("recipes: " + dishArray);
     // This will clear the input box after the ingredient or dish has been added.
     $("#searchInput").val("")
-    return;
-})
-
-$("#lastSearch").on("click", function (event) {
-    event.preventDefault;
-    imageDiv.empty();
-    let savedSearch = localStorage.getItem("master");
-    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + savedSearch + "&apiKey=" + apiChris;
-
-    fetch(requestURL)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log("Complex search data.")
-            console.log(data)
-            displayRecipes(data);
-            return;
-        })
     return;
 })
 
@@ -637,6 +583,8 @@ $("#clearBtn").on("click", function () {
     Check your ingredients are actual ingredients
     Require a minimum of three ingredients */
 
+
+// Contact page, links need to display as links and open into new webpage.
 // Add {return;} to accordion event listeners.
 // Need to make clear button clear arrays.
 // Which recipe website (recipe owner or spoonacular) do we want the user directed to when they click on a result?
@@ -644,3 +592,6 @@ $("#clearBtn").on("click", function () {
 // Some sort of stop if they try to search with having no items.
 // At the bottom there should a a previous button and a next button
 // I think we could use the offset property to skip to the next 10 results.
+/* Possible additional parameters:
+    *sort | string | The strategy to sort recipes by.
+    *sortDirection | string | 	The direction in which to sort. Must be either 'asc' (ascending) or 'desc' (descending). */
