@@ -186,6 +186,7 @@ h1 span{
     flex-wrap: wrap;
     background-image: none;
     padding-bottom: 10px;
+    padding-top: 20px;
 }
 
 .resultsText{
