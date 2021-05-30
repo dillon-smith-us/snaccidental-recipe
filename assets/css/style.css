@@ -24,7 +24,7 @@ li {
     list-style-type: none;
     font-family: 'Montserrat', sans-serif;
 }
-
+/*changes fonts for all the checkbox and accordians*/
 .allergens{
     font-family: 'Montserrat', sans-serif;
 }
@@ -98,9 +98,6 @@ li {
     font-family: 'Nunito', sans-serif;
 }
 
-button.accordian.active{
-    font-family: 'Nunito', sans-serif;
-}
 /* Style the buttons that are used to open and close the accordion panel */
 button.accordion {
     background-color: #eee;
@@ -149,36 +146,29 @@ img.resultsImg{
     min-height:210px;
 }
 
-h1 span{
-    display:block;
-}
-.userinputs {
-      background-color: aquamarine;
-}
-
+/*positions and adds rounded corners to add, search, clear buttons*/
 .field.has-addons .control:last-child .button, .field.has-addons .control:last-child .input, .field.has-addons .control:last-child .select select {
       border-radius: 290486px;
       position: relative;
       right: -6px;
 }
 
+/*adds rounded corners to search input box*/
 .field.has-addons .control:first-child .button, .field.has-addons .control:first-child .input, .field.has-addons .control:first-child .select select {
       border-radius: 290486px;
 }
 
-.userinputs {
-      background-color: aquamarine;
-}
-/*remove space after ingredients*/
+/*remove space after ingredients title*/
 .section {
     padding: 0.5rem 0.5rem;
 }
 
+/*positions search title*/
 #searchTitle{
     padding: 6px;
 }
 
-/*images columns*/
+/*positions recipe images in the container to wrap in the container*/
 #searchResults{
     display:flex;
     justify-content:space-evenly;
@@ -189,6 +179,7 @@ h1 span{
     padding-top: 20px;
 }
 
+/*sets the max width of the recipe text*/
 .resultsText{
     max-width: 300px;
 }
@@ -263,29 +254,28 @@ input:checked + .slider:after{
     margin-bottom: 0.5rem;
   }
 
-@media only screen and (max-width: 1469px) and (min-width: 940px){
+@media only screen and (max-width: 1469px) and (min-width: 941px){
     #clearBtn{
       margin-top: 6px;
     }
 }
 
-@media only screen and (max-width: 940px){
+@media only screen and (max-width: 940px) and (min-width: 910px){
     #searchBtn{
-        margin-top: 6px;
         margin-bottom: 6px;
     }
 }
 
-@media only screen and (max-width: 769px){
+@media only screen and (max-width: 909px) and (min-width:769px) {
     #searchBtn{
-    
+    margin-top: 6px;
     margin-bottom: 6px;
     } 
 }
 
-@media only screen and (max-width: 768px) and (min-width: 329px){
-    #searchBtn{
-    margin-top: 0px;
+@media only screen and (max-width: 437px){
+    #clearBtn{
+    margin-top: 6px;
     
     } 
 }
