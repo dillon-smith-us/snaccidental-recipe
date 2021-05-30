@@ -477,8 +477,6 @@ $("#returnCall").on("click", ".checklistItems", function (event) {
     return;
 })
 
-
-// 
 $("#returnCall").on("click", ".searchItems", function (event) {
     event.preventDefault;
     let liValue = $(this).attr("data-value");
@@ -514,7 +512,7 @@ function addItems(event) {
     let lcInput = input.toLowerCase();
     // Then makes sure the beginning and end is trimmed of any additional spaces.
     let trimmedInput = $.trim(lcInput);
-    // console.log("Trimmed Text:" + trimmedInput + ":Trimmed End");
+    console.log("Trimmed Text:" + trimmedInput + ":Trimmed End");
     // The input will now have any internal spaces removed and replaced with a dash, as that is how it will need to be for the array.
     let arrayInput = trimmedInput.split(" ").join("-");
     // This section will append to the page, as well as capitalize what is going on display.
@@ -526,7 +524,7 @@ function addItems(event) {
     liEl.attr("data-value", arrayInput);
     liEl.append(iconEl);
 
-    // console.log(":" + arrayInput + ":");
+    console.log(":" + arrayInput + ":");
     // This if statement determines which classes to give the list item based on whether the toggle is on ingredients or dish and will also push to the correct array.
     if ($("#togBtn").is(":checked")) {
         liEl.attr("class", "searchItems dishArray");

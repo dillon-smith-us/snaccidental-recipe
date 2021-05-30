@@ -37,6 +37,7 @@ function displayUserData(data) {
     let name = data.name;
     let ulEl = $("<ul>");
     ulEl.append(name);
+    ulEl.attr("class", "contactUl");
     // User email does not pull up in the API data, so it has to be manually added.
     let email;
     if (data.login === "mmonyok") {
@@ -54,9 +55,25 @@ function displayUserData(data) {
         let dataArrayBody = [email, data.html_url, data.blog, data.twitter_username];
         if (dataArrayBody[q] !== null && dataArrayBody[q] !== "") {
             let liEl = $("<li>");
+            liEl.attr("class", "contactLi");
             liEl.append(dataArrayHead[q]);
-            liEl.append(dataArrayBody[q]);
-            ulEl.append(liEl);
+            if (q === 1 || q === 2) {
+                let linkEl = $("<a>");
+                linkEl.attr("href", dataArrayBody[q]);
+                linkEl.attr("target", "_blank");
+                linkEl.append(dataArrayBody[q]);
+                liEl.append(linkEl);
+                ulEl.append(liEl);
+            } else if (q === 0) {
+                let linkEl = $("<a>");
+                linkEl.attr("href", "mailto:" + dataArrayBody[q]);
+                linkEl.append(dataArrayBody[q]);
+                liEl.append(linkEl);
+                ulEl.append(liEl);
+            } else {
+                liEl.append(dataArrayBody[q]);
+                ulEl.append(liEl);
+            }
         }
     }
     contactEl.append(ulEl);
