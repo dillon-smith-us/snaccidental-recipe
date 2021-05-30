@@ -1,6 +1,6 @@
 let requestURL;
-let y = 0;
 
+// This function obtains the data that contains all the contributor usernames for this project.
 function obtainUserProfiles() {
     requestURL = "https://api.github.com/repos/dillon-smith-us/snaccidental-recipe/contributors";
 
@@ -9,13 +9,12 @@ function obtainUserProfiles() {
             return response.json();
         })
         .then(function (data) {
-            console.log("Contributor Data:")
-            console.log(data);
             findContributorData(data);
         })
     return;
 }
 
+// This function obtains all the data for each of the contributors for this project.
 function findContributorData(data) {
     for (let i = 0; i < data.length; i++) {
         let username = data[i].login;
@@ -26,21 +25,19 @@ function findContributorData(data) {
                 return response.json();
             })
             .then(function (data) {
-                console.log("User Data " + [i + 1] + ":");
-                console.log(data);
                 displayUserData(data);
             })
     }
     return;
 }
 
+// This function displays all of the relevant data for the individual contributors on this project.
 function displayUserData(data) {
-    console.log("what type");
-    console.log(typeof data.blog);
     let contactEl = $("#contact");
     let name = data.name;
     let ulEl = $("<ul>");
     ulEl.append(name);
+    // User email does not pull up in the API data, so it has to be manually added.
     let email;
     if (data.login === "mmonyok") {
         email = "melodymonyok@gmail.com";
@@ -51,6 +48,7 @@ function displayUserData(data) {
     } else {
         email = "danielkl12@icloud.com"
     }
+    // This will append all of the rest of the relevant data.
     for (let q = 0; q < 4; q++) {
         let dataArrayHead = ["Email: ", "GitHub: ", "Website: ", "Twitter: "];
         let dataArrayBody = [email, data.html_url, data.blog, data.twitter_username];
