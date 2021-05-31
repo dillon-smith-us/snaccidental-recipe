@@ -144,6 +144,7 @@ img.resultsImg{
     border-radius: 20px;
     min-width:312px;
     min-height:210px;
+    margin-top: 18px;
 }
 
 /*positions and adds rounded corners to add, search, clear buttons*/
