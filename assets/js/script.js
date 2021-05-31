@@ -42,9 +42,7 @@ function searchInitialize() {
     }
     // The arrays are joined into one string.
     master = masterArray.join();
-    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + master + "&apiKey=" + apiChris;
-    // Below is the test API that is static; comment out the above API and use the one below; also on line 67 uncomment out the call for this function otherwise it won't run on page refresh.
-    //requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true&includeIngredients=chicken&apiKey=" + apiChris;
+    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + master + "&apiKey=" + apiOdy;
 
     fetch(requestURL)
         .then(function (response) {
@@ -60,14 +58,12 @@ function searchInitialize() {
     return;
 }
 
-// searchInitialize();
-
 // This function will take the local storage that holds the previous search, and it runs the search with the stored API parameters.
 $("#lastSearch").on("click", function (event) {
     event.preventDefault;
     imageDiv.empty();
     let savedSearch = localStorage.getItem("master");
-    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + savedSearch + "&apiKey=" + apiChris;
+    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + savedSearch + "&apiKey=" + apiOdy;
 
     fetch(requestURL)
         .then(function (response) {
@@ -88,8 +84,6 @@ function displayRecipes(data) {
         let image = data.results[i].image;
         let title = data.results[i].title;
         let link = data.results[i].sourceUrl;
-        // https://www.foodista.com/recipe/WGM3YMVS/rocky-road-ice-cream
-        // https://spoonacular.com/rocky-road-ice-cream-658725
         let linkDiv = $("<a>");
         linkDiv.attr("href", link);
         linkDiv.attr("target", "_blank");
@@ -272,8 +266,8 @@ function addItems(event) {
     return;
 }
 
+// Both of these eventListeners call the addItems function, so that you can either click the "add" button or hit "enter" on the keyboard to add the input to the display div.
 $("#submit").on("submit", addItems);
-
 $("#addBtn").on("click", addItems);
 
 // This makes the accordion work.
@@ -295,13 +289,23 @@ for (let i = 0; i < accordions.length; i++) {
     }
 }
 
-// This runs the first API with the selected parameters.
+// This eventListener runs the first API with the selected parameters once the search button is clicked.
 $("#searchBtn").on("click", searchInitialize);
 
 // This will both empty the ingredients list and uncheck all check boxes.
 $("#clearBtn").on("click", function () {
     ingredientsList.empty();
     $(":checkbox").attr("checked", false);
+    allergensArray = [];
+    dietArray = [];
+    cuisineArray = [];
+    ingredientsArray = [];
+    dishArray = [];
+    console.log("+allergensArray: " + allergensArray);
+    console.log("+dietArray: " + dietArray);
+    console.log("+cuisineArray: " + cuisineArray);
+    console.log("+ingredientsArray: " + ingredientsArray);
+    console.log("+dishArray: " + dishArray);
     return;
 })
 
@@ -312,16 +316,6 @@ $("#clearBtn").on("click", function () {
     Use different ingredients
     Check your ingredients are actual ingredients
     Require a minimum of three ingredients */
+    // Some sort of stop if they try to search with having no items.
 
-
-// Contact page, links need to display as links and open into new webpage.
-// Add {return;} to accordion event listeners.
 // Need to make clear button clear arrays.
-// Which recipe website (recipe owner or spoonacular) do we want the user directed to when they click on a result?
-
-// Some sort of stop if they try to search with having no items.
-// At the bottom there should a a previous button and a next button
-// I think we could use the offset property to skip to the next 10 results.
-/* Possible additional parameters:
-    *sort | string | The strategy to sort recipes by.
-    *sortDirection | string | 	The direction in which to sort. Must be either 'asc' (ascending) or 'desc' (descending). */
