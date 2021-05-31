@@ -15,6 +15,7 @@
     background-color: #ccc;
     padding:30px;
 }
+
 /*moves the menu button on the index.html to the right side*/
 #menu{
     float: right;
@@ -96,8 +97,21 @@ li {
     text-align: center;
     font-size: 25px;
     font-family: 'Nunito', sans-serif;
+    color:hsl(348, 100%, 61%);
+    columns: 2;
 }
 
+ul.contactUl{
+    font-family: 'Nunito', sans-serif;
+    margin-bottom:15px;
+    height: 180px;
+}
+
+li.contactLi{
+    font-size: 20px;
+    font-family: 'Nunito', sans-serif;
+
+}
 /* Style the buttons that are used to open and close the accordion panel */
 button.accordion {
     background-color: #eee;
@@ -156,11 +170,6 @@ img.resultsImg{
 /*adds rounded corners to search input box*/
 .field.has-addons .control:first-child .button, .field.has-addons .control:first-child .input, .field.has-addons .control:first-child .select select {
       border-radius: 290486px;
-}
-
-/*remove space after ingredients title*/
-.section {
-    padding: 0.5rem 0.5rem;
 }
 
 /*positions search title*/
@@ -254,29 +263,53 @@ input:checked + .slider:after{
     margin-bottom: 0.5rem;
   }
 
-@media only screen and (max-width: 1469px) and (min-width: 941px){
+@media only screen and (max-width: 1469px) and (min-width: 1020px){
     #clearBtn{
       margin-top: 6px;
     }
+    
 }
-
-@media only screen and (max-width: 940px) and (min-width: 910px){
+ @media only screen and (max-width: 1020px){
     #searchBtn{
         margin-bottom: 6px;
+        margin-top: 6px;
+    }
+    #contact{
+        align-items: center;
+        font-size: 20px;
+        font-family: 'Nunito', sans-serif;
+        color:hsl(348, 100%, 61%);
+        columns: 1;
+    }
+        
+    ul.contactUl{
+        font-family: 'Nunito', sans-serif;
+        height: auto;
+    }
+        
+    li.contactLi{
+        font-size: 15px;
+        font-family: 'Nunito', sans-serif;
     }
 }
 
-@media only screen and (max-width: 909px) and (min-width:769px) {
-    #searchBtn{
-    margin-top: 6px;
-    margin-bottom: 6px;
-    } 
-}
-
-@media only screen and (max-width: 437px){
-    #clearBtn{
-    margin-top: 6px;
+@media only screen and (max-width: 768px){
     
-    } 
+    #contact{
+        align-items: center;
+        font-size: 20px;
+        font-family: 'Nunito', sans-serif;
+        color:hsl(348, 100%, 61%);
+        columns: 1;
+    }
+        
+    ul.contactUl{
+        font-family: 'Nunito', sans-serif;
+        height: auto;
+    }
+        
+    li.contactLi{
+        font-size: 15px;
+        font-family: 'Nunito', sans-serif;
+    }
 }
-

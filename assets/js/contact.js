@@ -79,5 +79,4 @@ function displayUserData(data) {
     contactEl.append(ulEl);
     return;
 }
-
 obtainUserProfiles();
