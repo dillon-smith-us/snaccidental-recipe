@@ -175,6 +175,9 @@ img.resultsImg{
     margin-top: 30px;
 }
 
+a.resultsDiv{
+    padding-left: 70px;
+}
 /*positions and adds rounded corners to add, search, clear buttons*/
 .field.has-addons .control:last-child .button, .field.has-addons .control:last-child .input, .field.has-addons .control:last-child .select select {
     border-radius: 290486px;
@@ -282,6 +285,13 @@ input:checked + .slider:after{
     #clearBtn{
     margin-top: 6px;
     }
+    img.resultsImg{
+        border-radius: 20px;
+        padding-left: 0px;
+        min-width:312px;
+        min-height:210px;
+        margin-top: 30px;
+    }
     
 }
 @media only screen and (max-width: 1020px){
@@ -326,5 +336,8 @@ input:checked + .slider:after{
     li.contactLi{
         font-size: 15px;
         font-family: 'Nunito', sans-serif;
+    }
+    a.resultsDiv{
+        padding-left: 0px;
     }
 }
