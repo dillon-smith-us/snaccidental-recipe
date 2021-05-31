@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--link to css-->
     <title>Snaccidental Recipe</title>
+    <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon_io (1)/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon_io (1)/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon_io (1)/favicon-16x16.png">
@@ -16,9 +17,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
 
 <body>
@@ -72,7 +73,9 @@
                         <div class="control has-icons-left">
                             <form id="submit">
                                 <input id="searchInput" class="input" type="text" placeholder="Ingredient or Dish">
+                               
                             </form>
+
                             <span class="icon is-small is-left">
                                 <i class="fas fa-search"></i>
                         </div>
@@ -88,6 +91,13 @@
                             </a>
                         </div>
                     </div>
+
+                    <div id="ex1" class="modal">
+                        <p>Thanks for clicking. That felt good.</p>
+                        <a href="#" rel="modal:close">Close</a>
+                      </div>
+                      <p><a href="#ex1" rel="modal:open">Open Modal</a></p>
+                    
 
                     <h1 class="title is-3">Find a Recipe by Category</h1>
                     <button class="accordion">ALLERGENS</button>
@@ -1033,6 +1043,8 @@
                                 <br>
 
                             </form>
+                            
+                            
                         </section>
                     </div>
                     <br>
@@ -1065,6 +1077,16 @@
     </footer>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+    
+
+    
+    
+    
+
+
 </body>
+
 
 </html>

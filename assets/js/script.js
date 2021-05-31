@@ -217,12 +217,21 @@ $("#returnCall").on("click", ".searchItems", function (event) {
     liRemoval.remove();
     return;
 })
+//spell check modal
 
-/* Below add button still needs some sort of spell checker.
+
+
+
+/* Below
+
+
+add button still needs some sort of spell checker.
 let Typo = require("typo-js");
 let dictionary = new Typo(lang_code);
 let is_spelled_correctly = dictionary.check("mispelled");
 let liEl = $("<li>")
+
+
 
 Look up jQuery spell checker in include some stop for if they enter items wrong. 
 <script src="js/jquery.spellchecker.min.js"></script>
