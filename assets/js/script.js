@@ -5,14 +5,18 @@ let cuisineArray = [];
 let ingredientsArray = [];
 let dishArray = [];
 // These are our API keys; multiple are needed in case we run out of available API calls in one of them.
+let apiID = ["872fa65d52a2467f9914c55d89dbf2ba", "872fa65d52a2467f9914c55d89dbf2ba", "43072a01d9bb46329766f0731ac529d1", "a3a9c0a3044c4b569fe6060b071a3835"];
 let apiOdy = "872fa65d52a2467f9914c55d89dbf2ba";
 let apiChris = "75de8262c10e4899bf623668f3281309";
+let apiDillon = "43072a01d9bb46329766f0731ac529d1";
+let apiDan = "a3a9c0a3044c4b569fe6060b071a3835";
+let x = 0;
 // These are the rest of our variables.
 let ingredientsList = $("#returnCall");
 let imageDiv = $("#searchResults")
 
 // This function will take the checked/added items and search for recipes with those parameters.
-function searchInitialize() {
+function searchInitialize(error) {
     // Empties results div on search run.
     imageDiv.empty();
     // These variables take the strings within their array and join them into one string, within that array.
@@ -40,8 +44,13 @@ function searchInitialize() {
     }
     // Joins the individual arrays into one string.
     let master = masterArray.join();
+    console.log("Master Array: " + master);
+    // Checks if our API is empty and needs to switch to a new API call.
+    if (error.code === 402) {
+        x++;
+    }
     // Our API call.
-    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + master + "&apiKey=" + apiOdy;
+    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + master + "&apiKey=" + apiID[x];
 
     fetch(requestURL)
         .then(function (response) {
@@ -50,6 +59,10 @@ function searchInitialize() {
         .then(function (data) {
             console.log("Complex search data.")
             console.log(data)
+            if (data.code === 402) {
+                searchInitialize(data)
+                return;
+            }
             displayRecipes(data);
             return;
         })
@@ -80,6 +93,16 @@ $("#lastSearch").on("click", function (event) {
 
 // This function displays the found recipes' images and titles on the page, as well as makes them clickable links.
 function displayRecipes(data) {
+/*     if (data.results.length === 0) {
+        $('#manual-ajax').click(function (event) {
+            event.preventDefault();
+            this.blur(); // Manually remove focus from clicked link.
+            $.get(this.href, function (html) {
+                $(html).appendTo('body').modal();
+            });
+        });
+        return;
+    } */
     for (let i = 0; i < data.results.length; i++) {
         let image = data.results[i].image;
         let title = data.results[i].title;
@@ -307,13 +330,12 @@ $("#clearBtn").on("click", function () {
 
 // Make sure to remove console logs.
 // Update the second #returnCall; and play around with variable names some more.
-// Should we even have the desserts section and instead just allow the user to search for those items?
 
 /* Debugging:
     Checkboxes:
         Make sure each checkbox appears in the display div as well as the appropriate array.
         Make sure unchecking the checkbox removes it from the display div as well as the appropriate array.
         Make sure using the trashbin icon removes it from the display div as well as the appropriate array.
-    Search Items: 
+    Search Items:
         Check each item to see if recipes pull for it; determine if the item value should be plural or not.
         If no recipes pull either way, it should be removed.*/
