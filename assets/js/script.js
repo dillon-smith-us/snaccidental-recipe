@@ -219,6 +219,7 @@ $("#returnCall").on("click", ".searchItems", function (event) {
     searchItemRemoval.remove();
     return;
 })
+//spell check modal
 
 // This function will add the manual entry item to the display div and the appropriate array.
 function addItems(event) {
