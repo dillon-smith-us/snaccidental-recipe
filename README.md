@@ -1,4 +1,4 @@
-# sna# snaccidental-recipe
+# snaccidental-recipe
 Snaccidental Recipe is a web application that generates recipes based off of search criteria. 
 
 [Live Site!](https://dillon-smith-us.github.io/snaccidental-recipe/)
