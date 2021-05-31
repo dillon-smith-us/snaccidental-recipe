@@ -11,6 +11,36 @@ let apiChris = "75de8262c10e4899bf623668f3281309";
 let ingredientsList = $("#returnCall");
 let imageDiv = $("#searchResults")
 
+//page load modal
+$(document).ready(function() {
+    let id = "#box";
+    let Height = $(document).height();
+    let Width = $(window).width();
+
+    $("#showPopup").css({"width" :Width, "height" :Height});
+
+    let windowHeight = $(window).height();
+    let windowWwidth = $(window).width();
+    $(id).css("top", windowHeight/2-$(id).height()/2);
+    $(id).css("left", windowWwidth/2-$(id).width()/2);
+    $(id).fadeIn(100);
+    $(".window .button").click(function (e) {
+        e.preventDefault();
+        $("#showPopup").hide();
+        $(".window").hide();
+    });
+
+    $("#button").click(function () {
+        $(this).hide();
+        $(".window").hide();
+        
+    });
+    
+});
+
+
+
+
 // This function will take the checked/added items and search for recipes with those parameters.
 function searchInitialize() {
     // Empties results div on search run.
