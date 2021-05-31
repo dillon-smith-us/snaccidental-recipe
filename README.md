@@ -1,7 +1,7 @@
 # sna# snaccidental-recipe
 Snaccidental Recipe is a web application that generates recipes based off of search criteria. 
 
-[Live Site!--->](https://dillon-smith-us.github.io/snaccidental-recipe/)
+[Live Site!](https://dillon-smith-us.github.io/snaccidental-recipe/)
 
 ## Description
 - The creation of this project was motivated by wanting to create a site for users to find recipes based off of ingredients that they currently have. This application is targeted mainly towards people who are wanting to immerse themselves more in cooking and continue to learn. 
