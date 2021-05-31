@@ -19,8 +19,11 @@ To utilize this page, simply click the drop downs to open up categorized listed 
 
 ## Credits
 Melody Monyok - https://github.com/mmonyok
+
 Chris Beard - https://github.com/cbeard22
+
 Dillon Smith - https://github.com/dillon-smith-us
+
 Daniel Klauer - https://github.com/danielkl12
 
 For this project we utilized:
