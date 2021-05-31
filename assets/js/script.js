@@ -1,4 +1,4 @@
-// These are our section arrays, where checked items will be added to them.
+// These are our section arrays, where checked and manually added items will be pushed into them.
 let allergensArray = [];
 let dietArray = [];
 let cuisineArray = [];
@@ -7,23 +7,21 @@ let dishArray = [];
 // These are our API keys; multiple are needed in case we run out of available API calls in one of them.
 let apiOdy = "872fa65d52a2467f9914c55d89dbf2ba";
 let apiChris = "75de8262c10e4899bf623668f3281309";
-// The rest of our variables.
+// These are the rest of our variables.
 let ingredientsList = $("#returnCall");
 let imageDiv = $("#searchResults")
-let checkedBoxItem;
-let value;
 
 // This function will take the checked/added items and search for recipes with those parameters.
 function searchInitialize() {
-    // Empty results div on search run.
+    // Empties results div on search run.
     imageDiv.empty();
-    // Variables that pull the joined strings from their respective arrays.
+    // These variables take the strings within their array and join them into one string, within that array.
     let allergens = "&intolerances=" + allergensArray.join();
     let diet = "&diet=" + dietArray.join();
     let cuisine = "&cuisine=" + cuisineArray.join();
     let ingredients = "&includeIngredients=" + ingredientsArray.join();
     let recipe = "&titleMatch=" + dishArray.join();
-    // This will add all the arrays being used to one master array.
+    // These statements will add all the arrays being used (from the above already joined variables) into one master array.
     let masterArray = [];
     if (allergensArray.length !== 0) {
         masterArray.push(allergens)
@@ -40,8 +38,9 @@ function searchInitialize() {
     if (dishArray.length !== 0) {
         masterArray.push(recipe);
     }
-    // The arrays are joined into one string.
-    master = masterArray.join();
+    // Joins the individual arrays into one string.
+    let master = masterArray.join();
+    // Our API call.
     requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + master + "&apiKey=" + apiOdy;
 
     fetch(requestURL)
@@ -54,6 +53,7 @@ function searchInitialize() {
             displayRecipes(data);
             return;
         })
+    // Stores the "last" called master array into local storage, so it can be called by the Last Search button.
     localStorage.setItem("master", master);
     return;
 }
@@ -103,22 +103,22 @@ function displayRecipes(data) {
     return;
 }
 
-// These are event listeners that add checked items to the search array, and display them on the screen in the added ingredients section. 
+// This is the event handler for all of the accordion eventListeners; it will add the items to the display div and to their respective arrays when checked, as well as remove them when unchecked.
 function accordionHandler() {
+    let value = $(this).val();
     if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        let checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
         // Appends the checked item to the display div.
         let liEl = $("<li>");
-        let iconEl = $("<i>")
+        let iconEl = $("<i>");
         iconEl.attr("class", "fas fa-trash");
-        liEl.attr("data-inputID", $(this).attr("id"));
+        liEl.attr("data-id", $(this).attr("id"));
         liEl.attr("value", $(this).attr("value"));
         liEl.attr("class", "checklistItems");
         liEl.append(checkedBoxItem + " ");
         liEl.append(iconEl);
         ingredientsList.append(liEl);
         // Pushes the checked item into the appropriate array.
-        value = $(this).val();
         if ($(this).is(".allergens")) {
             allergensArray.push(value);
         } else if ($(this).is(".diet")) {
@@ -141,7 +141,6 @@ function accordionHandler() {
         let removalEl = $("li[value='" + $(this).attr("value") + "']");
         removalEl.remove();
         // Removes the unchecked item from the appropriate array.
-        value = $(this).val();
         if ($(this).is(".allergens")) {
             allergensArray.splice($.inArray(value, allergensArray), 1);
         } else if ($(this).is(".diet")) {
@@ -163,93 +162,76 @@ function accordionHandler() {
     return;
 }
 
-// These are the events for each accordion.
+// These are the eventListeners for each accordion.
 $("#allergens").on("click", ".allergens", accordionHandler);
 $("#diet").on("click", ".diet", accordionHandler);
 $("#cuisine").on("click", ".cuisine", accordionHandler);
 $("#meat, #meatSubstitute, #seafood, #vegetables, #grains, #fruits, #dairies, #spices, #oils, #nuts, #sauces").on("click", ".ingredients", accordionHandler);
 $("#desserts").on("click", ".dish", accordionHandler);
 
-
+// This eventListener handles removing items from the display div/arrays that were added via checkbox.
 $("#returnCall").on("click", ".checklistItems", function (event) {
     event.preventDefault;
-    // This will uncheck the box in the appropriate accordion.
-    let removeCheckboxItem = $("input[id='" + $(this).attr("data-inputID") + "']");
+    // Unchecks the box in the appropriate accordion.
+    let removeCheckboxItem = $("input[id='" + $(this).attr("data-id") + "']");
     removeCheckboxItem.prop("checked", false);
-    // These statements determine which array to remove from when the item is removed from #returnCall div.
-    let liValue = removeCheckboxItem.val();
+    // These statements determine from which array to remove the trashed display div item.
+    let checkedItemVal = removeCheckboxItem.val();
     if (removeCheckboxItem.is(".allergens")) {
-        allergensArray.splice($.inArray(liValue, allergensArray), 1);
+        allergensArray.splice($.inArray(checkedItemVal, allergensArray), 1);
     } else if (removeCheckboxItem.is(".diet")) {
-        dietArray.splice($.inArray(liValue, dietArray), 1);
+        dietArray.splice($.inArray(checkedItemVal, dietArray), 1);
     } else if (removeCheckboxItem.is(".cuisine")) {
-        cuisineArray.splice($.inArray(liValue, cuisineArray), 1);
+        cuisineArray.splice($.inArray(checkedItemVal, cuisineArray), 1);
     } else if (removeCheckboxItem.is(".ingredients")) {
-        ingredientsArray.splice($.inArray(liValue, ingredientsArray), 1);
+        ingredientsArray.splice($.inArray(checkedItemVal, ingredientsArray), 1);
     } else {
-        dishArray.splice($.inArray(liValue, dishArray), 1);
+        dishArray.splice($.inArray(checkedItemVal, dishArray), 1);
     };
     console.log("-allergensArray: " + allergensArray);
     console.log("-dietArray: " + dietArray);
     console.log("-cuisineArray: " + cuisineArray);
     console.log("-ingredientsArray: " + ingredientsArray);
     console.log("-dishArray: " + dishArray);
-    let liRemoval = $(this);
-    liRemoval.remove();
+    // Removes the item from the display div.
+    let checkedItemRemoval = $(this);
+    checkedItemRemoval.remove();
     return;
 })
 
+// This eventListener handles removing items from the display div/arrays that were added via manual entry.
 $("#returnCall").on("click", ".searchItems", function (event) {
     event.preventDefault;
-    let liValue = $(this).attr("data-value");
-    // These statements determine which array to remove from.
+    let searchItemVal = $(this).attr("data-value");
+    // These statements determine from which array to remove the trashed display div item.
     if ($(this).is(".dishArray")) {
-        dishArray.splice($.inArray(liValue, dishArray), 1);
+        dishArray.splice($.inArray(searchItemVal, dishArray), 1);
     } else {
-        ingredientsArray.splice($.inArray(liValue, ingredientsArray), 1);
+        ingredientsArray.splice($.inArray(searchItemVal, ingredientsArray), 1);
     };
     console.log("-allergensArray: " + allergensArray);
     console.log("-dietArray: " + dietArray);
     console.log("-cuisineArray: " + cuisineArray);
     console.log("-ingredientsArray: " + ingredientsArray);
     console.log("-dishArray: " + dishArray);
-    let liRemoval = $(this);
-    liRemoval.remove();
+    // Removes the item from the display div
+    let searchItemRemoval = $(this);
+    searchItemRemoval.remove();
     return;
 })
 //spell check modal
 
-
-
-
-/* Below
-
-
-add button still needs some sort of spell checker.
-let Typo = require("typo-js");
-let dictionary = new Typo(lang_code);
-let is_spelled_correctly = dictionary.check("mispelled");
-let liEl = $("<li>")
-
-
-
-Look up jQuery spell checker in include some stop for if they enter items wrong. 
-<script src="js/jquery.spellchecker.min.js"></script>
-<link href="css/jquery.spellchecker.css" rel="stylesheet" /> 
-https://github.com/badsyntax/jquery-spellchecker/wiki/Documentation */
-
-// This function will add the typed ingredient dish to the page and to the appropriate array.
+// This function will add the manual entry item to the display div and the appropriate array.
 function addItems(event) {
     event.preventDefault();
     let input = $("#searchInput").val();
-    // First makes sure input text is all lower case, in case there are random capitalized letters in the middle anywhere.
+    // Sets input text to lower case, in case there are random capitalized letters anywhere.
     let lcInput = input.toLowerCase();
-    // Then makes sure the beginning and end is trimmed of any additional spaces.
+    // Trims the beginning and end of the input text of any additional spaces.
     let trimmedInput = $.trim(lcInput);
-    console.log("Trimmed Text:" + trimmedInput + ":Trimmed End");
-    // The input will now have any internal spaces removed and replaced with a dash, as that is how it will need to be for the array.
+    // Removes spaces between words and replaces it with a dash, so it is formatted correctly for the array (e.g. the API parameters).
     let arrayInput = trimmedInput.split(" ").join("-");
-    // This section will append to the page, as well as capitalize what is going on display.
+    // Append the added item to the page, as well as capitalizes it for display.
     let liEl = $("<li>");
     let iconEl = $("<i>");
     liEl.append(trimmedInput + " ");
@@ -257,9 +239,7 @@ function addItems(event) {
     iconEl.attr("class", "fas fa-trash");
     liEl.attr("data-value", arrayInput);
     liEl.append(iconEl);
-
-    console.log(":" + arrayInput + ":");
-    // This if statement determines which classes to give the list item based on whether the toggle is on ingredients or dish and will also push to the correct array.
+    // This if statement determines which classes to give the list item based on whether the toggle is on ingredients or dish and will also push it to the correct array.
     if ($("#togBtn").is(":checked")) {
         liEl.attr("class", "searchItems dishArray");
         dishArray.push(arrayInput);
@@ -268,9 +248,9 @@ function addItems(event) {
         ingredientsArray.push(arrayInput);
     };
     ingredientsList.append(liEl);
-    console.log("ingredients: " + ingredientsArray);
-    console.log("recipes: " + dishArray);
-    // This will clear the input box after the ingredient or dish has been added.
+    console.log("-ingredientsArray: " + ingredientsArray);
+    console.log("-dishArray: " + dishArray);
+    // Clears the input box after the ingredient or dish has been added.
     $("#searchInput").val("")
     return;
 }
@@ -279,13 +259,11 @@ function addItems(event) {
 $("#submit").on("submit", addItems);
 $("#addBtn").on("click", addItems);
 
-// This makes the accordion work.
+// This function makes the accordion work. It is in vanilla JavaScript, because it functions better that way.
 let accordions = document.getElementsByClassName("accordion");
-
 for (let i = 0; i < accordions.length; i++) {
     accordions[i].onclick = function () {
         this.classList.toggle('active');
-
         let panel = this.nextElementSibling;
         if (panel.style.maxHeight) {
             // accordion is currently open, so close it
@@ -301,7 +279,7 @@ for (let i = 0; i < accordions.length; i++) {
 // This eventListener runs the first API with the selected parameters once the search button is clicked.
 $("#searchBtn").on("click", searchInitialize);
 
-// This will both empty the ingredients list and uncheck all check boxes.
+// This eventListener will empty the display div, uncheck all boxes, and empty all arrays. It does not clear the results display.
 $("#clearBtn").on("click", function () {
     ingredientsList.empty();
     $(":checkbox").attr("checked", false);
@@ -318,13 +296,24 @@ $("#clearBtn").on("click", function () {
     return;
 })
 
-/* Errors to keep an eye out for "fixing"
-    If search results pull up no recipes
-    Try again
-    Use less ingredients
-    Use different ingredients
-    Check your ingredients are actual ingredients
-    Require a minimum of three ingredients */
-    // Some sort of stop if they try to search with having no items.
+/* Modal pop-ups for the following:
+    If a search is run with nothing in the array.
+    If results are zero:
+        Try using less ingredients.
+        Use different combination of ingredients.
+        Check spelling of manually added ingredients.
+        Check ingredients are actually ingredients.
+        If you are using obscure ingredients, maybe try just searching with it and nothing else. */
 
-// Need to make clear button clear arrays.
+// Make sure to remove console logs.
+// Update the second #returnCall; and play around with variable names some more.
+// Should we even have the desserts section and instead just allow the user to search for those items?
+
+/* Debugging:
+    Checkboxes:
+        Make sure each checkbox appears in the display div as well as the appropriate array.
+        Make sure unchecking the checkbox removes it from the display div as well as the appropriate array.
+        Make sure using the trashbin icon removes it from the display div as well as the appropriate array.
+    Search Items: 
+        Check each item to see if recipes pull for it; determine if the item value should be plural or not.
+        If no recipes pull either way, it should be removed.*/
