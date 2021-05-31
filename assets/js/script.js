@@ -110,300 +110,10 @@ function displayRecipes(data) {
 }
 
 // These are event listeners that add checked items to the search array, and display them on the screen in the added ingredients section. 
-$("#allergens").on("click", ".allergens", function (event) {
-    event.preventDefault;
+function accordionHandler() {
     if ($(this).is(":checked")) {
         checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        console.log("value " + value);
-        allergensArray.push(value);
-        console.log(allergensArray);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        console.log("value2 " + value);
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        allergensArray.splice($.inArray(value, allergensArray), 1);
-        console.log(allergensArray);
-    }
-})
-
-$("#diet").on("click", ".diet", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        dietArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        dietArray.splice($.inArray(value, dietArray), 1);
-    }
-})
-
-$("#cuisine").on("click", ".cuisine", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        cuisineArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        cuisineArray.splice($.inArray(value, cuisineArray), 1);
-    }
-})
-
-$("#meat").on("click", ".meat", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        ingredientsArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
-    }
-})
-
-$("#meatSubstitute").on("click", ".meatSubstitute", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        ingredientsArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
-    }
-})
-
-$("#seafood").on("click", ".seafood", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        ingredientsArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
-    }
-})
-
-$("#vegetables").on("click", ".vegetables", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        ingredientsArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
-    }
-})
-
-$("#grains").on("click", ".grains", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        ingredientsArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
-    }
-})
-
-$("#fruits").on("click", ".fruits", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        ingredientsArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
-    }
-})
-
-$("#dairies").on("click", ".dairies", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        ingredientsArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
-    }
-})
-
-$("#spices").on("click", ".spices", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        ingredientsArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
-    }
-})
-
-$("#oils").on("click", ".oils", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        ingredientsArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
-    }
-})
-
-$("#nuts").on("click", ".nuts", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        ingredientsArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
-    }
-})
-
-$("#sauces").on("click", ".sauces", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
+        // Appends the checked item to the display div.
         let liEl = $("<li>");
         let iconEl = $("<i>")
         iconEl.attr("class", "fas fa-trash");
@@ -413,39 +123,59 @@ $("#sauces").on("click", ".sauces", function (event) {
         liEl.append(checkedBoxItem + " ");
         liEl.append(iconEl);
         ingredientsList.append(liEl);
+        // Pushes the checked item into the appropriate array.
         value = $(this).val();
-        dishArray.push(value);
-        console.log("Sauce +dishArray: " + dishArray);
+        if ($(this).is(".allergens")) {
+            allergensArray.push(value);
+        } else if ($(this).is(".diet")) {
+            dietArray.push(value);
+        } else if ($(this).is(".cuisine")) {
+            cuisineArray.push(value);
+        } else if ($(this).is(".desserts")) {
+            dishArray.push(value);
+        } else {
+            ingredientsArray.push(value);
+        }
+        // Console logs for testing.
+        console.log("+allergensArray: " + allergensArray);
+        console.log("+dietArray: " + dietArray);
+        console.log("+cuisineArray: " + cuisineArray);
+        console.log("+ingredientsArray: " + ingredientsArray);
+        console.log("+dishArray: " + dishArray);
     } else {
-        value = $(this).val();
+        // Removes the unchecked item from the display div.
         let removalEl = $("li[value='" + $(this).attr("value") + "']");
         removalEl.remove();
-        dishArray.splice($.inArray(value, dishArray), 1);
-        console.log("Sauce -dishArray: " + dishArray);
+        // Removes the unchecked item from the appropriate array.
+        value = $(this).val();
+        if ($(this).is(".allergens")) {
+            allergensArray.splice($.inArray(value, allergensArray), 1);
+        } else if ($(this).is(".diet")) {
+            dietArray.splice($.inArray(value, dietArray), 1);
+        } else if ($(this).is(".cuisine")) {
+            cuisineArray.splice($.inArray(value, cuisineArray), 1);
+        } else if ($(this).is(".desserts")) {
+            dishArray.splice($.inArray(value, dishArray), 1);
+        } else {
+            ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
+        }
+        // Console logs for testing.
+        console.log("-allergensArray: " + allergensArray);
+        console.log("-dietArray: " + dietArray);
+        console.log("-cuisineArray: " + cuisineArray);
+        console.log("-ingredientsArray: " + ingredientsArray);
+        console.log("-dishArray: " + dishArray);
     }
-})
+    return;
+}
 
-$("#desserts").on("click", ".desserts", function (event) {
-    event.preventDefault;
-    if ($(this).is(":checked")) {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        let liEl = $("<li>");
-        let iconEl = $("<i>")
-        iconEl.attr("class", "fas fa-trash");
-        liEl.attr("value", $(this).val());
-        liEl.append(checkedBoxItem);
-        liEl.append(iconEl);
-        ingredientsList.append(liEl);
-        value = $(this).val();
-        dishArray.push(value);
-    } else {
-        checkedBoxItem = $("label[for='" + $(this).attr("id") + "']").text();
-        value = $(this).val();
-        let removalEl = $("li[value='" + $(this).attr("value") + "']");
-        removalEl.remove();
-        dishArray.splice($.inArray(value, dishArray), 1);
-    }
-})
+// These are the events for each accordion.
+$("#allergens").on("click", ".allergens", accordionHandler);
+$("#diet").on("click", ".diet", accordionHandler);
+$("#cuisine").on("click", ".cuisine", accordionHandler);
+$("#meat, #meatSubstitute, #seafood, #vegetables, #grains, #fruits, #dairies, #spices, #oils, #nuts, #sauces").on("click", ".ingredients", accordionHandler);
+$("#desserts").on("click", ".dish", accordionHandler);
+
 
 $("#returnCall").on("click", ".checklistItems", function (event) {
     event.preventDefault;
@@ -460,18 +190,16 @@ $("#returnCall").on("click", ".checklistItems", function (event) {
         dietArray.splice($.inArray(liValue, dietArray), 1);
     } else if (removeCheckboxItem.is(".cuisine")) {
         cuisineArray.splice($.inArray(liValue, cuisineArray), 1);
-    } else if (removeCheckboxItem.is(".desserts")) {
-        dishArray.splice($.inArray(liValue, dishArray), 1);
-    } else if (removeCheckboxItem.is(".sauces")) {
-        dishArray.splice($.inArray(liValue, dishArray), 1);
-    } else {
+    } else if (removeCheckboxItem.is(".ingredients")) {
         ingredientsArray.splice($.inArray(liValue, ingredientsArray), 1);
+    } else {
+        dishArray.splice($.inArray(liValue, dishArray), 1);
     };
-    console.log(allergensArray);
-    console.log(dietArray);
-    console.log(cuisineArray);
-    console.log(dishArray);
-    console.log(ingredientsArray);
+    console.log("-allergensArray: " + allergensArray);
+    console.log("-dietArray: " + dietArray);
+    console.log("-cuisineArray: " + cuisineArray);
+    console.log("-ingredientsArray: " + ingredientsArray);
+    console.log("-dishArray: " + dishArray);
     let liRemoval = $(this);
     liRemoval.remove();
     return;
@@ -486,8 +214,11 @@ $("#returnCall").on("click", ".searchItems", function (event) {
     } else {
         ingredientsArray.splice($.inArray(liValue, ingredientsArray), 1);
     };
-    console.log("dishArray: " + dishArray);
-    console.log("ingredientsArray: " + ingredientsArray);
+    console.log("-allergensArray: " + allergensArray);
+    console.log("-dietArray: " + dietArray);
+    console.log("-cuisineArray: " + cuisineArray);
+    console.log("-ingredientsArray: " + ingredientsArray);
+    console.log("-dishArray: " + dishArray);
     let liRemoval = $(this);
     liRemoval.remove();
     return;
@@ -587,8 +318,6 @@ $("#clearBtn").on("click", function () {
 // Add {return;} to accordion event listeners.
 // Need to make clear button clear arrays.
 // Which recipe website (recipe owner or spoonacular) do we want the user directed to when they click on a result?
-
-// Make it so when you hit enter it equals the add button.
 
 // Some sort of stop if they try to search with having no items.
 // At the bottom there should a a previous button and a next button
