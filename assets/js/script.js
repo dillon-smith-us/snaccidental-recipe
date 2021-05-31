@@ -5,11 +5,7 @@ let cuisineArray = [];
 let ingredientsArray = [];
 let dishArray = [];
 // These are our API keys; multiple are needed in case we run out of available API calls in one of them.
-let apiID = ["872fa65d52a2467f9914c55d89dbf2ba", "872fa65d52a2467f9914c55d89dbf2ba", "43072a01d9bb46329766f0731ac529d1", "a3a9c0a3044c4b569fe6060b071a3835"];
-let apiOdy = "872fa65d52a2467f9914c55d89dbf2ba";
-let apiChris = "75de8262c10e4899bf623668f3281309";
-let apiDillon = "43072a01d9bb46329766f0731ac529d1";
-let apiDan = "a3a9c0a3044c4b569fe6060b071a3835";
+let apiID = ["872fa65d52a2467f9914c55d89dbf2ba", "872fa65d52a2467f9914c55d89dbf2ba", "43072a01d9bb46329766f0731ac529d1", "a3a9c0a3044c4b569fe6060b071a3835", "1d0203fe27f0498bb95550cb74f96edd"];
 let x = 0;
 // These are the rest of our variables.
 let ingredientsList = $("#returnCall");
@@ -42,14 +38,24 @@ function searchInitialize(error) {
     if (dishArray.length !== 0) {
         masterArray.push(recipe);
     }
+    // Stops search if array is empty and shows a modal stating selections need to be made.
+    if (masterArray.length === 0) {
+        $('#emptyArray').modal({
+        });
+        return;
+    }
     // Joins the individual arrays into one string.
     let master = masterArray.join();
     console.log("Master Array: " + master);
     // Checks if our API is empty and needs to switch to a new API call.
     if (error.code === 402) {
-        x++;
+        if (x === 4) {
+            x = 0;
+        } else {
+            x++;
+        }
     }
-    // Our API call.
+    // The API call.
     requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + master + "&apiKey=" + apiID[x];
 
     fetch(requestURL)
@@ -72,11 +78,10 @@ function searchInitialize(error) {
 }
 
 // This function will take the local storage that holds the previous search, and it runs the search with the stored API parameters.
-$("#lastSearch").on("click", function (event) {
-    event.preventDefault;
+function lastSearch() {
     imageDiv.empty();
     let savedSearch = localStorage.getItem("master");
-    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + savedSearch + "&apiKey=" + apiOdy;
+    requestURL = "https://api.spoonacular.com/recipes/complexSearch?number=10&instructionsRequired=true&addRecipeInformation=true" + savedSearch + "&apiKey=" + apiID[x];
 
     fetch(requestURL)
         .then(function (response) {
@@ -85,24 +90,35 @@ $("#lastSearch").on("click", function (event) {
         .then(function (data) {
             console.log("Complex search data.")
             console.log(data)
+            // Checks if our API is empty and needs to switch to a new API call.
+            if (data.code === 402) {
+                if (x === 4) {
+                    x = 0;
+                    lastSearch();
+                } else {
+                    x++;
+                    lastSearch();
+                }
+                return;
+            }
             displayRecipes(data);
             return;
         })
     return;
-})
+}
+
+// Generates last search on button click.
+$("#lastSearch").on("click", lastSearch);
 
 // This function displays the found recipes' images and titles on the page, as well as makes them clickable links.
 function displayRecipes(data) {
-/*     if (data.results.length === 0) {
-        $('#manual-ajax').click(function (event) {
-            event.preventDefault();
-            this.blur(); // Manually remove focus from clicked link.
-            $.get(this.href, function (html) {
-                $(html).appendTo('body').modal();
-            });
+    // A modal that tells the user possible fixes for there being no results.
+    if (data.totalResults === 0) {
+        $('#errorModal').modal({
         });
         return;
-    } */
+    }
+    // Displays all the results.
     for (let i = 0; i < data.results.length; i++) {
         let image = data.results[i].image;
         let title = data.results[i].title;
@@ -319,23 +335,6 @@ $("#clearBtn").on("click", function () {
     return;
 })
 
-/* Modal pop-ups for the following:
-    If a search is run with nothing in the array.
-    If results are zero:
-        Try using less ingredients.
-        Use different combination of ingredients.
-        Check spelling of manually added ingredients.
-        Check ingredients are actually ingredients.
-        If you are using obscure ingredients, maybe try just searching with it and nothing else. */
-
 // Make sure to remove console logs.
 // Update the second #returnCall; and play around with variable names some more.
-
-/* Debugging:
-    Checkboxes:
-        Make sure each checkbox appears in the display div as well as the appropriate array.
-        Make sure unchecking the checkbox removes it from the display div as well as the appropriate array.
-        Make sure using the trashbin icon removes it from the display div as well as the appropriate array.
-    Search Items:
-        Check each item to see if recipes pull for it; determine if the item value should be plural or not.
-        If no recipes pull either way, it should be removed.*/
+// Fix last search button API call.

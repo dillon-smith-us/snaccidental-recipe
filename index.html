@@ -19,6 +19,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <!--link to css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
@@ -387,8 +388,8 @@
                                     value="Green-Onions">
                                 <label for="greenOnions"> Green Onions</label>
                                 <br>
-                                <input type="checkbox" id="jalapeño" class="ingredients vegetables" value="Jalapeño">
-                                <label for="jalapeño"> Jalapeo</label>
+                                <input type="checkbox" id="jalapeño" class="ingredients vegetables" value="Jalapeno">
+                                <label for="jalapeño"> Jalapeño</label>
                                 <br>
                                 <input type="checkbox" id="kale" class="ingredients vegetables" value="Kale">
                                 <label for="kale"> Kale</label>
@@ -843,7 +844,24 @@
 
                 <div class="column-is-two-thirds is-primary">
                     <div id="searchContainer">
-                        <div id="searchResults"><a href="ajax.html" id="manual-ajax">second example</a></div>
+                        <div id="searchResults"></div>
+                        <div id="errorModal" class="modal">
+                            <h2 class="textCenter">Oh No! There are no results! Please Try Again!</h2>
+                            <br>
+                            <h3><strong>Try:</strong></h3>
+                            <p>&#9900; Using less ingredients.</p>
+                            <p>&#9900; Using a different ingredient combo.</p>
+                            <p>&#9900; Checking the spelling of any manually added ingredients or dishes.</p>
+                            <br>
+                            <a href="#close" rel="modal:close" class="textCenter" >Close</a>
+                        </div>
+                        <div id="emptyArray" class="modal">
+                            <h2 class="textCenter">Oops! You didn't select anything.</h2>
+                            <br>
+                            <p>Please check some boxes OR use the toggle to manually add an ingredient or dish to your search.</p>
+                            <br>
+                            <a href="#close" rel="modal:close" class="textCenter" >Close</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -863,8 +881,8 @@
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="./assets/js/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 
 
 
