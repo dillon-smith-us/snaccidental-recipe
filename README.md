@@ -58,7 +58,7 @@ To utilize this page, simply click the drop downs to open up categorized listed 
 - [Google Font API](https://fonts.googleapis.com/css2)
 - Modal Assistance:
   - [jQuery Modal](https://github.com/kylefox/jquery-modal)
-  - [jQueryScript.net](https://www.jqueryscript.net/lightbox/Simple-jQuery-Plugin-For-Opening-A-Popup-Window-On-Page-load.html)-
+  - [jQueryScript.net](https://www.jqueryscript.net/lightbox/Simple-jQuery-Plugin-For-Opening-A-Popup-Window-On-Page-load.html)
 
 - Tutorials Followed:
 [Professional README guide template provided by Coding Boot Camp.](https://github.com/coding-boot-camp)
