@@ -18,22 +18,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-    <!--link to css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-    <div id="boxes">
-        <div id="box" class="window">
-            <h2 class="textCenter">Welcome to Snaccidental Recipe!</h2>
-            <h3>&#9900; Add ingredients either by checking boxes using the input bar.</h3>
-            <h3>&#9900; You can select a specific diet or allergy considerations for the recipes to follow.</h3>
-            <h3>&#9900; Additionally, you can select a cuisine for the populated recipes.</h3>
-            <h3>&#9900; Use the toggle above the input bar, to change to Dish, so that you can search for a specific dish.</h3>
-            <button id="button"> <a href="#" class="button">Close</a></button>
+    <div id="openModal" class="modal openModal">
+        <h2 class="textCenter">Welcome to Snaccidental Recipe!</h2>
+        <h3>&#9900; Add ingredients either by checking boxes using the input bar.</h3>
+        <h3>&#9900; You can select a specific diet or allergy considerations for the recipes to follow.</h3>
+        <h3>&#9900; Additionally, you can select a cuisine for the populated recipes.</h3>
+        <h3>&#9900; Use the toggle above the input bar, to change to Dish, so that you can search for a specific dish.
+        </h3>
+        <div id="openModalDiv">
+            <button id="openBtn" class="textCenter">
+                <a rel="modal:close" id="btnLink" class="textCenter">Close</a>
+            </button>
         </div>
-        <div id="showPopup"></div>
     </div>
 
     <section class="container">
