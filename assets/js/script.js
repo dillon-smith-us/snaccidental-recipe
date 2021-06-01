@@ -11,6 +11,28 @@ let x = 0;
 let ingredientsList = $("#returnCall");
 let imageDiv = $("#searchResults")
 
+// On page load this modal will give web application instructions.
+$(document).ready(function() {
+    let id = "#box";
+    let Height = $(document).height();
+    let Width = $(window).width();
+    $("#showPopup").css({"width" :Width, "height" :Height});
+    let windowHeight = $(window).height();
+    let windowWidth = $(window).width();
+    $(id).css("top", windowHeight/2-$(id).height()/2);
+    $(id).css("left", windowWidth/2-$(id).width()/2);
+    $(id).fadeIn(100);
+    $(".window .button").click(function (e) {
+        e.preventDefault();
+        $("#showPopup").hide();
+        $(".window").hide();
+    });
+    $("#button").click(function () {
+        $(this).hide();
+        $(".window").hide();
+    });
+});
+
 // This function will take the checked/added items and search for recipes with those parameters.
 function searchInitialize(error) {
     // Empties results div on search run.

@@ -9,12 +9,10 @@ Snaccidental Recipe is a web application that generates recipes based off of sea
 - Cooking at home saves money and is generally healthier than eating out at restaurants. Learning to prepare food is an integral life skill and also a fun hobby. 
 - In working on this project, we learned how to use modals, resolve Git conflicts, furthered our knowledge of API implementation, collaborating as a group, implementing third party and server-side APIs, and trimming console outputs for search functions.
 
-## Table of Contents (Optional)
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
+## Table of Contents
 - [snaccidental-recipe](#snaccidental-recipe)
   - [Description](#description)
-  - [Table of Contents (Optional)](#table-of-contents-optional)
+  - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Usage](#usage)
   - [Credits](#credits)
@@ -42,25 +40,25 @@ If your README is long, add a table of contents to make it easy for users to fin
 To utilize this page, simply click the drop downs to open up categorized listed ingredients. Select the ingredients you would like to cook with and then click the search button. You can also use the search bar on the top left of the page to enter your own ingredients or toggle the slider to add a specific dish you would like to add to the search. 
 
 ![Screenshot of finished project.](./assets/images/screenshot.png)
-![GIF of finished project]()
+![GIF of finished project](./assets/images/snaccidentalrecipe.gif)
 
 ## Credits
 - Collaborators
-  - ![Melody Monyok:](https://github.com/mmonyok)
-  - ![Chris Beard:](https://github.com/cbeard22)
-  - ![Dillon Smith:](https://github.com/dillon-smith-us)
-  - ![Daniel Klauer:](https://github.com/danielkl12)
+  - [Melody Monyok:](https://github.com/mmonyok)
+  - [Chris Beard:](https://github.com/cbeard22)
+  - [Dillon Smith:](https://github.com/dillon-smith-us)
+  - [Daniel Klauer:](https://github.com/danielkl12)
 
 - For this project we utilized:
-- ![Bulma](https://bulma.io/)
-- ![jQuery](https://jquery.com/)
-- ![Spoonacular API](https://spoonacular.com)
+- [Bulma](https://bulma.io/)
+- [jQuery](https://jquery.com/)
+- [Spoonacular API](https://spoonacular.com)
   - [Specifically we used the following API:](https://api.spoonacular.com/recipes/complexSearch)
-- ![GitHub API](https://docs.github.com) 
-- ![Google Font API](https://fonts.googleapis.com/css2)
+- [GitHub API](https://docs.github.com) 
+- [Google Font API](https://fonts.googleapis.com/css2)
 - Modal Assistance:
-  - ![jQuery Modal](https://github.com/kylefox/jquery-modal)
-  - ![jQueryScript.net](https://www.jqueryscript.net/lightbox/Simple-jQuery-Plugin-For-Opening-A-Popup-Window-On-Page-load.html)-
+  - [jQuery Modal](https://github.com/kylefox/jquery-modal)
+  - [jQueryScript.net](https://www.jqueryscript.net/lightbox/Simple-jQuery-Plugin-For-Opening-A-Popup-Window-On-Page-load.html)-
 
 - Tutorials Followed:
 [Professional README guide template provided by Coding Boot Camp.](https://github.com/coding-boot-camp)
@@ -90,9 +88,6 @@ SOFTWARE.
 
 
 ## Badges
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
 ![Language Count](https://img.shields.io/github/languages/count/dillon-smith-us/snaccidental-recipe?color=blueviolet&label=Repo%20Language%20Count&logo=GitHub&logoColor=blueviolet&style=plastic)
 
 ![Top Language](https://img.shields.io/github/languages/top/dillon-smith-us/snaccidental-recipe?color=blue&logo=GitHub&logoColor=blue&style=plastic)
