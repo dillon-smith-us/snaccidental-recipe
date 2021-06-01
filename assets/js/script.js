@@ -11,26 +11,12 @@ let x = 0;
 let ingredientsList = $("#returnCall");
 let imageDiv = $("#searchResults")
 
-// On page load this modal will give web application instructions.
-$(document).ready(function() {
-    let id = "#box";
-    let Height = $(document).height();
-    let Width = $(window).width();
-    $("#showPopup").css({"width" :Width, "height" :Height});
-    let windowHeight = $(window).height();
-    let windowWidth = $(window).width();
-    $(id).css("top", windowHeight/2-$(id).height()/2);
-    $(id).css("left", windowWidth/2-$(id).width()/2);
-    $(id).fadeIn(100);
-    $(".window .button").click(function (e) {
-        e.preventDefault();
-        $("#showPopup").hide();
-        $(".window").hide();
+// On page load this modal will provide the instructions for the web application.
+$(document).ready(function () {
+    $('#openModal').modal({
+        showClose: false
     });
-    $("#button").click(function () {
-        $(this).hide();
-        $(".window").hide();
-    });
+    return;
 });
 
 // This function will take the checked/added items and search for recipes with those parameters.
@@ -68,7 +54,6 @@ function searchInitialize(error) {
     }
     // Joins the individual arrays into one string.
     let master = masterArray.join();
-    console.log("Master Array: " + master);
     // Checks if our API is empty and needs to switch to a new API call.
     if (error.code === 402) {
         if (x === 4) {
@@ -85,8 +70,6 @@ function searchInitialize(error) {
             return response.json();
         })
         .then(function (data) {
-            console.log("Complex search data.")
-            console.log(data)
             if (data.code === 402) {
                 searchInitialize(data)
                 return;
@@ -110,8 +93,6 @@ function lastSearch() {
             return response.json();
         })
         .then(function (data) {
-            console.log("Complex search data.")
-            console.log(data)
             // Checks if our API is empty and needs to switch to a new API call.
             if (data.code === 402) {
                 if (x === 4) {
@@ -191,12 +172,6 @@ function accordionHandler() {
         } else {
             ingredientsArray.push(value);
         }
-        // Console logs for testing.
-        console.log("+allergensArray: " + allergensArray);
-        console.log("+dietArray: " + dietArray);
-        console.log("+cuisineArray: " + cuisineArray);
-        console.log("+ingredientsArray: " + ingredientsArray);
-        console.log("+dishArray: " + dishArray);
     } else {
         // Removes the unchecked item from the display div.
         let removalEl = $("li[value='" + $(this).attr("value") + "']");
@@ -213,12 +188,6 @@ function accordionHandler() {
         } else {
             ingredientsArray.splice($.inArray(value, ingredientsArray), 1);
         }
-        // Console logs for testing.
-        console.log("-allergensArray: " + allergensArray);
-        console.log("-dietArray: " + dietArray);
-        console.log("-cuisineArray: " + cuisineArray);
-        console.log("-ingredientsArray: " + ingredientsArray);
-        console.log("-dishArray: " + dishArray);
     }
     return;
 }
@@ -249,11 +218,6 @@ $("#returnCall").on("click", ".checklistItems", function (event) {
     } else {
         dishArray.splice($.inArray(checkedItemVal, dishArray), 1);
     };
-    console.log("-allergensArray: " + allergensArray);
-    console.log("-dietArray: " + dietArray);
-    console.log("-cuisineArray: " + cuisineArray);
-    console.log("-ingredientsArray: " + ingredientsArray);
-    console.log("-dishArray: " + dishArray);
     // Removes the item from the display div.
     let checkedItemRemoval = $(this);
     checkedItemRemoval.remove();
@@ -270,17 +234,11 @@ $("#returnCall").on("click", ".searchItems", function (event) {
     } else {
         ingredientsArray.splice($.inArray(searchItemVal, ingredientsArray), 1);
     };
-    console.log("-allergensArray: " + allergensArray);
-    console.log("-dietArray: " + dietArray);
-    console.log("-cuisineArray: " + cuisineArray);
-    console.log("-ingredientsArray: " + ingredientsArray);
-    console.log("-dishArray: " + dishArray);
     // Removes the item from the display div
     let searchItemRemoval = $(this);
     searchItemRemoval.remove();
     return;
 })
-//spell check modal
 
 // This function will add the manual entry item to the display div and the appropriate array.
 function addItems(event) {
@@ -309,8 +267,6 @@ function addItems(event) {
         ingredientsArray.push(arrayInput);
     };
     ingredientsList.append(liEl);
-    console.log("-ingredientsArray: " + ingredientsArray);
-    console.log("-dishArray: " + dishArray);
     // Clears the input box after the ingredient or dish has been added.
     $("#searchInput").val("")
     return;
@@ -349,14 +305,5 @@ $("#clearBtn").on("click", function () {
     cuisineArray = [];
     ingredientsArray = [];
     dishArray = [];
-    console.log("+allergensArray: " + allergensArray);
-    console.log("+dietArray: " + dietArray);
-    console.log("+cuisineArray: " + cuisineArray);
-    console.log("+ingredientsArray: " + ingredientsArray);
-    console.log("+dishArray: " + dishArray);
     return;
 })
-
-// Make sure to remove console logs.
-// Update the second #returnCall; and play around with variable names some more.
-// Fix last search button API call.
