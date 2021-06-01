@@ -87,6 +87,9 @@ li {
     font-family: 'Montserrat', sans-serif;
 }
 
+
+
+/* Styling for the error modals. */
 .textCenter {
     text-align: center;
     font-weight: bold;
@@ -281,6 +284,53 @@ input:checked + .slider:after{
     margin-bottom: 0.5rem;
 }
 
+/* Styling for screen load modal */
+#showPopup {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:100;
+    display:none;
+    }
+
+#boxes .window {
+    position:absolute;
+    left:0;
+    top:0;
+    width: 400px;
+    height:200px;
+    display:none;
+    z-index: 100;
+    padding:20px;
+    border-radius: 40px;
+    border: black 5px solid;
+    text-align: left;
+    }
+
+#boxes #box {
+    width:800px;
+    height:350px;
+    padding:10px;
+    background-color:white;
+    font-family:'Courier New', Courier, monospace;
+    font-size:15pt;
+    margin-left: 14px;
+    }
+
+#button {
+    font-size:16pt;
+    position:absolute;
+    bottom:-25px;
+    width: 175px;
+    left:275px;
+    size: large;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    background-color:hsl(348, 100%, 61%);
+    margin-left: 27px;
+    }
+
+/* Media queries for responsive design. */
 @media only screen and (max-width: 1469px) and (min-width: 1020px){
     #clearBtn{
     margin-top: 6px;

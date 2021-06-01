@@ -24,6 +24,18 @@
 </head>
 
 <body>
+    <div id="boxes">
+        <div id="box" class="window">
+            <h2 class="textCenter">Welcome to Snaccidental Recipe!</h2>
+            <h3>&#9900; Add ingredients either by checking boxes using the input bar.</h3>
+            <h3>&#9900; You can select a specific diet or allergy considerations for the recipes to follow.</h3>
+            <h3>&#9900; Additionally, you can select a cuisine for the populated recipes.</h3>
+            <h3>&#9900; Use the toggle above the input bar, to change to Dish, so that you can search for a specific dish.</h3>
+            <button id="button"> <a href="#" class="button">Close</a></button>
+        </div>
+        <div id="showPopup"></div>
+    </div>
+
     <section class="container">
         <div class="hero is-danger">
             <div class="hero-body">
@@ -745,7 +757,8 @@
                                 <input type="checkbox" id="mustard" class="ingredients sauces" value="Mustard">
                                 <label for="mustard"> Mustard</label>
                                 <br>
-                                <input type="checkbox" id="peanutButter" class="ingredients sauces"value="Peanut-Butter">
+                                <input type="checkbox" id="peanutButter" class="ingredients sauces"
+                                    value="Peanut-Butter">
                                 <label for="peanutButter"> Peanut Butter</label>
                                 <br>
                                 <input type="checkbox" id="peanutSauce" class="ingredients sauces" value="Peanut-Sauce">
@@ -853,14 +866,15 @@
                             <p>&#9900; Using a different ingredient combo.</p>
                             <p>&#9900; Checking the spelling of any manually added ingredients or dishes.</p>
                             <br>
-                            <a href="#close" rel="modal:close" class="textCenter" >Close</a>
+                            <a rel="modal:close" class="textCenter">Close</a>
                         </div>
                         <div id="emptyArray" class="modal">
                             <h2 class="textCenter">Oops! You didn't select anything.</h2>
                             <br>
-                            <p>Please check some boxes OR use the toggle to manually add an ingredient or dish to your search.</p>
+                            <p>Please check some boxes OR use the toggle to manually add an ingredient or dish to your
+                                search.</p>
                             <br>
-                            <a href="#close" rel="modal:close" class="textCenter" >Close</a>
+                            <a rel="modal:close" class="textCenter">Close</a>
                         </div>
                     </div>
                 </div>
